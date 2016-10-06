@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+         <p><img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
+height="80" align="left"  />
+    </div>
+ <div class="b">
+     <a href ="/"><h1>SPONJ</h1></a> </div>
+<!--<div class="dropdown">
+  <button class="dropbtn">Issue</button>
+  <div class="dropdown-content">
+      <a href="TodayIssue">Today's Issue</a>
+    <a href="IssueCycle">Issue Cycle</a>
+    <a href="IssueList">Issue List</a>
+  </div>
+</div>-->
+
+   <!-- <div class="dropdown">
+  <button class="dropbtn">Return</button>
+  <div class="dropdown-content">
+    <a href="TodayReturn">Today's Return</a>
+    <a href="NewReturn">New Return</a>
+    <a href="ReturnList">Return List</a>
+  </div>
+</div>-->
+    
+ <!--   <div class="dropdown">
+  <button class="dropbtn">Cycle</button>
+  <div class="dropdown-content">
+    <a href="AddCycle">Add Cycle</a>
+    <a href="IssuedCycle">Issued Cycle</a>
+    <a href="CycleList">Cycle list</a>
+    <a href="AvailableCycle">Available Cycle</a>
+    <a href="DamagedCycle">Damaged Cycle</a>
+    <a href="RepairingCycle">Repairing Cycle</a>
+  </div>
+</div>-->
+
+            <div class="dropdown">
+  <button class="dropbtn">Login</button>
+  <div class="dropdown-content">
+    <a href="plogin">Professor</a>
+    <a href="">Student</a>
+      <a href="">Assistant</a>
+  </div>
+            </div>
+    
+    <div class="dropdown">
+  <button class="dropbtn">Create new Account</button>
+  <div class="dropdown-content">
+    <a href="psignup">Professor signup</a>
+    <a href="">Student Signup</a>
+    <a href="">Assistant Signup</a>
+  </div>
+  </div>
+    
+
+    </div>
+<h4>Welcome to SPONJ signup page</h4>
+</body>
+</html>

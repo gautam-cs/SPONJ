@@ -1,0 +1,16 @@
+.header
+{ text-align: center;
+    padding-top: 2.5px;
+    background-color: aqua;
+}
+
+ .content,.tr .content,.td {
+    text-align: center;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.data,.tr .data,.td {
+    background-color: white;
+}
+
