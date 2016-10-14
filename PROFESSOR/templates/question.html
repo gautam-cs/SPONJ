@@ -12,30 +12,36 @@
 height="80" align="left"  />
     </div>
  <div class="b">
-     <a href ="/"><h1>SPONJ</h1></a>
-    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
+     <a href ="/"><h1>SPONJ</h1></a> </div>
 
 
             <div class="dropdown">
   <button class="dropbtn">Login</button>
   <div class="dropdown-content">
     <a href="login">Professor</a>
-    <a href="UserList">Student</a>
-    <a href="UserList">Assistant</a>
+    <a href="login">Student</a>
+      <a href="login">Assistant</a>
   </div>
             </div>
-    
+
     <div class="dropdown">
   <button class="dropbtn">Create new Account</button>
   <div class="dropdown-content">
     <a href="psignup">Professor signup</a>
-    <a href="AddStandPerson">Student Signup</a>
-    <a href="StandList">Assistant Signup</a>
+    <a href="">Student Signup</a>
+    <a href="">Assistant Signup</a>
   </div>
   </div>
-    
+
 
     </div>
-<h4>Welcome to SPONJ Homepage</h4>
+<div class="datamining">
+<h2 class="subhead">Add new question</h2></br>
+<a href="{% url 'question' %}" class="top-menu"><!--<span class="glyphicon glyphicon-plus"></span>--></a>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+         <p><img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
+height="80" align="left"  />
+    </div>
+ <div class="b">
+     <a href ="/"><h1>SPONJ</h1></a>
+    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
+
+
+            <div class="dropdown">
+  <button class="dropbtn">Login</button>
+  <div class="dropdown-content">
+    <a href="login">Professor</a>
+    <a href="login">Student</a>
+    <a href="login">Assistant</a>
+  </div>
+            </div>
+
+    <div class="dropdown">
+  <button class="dropbtn">Create new Account</button>
+  <div class="dropdown-content">
+    <a href="psignup">Professor signup</a>
+    <a href="AddStandPerson">Student Signup</a>
+    <a href="StandList">Assistant Signup</a>
+  </div>
+  </div>
+    </div>
+
+<h2 class="subhead">Cycle List</h2></br>
+<div class="table-responsive">
+<div class="container">
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+    <td><h4>Qid</h4></td>
+    <td><h4>QName</h4></td>
+    <td><h4>QAuthor</h4></td>
+    <td><h4>QDescription</h4></td>
+    <td><h4>TestCaseModel1</h4></td>
+    <td><h4>TestCaseModel2</h4></td>
+    <td><h4>Output1</h4></td>
+    <td><h4>Output2</h4></td>
+    <td><h4>Question</h4></td>
+
+    </tr>
+  </thead>
+  <tbody>
+
+ {% for que in QuestionPosts %}
+  <tr>
+      <td>{{que.Qid}} </td>
+      <td>{{que.QName}} </td>
+      <td>{{que.QAuthor}} </td>
+      <td>{{que.QDescription}} </td>
+      <td>{{que.TestCaseModel1}} </td>
+      <td>{{que.TestCaseModel2}} </td>
+      <td>{{que.Output1}} </td>
+      <td>{{que.Output2}} </td>
+      <td>{{que.Question}} </td>
+    <!--<td id="no_border" class="#"><a href="{% url 'cycle_edit' pk=cycle.pk %}">
+    <button class="btn-info glyphicon glyphicon-pencil"></button></a></td>
+    <td id="no_border delete"><a href="{% url 'cycle_delete' pk=cycle.pk %}">
+    <button autofocus class="btn-danger red glyphicon glyphicon-remove">
+    </button></a></td>-->
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+</body>
+</html>

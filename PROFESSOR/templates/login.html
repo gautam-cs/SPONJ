@@ -11,31 +11,47 @@
          <p><img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
 height="80" align="left"  />
     </div>
+
+
  <div class="b">
-     <a href ="/"><h1>SPONJ</h1></a>
-    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
+     <a href ="/"><h1>SPONJ</h1></a> </div>
 
 
             <div class="dropdown">
   <button class="dropbtn">Login</button>
   <div class="dropdown-content">
     <a href="login">Professor</a>
-    <a href="UserList">Student</a>
-    <a href="UserList">Assistant</a>
+    <a href="login">Student</a>
+      <a href="login">Assistant</a>
   </div>
             </div>
-    
+
     <div class="dropdown">
   <button class="dropbtn">Create new Account</button>
   <div class="dropdown-content">
     <a href="psignup">Professor signup</a>
-    <a href="AddStandPerson">Student Signup</a>
-    <a href="StandList">Assistant Signup</a>
+    <a href="">Student Signup</a>
+    <a href="">Assistant Signup</a>
   </div>
   </div>
-    
-
     </div>
-<h4>Welcome to SPONJ Homepage</h4>
+
+
+<section class="loginform cf">
+<h1 style="color:blue"> Professor Login </h1>
+<form name="login" method="post" accept-charset="utf-8" action="/login">
+{% csrf_token %}
+<label for="usermail" align="center">User-Id </label>
+<input type="alphanumeric" name="userid" >
+<br \>
+<label for="password" align="center">Password </label>
+<input type="alphanumeric" name="password" >
+<br \>
+<input type="submit" value="Login" style="color:blue">
+<input type="hidden" name="next" value="{{ next }}"/>
+</center>
+</form>
+</section>
+
 </body>
 </html>
