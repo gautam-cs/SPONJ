@@ -1,6 +1,8 @@
 __author__ = 'Gautam'
 from django import forms
 from PROFESSOR.models import QuestionDetail
+from django.contrib.auth.models import User   # fill in custom user info then save it
+from django.contrib.auth.forms import UserCreationForm
 
 class QuestionForm(forms.ModelForm):
     class Meta:
@@ -9,15 +11,11 @@ class QuestionForm(forms.ModelForm):
 
 
 
-"""class UserForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
     class Meta:
         model = User
-        fields='__all__'
-
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        #exclude = ['user']
-        field='__all__'"""
+        fields = ('first_name','last_name','username', 'email', 'password')
 
 

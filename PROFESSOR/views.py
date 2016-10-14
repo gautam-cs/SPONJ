@@ -2,14 +2,20 @@ __author__ = 'Gautam'
 
 
 from PROFESSOR.models import QuestionDetail
-from PROFESSOR.forms import QuestionForm
+from PROFESSOR.forms import QuestionForm,UserForm
 from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
+from django.template import RequestContext
 from django.shortcuts import redirect
 from django.contrib import auth
 from django.conf import settings
+from django.shortcuts import render, get_object_or_404,render_to_response
+from django.http import HttpResponseRedirect
+from django.contrib import auth
+from django.core.context_processors import csrf
+
 
 
 def login(request):
@@ -57,23 +63,23 @@ def qbank(request):
 	QuestionPosts=QuestionDetail.objects.all()
 	return render(request, 'qbank.html', {'QuestionPosts':QuestionPosts})
 
-"""def register(request):
+
+def register(request):
+    context = RequestContext(request)
+    registered = False
     if request.method == 'POST':
-        uf = UserForm(request.POST, prefix='user')
-        upf = UserProfileForm(request.POST, prefix='userprofile')
-        if uf.is_valid() * upf.is_valid():
-            user = uf.save()
-            userprofile = upf.save(commit=False)
-            userprofile.user = user
-            userprofile.save()
-            return HttpResponseRedirect(index.html)
+        user_form = UserForm(data=request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.is_admin = True
+            user.is_staff = True
+            user.is_superuser = True
+            user.save()
+            registered = True
+        else:
+            print(user_form.errors)
     else:
-        uf = UserForm(prefix='user')
-        upf = UserProfileForm(prefix='userprofile')
-    return django.shortcuts.render_to_response('register.html',
-                                               dict(userform=uf,
-                                                    userprofileform=upf),
-                                               context_instance=django.template.RequestContext(request))
-
-"""
-
+        user_form = UserForm()
+    return render_to_response('register.html',
+            {'user_form': user_form,'registered': registered},context)
