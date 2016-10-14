@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f5a8d4e-3d03-4a32-a272-bf84e4289cbf" name="Default" comment="professor login">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PROFESSOR/templates/register.html" />
+    <list default="true" id="0f5a8d4e-3d03-4a32-a272-bf84e4289cbf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PROFESSOR/forms.py" afterPath="$PROJECT_DIR$/PROFESSOR/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PROFESSOR/templates/qbank.html" afterPath="$PROJECT_DIR$/PROFESSOR/templates/qbank.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PROFESSOR/urls.py" afterPath="$PROJECT_DIR$/PROFESSOR/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PROFESSOR/views.py" afterPath="$PROJECT_DIR$/PROFESSOR/views.py" />
     </list>
     <ignored path="SPONJ.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -504,16 +499,23 @@
       <option name="project" value="LOCAL" />
       <updated>1476470561002</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="professor tempory register created">
+      <created>1476476999418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1476476999418</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5030675" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3268921" sideWeight="0.5030675" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -568,7 +570,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="professor login" />
-    <option name="LAST_COMMIT_MESSAGE" value="professor login" />
+    <MESSAGE value="professor tempory register created" />
+    <option name="LAST_COMMIT_MESSAGE" value="professor tempory register created" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
