@@ -12,36 +12,40 @@
 height="80" align="left"  />
     </div>
  <div class="b">
-     <a href ="/"><h1>SPONJ</h1></a> </div>
+     <a href ="/"><h1>SPONJ</h1></a>
+    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
 
 
-            <div class="dropdown">
+             <div class="dropdown">
   <button class="dropbtn">Login</button>
   <div class="dropdown-content">
-    <a href="login">Professor</a>
-    <a href="login">Student</a>
-      <a href="login">Assistant</a>
+    <a href="plogin">Professor</a>
+    <a href="slogin">Student</a>
+    <a href="alogin">Assistant</a>
   </div>
             </div>
 
     <div class="dropdown">
   <button class="dropbtn">Create new Account</button>
   <div class="dropdown-content">
-    <a href="psignup">Professor signup</a>
-    <a href="">Student Signup</a>
-    <a href="">Assistant Signup</a>
+    <a href="pregister">Professor signup</a>
+    <a href="sregister">Student Signup</a>
+    <a href="aregister">Assistant Signup</a>
   </div>
   </div>
+</div>
 
 
-    </div>
 <div class="datamining">
-<h2 class="subhead">Add new question</h2></br>
-<a href="{% url 'question' %}" class="top-menu"><!--<span class="glyphicon glyphicon-plus"></span>--></a>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+<h2 class="subhead">create account</h2></br>
+    <!--<form id="user_form" method="post" action="professor_list">-->
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ uf.as_p }}
+        {{upf.as_p}}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
     </div>
+
 </body>
 </html>

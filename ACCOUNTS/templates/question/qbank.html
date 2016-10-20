@@ -16,21 +16,21 @@ height="80" align="left"  />
     <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
 
 
-            <div class="dropdown">
+              <div class="dropdown">
   <button class="dropbtn">Login</button>
   <div class="dropdown-content">
-    <a href="login">Professor login</a>
-    <a href="login">Student login</a>
-    <a href="login">Assistant login</a>
+    <a href="plogin">Professor</a>
+    <a href="slogin">Student</a>
+    <a href="alogin">Assistant</a>
   </div>
             </div>
 
     <div class="dropdown">
   <button class="dropbtn">Create new Account</button>
   <div class="dropdown-content">
-    <a href="psignup">Professor signup</a>
-    <a href="AddStandPerson">Student Signup</a>
-    <a href="StandList">Assistant Signup</a>
+    <a href="pregister">Professor signup</a>
+    <a href="sregister">Student Signup</a>
+    <a href="aregister">Assistant Signup</a>
   </div>
   </div>
     </div>
@@ -45,8 +45,8 @@ height="80" align="left"  />
     <td><h4>QName</h4></td>
     <td><h4>QAuthor</h4></td>
     <td><h4>QDescription</h4></td>
-    <td><h4>TestCaseModel1</h4></td>
-    <td><h4>TestCaseModel2</h4></td>
+    <td><h4>TestCaseInput1</h4></td>
+    <td><h4>TestCaseInput2</h4></td>
     <td><h4>Output1</h4></td>
     <td><h4>Output2</h4></td>
     <td><h4>Question</h4></td>
@@ -55,14 +55,14 @@ height="80" align="left"  />
   </thead>
   <tbody>
 
- {% for que in QuestionPost %}
+ {% for que in QuestionPosts %}
   <tr>
       <td>{{que.Qid}} </td>
       <td>{{que.QName}} </td>
       <td>{{que.QAuthor}} </td>
       <td>{{que.QDescription}} </td>
-      <td>{{que.TestCaseModel1}} </td>
-      <td>{{que.TestCaseModel2}} </td>
+      <td>{{que.TestCaseInput1}} </td>
+      <td>{{que.TestCaseInput2}} </td>
       <td>{{que.Output1}} </td>
       <td>{{que.Output2}} </td>
       <td>{{que.Question}} </td>

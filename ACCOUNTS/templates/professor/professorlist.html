@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+         <p><img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
+height="80" align="left"  />
+    </div>
+
+
+ <div class="b">
+     <a href ="/"><h1>SPONJ</h1></a>
+    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
+
+
+            <div class="dropdown">
+  <button class="dropbtn">Login</button>
+  <div class="dropdown-content">
+    <a href="plogin">Professor</a>
+    <a href="slogin">Student</a>
+    <a href="alogin">Assistant</a>
+  </div>
+            </div>
+
+    <div class="dropdown">
+  <button class="dropbtn">Create new Account</button>
+  <div class="dropdown-content">
+    <a href="pregister">Professor register</a>
+    <a href="sregister">Student register</a>
+    <a href="aregister">Assistant register</a>
+  </div>
+  </div>
+    </div>
+{% block main %}<br><br><br>
+<center><h1>Professors List</h1></center>
+<center>
+                <table style="width:60%" class="table table-striped">
+                <tr>
+                <th class="cell">Batch</th>
+                <th class="cell">Qualification</th>
+                <th class="cell">Interest</th>
+                <th class="cell">Username</th>
+                <th class="cell">First name</th>
+                <th class="cell">Last name</th>
+                <th class="cell">Email</th>
+               <!-- <th class="cell">Password</th>-->
+
+                </tr>
+           {% for c in list %}
+            <tr>
+                <td class="cell">{{c.Batch}}</td>
+            <td class="cell">{{c.Qualification}}</td>
+            <td class="cell">{{c.Interest}}</td>
+            <td class="cell">{{c.username}}</td>
+            <td class="cell">{{c.first_name}}</td>
+            <td class="cell">{{c.last_name}}</td>
+            <td class="cell">{{c.email}}</td>
+            <!--<td class="cell">{{d.password}}</td>-->
+                </tr>
+            {% endfor %}
+
+</table></center>
+{% endblock %}
+</body>
+</html>

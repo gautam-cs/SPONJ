@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ProfessorConfig(AppConfig):
-    name = 'PROFESSOR'
+    name = 'ACCOUNTS'

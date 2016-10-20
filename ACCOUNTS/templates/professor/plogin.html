@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+         <p><img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
+height="80" align="left"  />
+    </div>
+
+
+ <div class="b">
+     <a href ="/"><h1>SPONJ</h1></a>
+    <a href="/"><h4>Submission Portal ONline Judge</h4></a></div>
+
+
+              <div class="dropdown">
+  <button class="dropbtn">Login</button>
+  <div class="dropdown-content">
+    <a href="plogin">Professor</a>
+    <a href="slogin">Student</a>
+    <a href="alogin">Assistant</a>
+  </div>
+            </div>
+
+    <div class="dropdown">
+  <button class="dropbtn">Create new Account</button>
+  <div class="dropdown-content">
+    <a href="pregister">Professor signup</a>
+    <a href="sregister">Student Signup</a>
+    <a href="aregister">Assistant Signup</a>
+  </div>
+  </div>
+    </div>
+
+
+<section class="loginform cf">
+<h1 style="color:blue"> Professor Login </h1>
+<!--<form name="plogin" method="post" accept-charset="utf-8" action="plogin">
+{% csrf_token %}
+<label for="Username" align="center">Username </label>
+<input type="alphanumeric" name="username" >
+<br \>
+<label for="password" align="center">Password </label>
+<input type="alphanumeric" name="password" >
+<br \>
+<input type="submit" value="Login" style="color:blue">
+<input type="hidden" name="next" value="{{ next }}"/>
+</center>
+</form>-->
+  <form class="login" method="POST" action="/user_login/">
+
+  {% csrf_token %}
+<h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" name="username" class="form-control" value="User Name" onfocus="if(this.value  == 'User Name') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'User Name'; } " required ><br>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" name="password" required><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form></section>
+
+</body>
+</html>
