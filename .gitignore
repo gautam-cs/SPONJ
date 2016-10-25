@@ -1,5 +1,5 @@
 *.pyc
 __pycache__
 myvenv
-.idea
+.idea/
 .DS_Store
