@@ -79,34 +79,11 @@
                 <h2>List of courses</h2>
                 <div class="row">
                     <div class="course box-card col-lg-2">
-                        <h4>MA203</h4>
-                        <div class="course-name">Probability and Statistics</div>
-                        <div class="prof-name">Dr. Jignesh Bhatt</div>
-                        <div class="course-year-sem">Autumn - 2016</div>
-                    </div>
-                    <div class="course box-card col-lg-2">
-                        <h4>MA203</h4>
-                        <div class="course-name">Probability and Statistics</div>
-                        <div class="prof-name">Dr. Jignesh Bhatt</div>
-                        <div class="course-year-sem">Autumn - 2016</div>
-                    </div>
-                    <div class="course box-card col-lg-2">
-                        <h4>MA203</h4>
-                        <div class="course-name">Probability and Statistics</div>
-                        <div class="prof-name">Dr. Jignesh Bhatt</div>
-                        <div class="course-year-sem">Autumn - 2016</div>
-                    </div>
-                    <div class="course box-card col-lg-2">
-                        <h4>MA203</h4>
-                        <div class="course-name">Probability and Statistics</div>
-                        <div class="prof-name">Dr. Jignesh Bhatt</div>
-                        <div class="course-year-sem">Autumn - 2016</div>
-                    </div>
-                    <div class="course box-card col-lg-2">
-                        <h4>MA203</h4>
-                        <div class="course-name">Probability and Statistics</div>
-                        <div class="prof-name">Dr. Jignesh Bhatt</div>
-                        <div class="course-year-sem">Autumn - 2016</div>
+                        {% for course in CoursePosts %}
+                        <div class="course-name">{{course.CourseName}}</div>
+                        <div class="prof-name">{{course.PId}}</div>
+                        <div class="course-year-sem">{{course.Year}}</div>
+                        {% endfor %}
                     </div>
                     <div class="box-card col-lg-2">
                         <h4>Create New Course</h4>
