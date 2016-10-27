@@ -126,7 +126,7 @@ def createassignment(request):
 
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
-	return render(request, 'professor\assignmentlist.html',{'AssignmentPosts':AssignmentPosts})
+	return render(request, 'professor/assignmentlist.html',{'AssignmentPosts':AssignmentPosts})
 ###########################################################################################################################
 
 
