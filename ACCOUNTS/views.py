@@ -81,12 +81,12 @@ def professorlist(request):
 
 @login_required
 def professor_home(request):
-    Coursepost = CourseDetail.objects.all()
+    Coursepost = CourseDetail.objects.filter(username=request.POST.get('username'))
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
 
 def question(request):
     if request.method=="POST":
-        form=QuestionForm(request.POST)
+        form=QuestionForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form = QuestionDetail(TestCaseInputFile1=request.FILES['TestCaseInputFile1'])
             form.save()
@@ -228,7 +228,6 @@ def assistant_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        #print("auth",str(authenticate(username=username, password=password)))
 
         if user is not None:
             if user.is_active:
@@ -237,7 +236,6 @@ def assistant_login(request):
             else:
                 return HttpResponse("already login")
         else:
-            #print ("please choose your valid username & password: {0}, {1}".format(username, password))
             return HttpResponse("please choose your valid username & password ")
     else:
         return render_to_response('assistant/assistant_login.html', {}, context)
@@ -245,6 +243,5 @@ def assistant_login(request):
 def professor_logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
-
 ############################################################################################################################
 

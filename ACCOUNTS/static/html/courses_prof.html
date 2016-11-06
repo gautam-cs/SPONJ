@@ -1,15 +1,16 @@
-{% load staticfiles %}
-<html>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>professorhome</title>
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/stylesheet.css" rel="stylesheet">
+    <title>Courses</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/filetree.js"></script>
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
@@ -78,28 +79,45 @@
             <div class="content well">
                 <h2>List of courses</h2>
                 <div class="row">
-                    <!---->
-                    <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
-                        {% for course in Coursepost %}
-                        <div class="course box-card col-lg-2">
-                        <a href="professorcourse"><div class="course-name"> <h4>{{course.CourseName}}</h4></div></a>
-                        <div class="prof-name">{{course.PId}}</div>
-                        <div class="course-year-sem">{{course.Year}}</div>
-                        <br/>
-                            </div>
-                        {% endfor %}
-                    <div class="box-card col-lg-10">
-                        <h5>Create New Course</h5>
-                          <a href="createcourse">
-          <span class="glyphicon glyphicon-plus"></span><br/>
-                              <br/><br/>
-        </a>
-      </p>
+                    <div class="course box-card col-lg-2">
+                        <h4>MA203</h4>
+                        <div class="course-name">Probability and Statistics</div>
+                        <div class="prof-name">Dr. Jignesh Bhatt</div>
+                        <div class="course-year-sem">Autumn - 2016</div>
+                    </div>
+                    <div class="course box-card col-lg-2">
+                        <h4>MA203</h4>
+                        <div class="course-name">Probability and Statistics</div>
+                        <div class="prof-name">Dr. Jignesh Bhatt</div>
+                        <div class="course-year-sem">Autumn - 2016</div>
+                    </div>
+                    <div class="course box-card col-lg-2">
+                        <h4>MA203</h4>
+                        <div class="course-name">Probability and Statistics</div>
+                        <div class="prof-name">Dr. Jignesh Bhatt</div>
+                        <div class="course-year-sem">Autumn - 2016</div>
+                    </div>
+                    <div class="course box-card col-lg-2">
+                        <h4>MA203</h4>
+                        <div class="course-name">Probability and Statistics</div>
+                        <div class="prof-name">Dr. Jignesh Bhatt</div>
+                        <div class="course-year-sem">Autumn - 2016</div>
+                    </div>
+                    <div class="course box-card col-lg-2">
+                        <h4>MA203</h4>
+                        <div class="course-name">Probability and Statistics</div>
+                        <div class="prof-name">Dr. Jignesh Bhatt</div>
+                        <div class="course-year-sem">Autumn - 2016</div>
+                    </div>
+                    <div class="box-card col-lg-2">
+                        <h4>Create New Course</h4>
+                        <img src="../media/ic_add_white_48dp_2x.png" class="media add_icon">
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 ">
             <div class="calender well">
             </div>
         </div>

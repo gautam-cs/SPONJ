@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>Create course</title>
+</head>
+<body>
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-12">
+            <h1 class="title">Submissions Portal and ONline Judge</h1>
+        </div>
+    </div>
+    </div>
+
+<h2 class="subhead">Assignmentlist</h2></br>
+<div class="table-responsive">
+<div class="container">
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+    <td><h4>AssignmentID</h4></td>
+    <td><h4>CreationDate</h4></td>
+    <td><h4>StartTime</h4></td>
+    <td><h4>EndTime</h4></td>
+    <td><h4>Courseid</h4></td>
+    <td><h4>Description</h4></td>
+    <td><h4>Language</h4></td>
+
+    </tr>
+  </thead>
+  <tbody>
+
+ {% for que in AssignmentPosts %}
+  <tr>
+      <td>{{que.AssignmentID}} </td>
+      <td>{{que.CreationDate}} </td>
+      <td>{{que.StartTime}} </td>
+      <td>{{que.EndTime}} </td>
+      <td>{{que.Courseid}} </td>
+      <td>{{que.Description}} </td>
+      <td>{{que.Language}} </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+</body>
+</html>

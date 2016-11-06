@@ -1,25 +1,39 @@
 {% load staticfiles %}
 <html>
 <html lang="en">
-<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>professorhome</title>
+    <title>Create Assignment</title>
 </head>
 <body>
+
+<style>
+.right{
+float:right;
+}
+.left{
+float:left;
+}
+</style>
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/script.js' %}"></script>
+    <script src="{% static 'js/filetree.js' %}"></script>
+
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
             <h1 class="title">Submissions Portal and ONline Judge</h1>
         </div>
     </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-2">
             <div class="navigation-tree well">
-
                 <ul class="nav nav-list">
                     <li><label class="tree-toggler nav-header">Header 1</label>
                         <ul class="nav nav-list tree">
@@ -74,32 +88,84 @@
 
             </div>
         </div>
+
+       <!-- <form method="POST" action="">
+     {% for model in models %}
+     <label>{{model.name}}</label> <input value='{{model.value}}' />
+     <p>{{model.description}}</p>
+     {% endfor %}
+</form>-->
+        <form method="POST" action="">
         <div class="col-md-7">
             <div class="content well">
-                <h2>List of courses</h2>
-                <div class="row">
-                    <!---->
-                    <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
-                        {% for course in Coursepost %}
-                        <div class="course box-card col-lg-2">
-                        <a href="professorcourse"><div class="course-name"> <h4>{{course.CourseName}}</h4></div></a>
-                        <div class="prof-name">{{course.PId}}</div>
-                        <div class="course-year-sem">{{course.Year}}</div>
-                        <br/>
-                            </div>
-                        {% endfor %}
-                    <div class="box-card col-lg-10">
-                        <h5>Create New Course</h5>
-                          <a href="createcourse">
-          <span class="glyphicon glyphicon-plus"></span><br/>
-                              <br/><br/>
-        </a>
-      </p>
-                    </div>
-                </div>
+
+					<div class="row">
+						<div class="box-card1">
+							<h4><div align="center">Course ID : Course_Name</div></h4>
+							</br>
+							<b>Assignment No.:-</b> <input type="text" value="Assignment Name here..." width="100"></br>
+							</br>
+						</div>
+					</div>
+					</br>
+
+
+					<div class="row">
+						<div class="box-card1">
+							<b>Assignment Description:</b></br>
+							<textarea rows="10" cols="80">Description goes here.....
+							</textarea></br>
+						</div>
+						</br>
+					</div>
+
+					<div>
+					<p class="right">Assignment Started on:<border class="ridge">dd/mm/yyyy</border></p>
+					<p class="left">Assignment Ends on:<border class="ridge">dd/mm/yyyy</border></p></br>
+					</div>
+					</br>
+
+					Languages:
+					<a href="#" class="btn btn-default Java-btn">Java</a>&emsp;
+					<a href="#" class="btn btn-default CPP-btn">CPP</a>&emsp;
+					<a href="#" class="btn btn-default C-btn">C</a>&emsp;
+					<a href="#" class="btn btn-default Add Language-btn">Add Language</a>
+
+					<div class="row">
+						<div class="box-card1">
+							<b>Questions:</b>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>QuestionID</th>
+										<th>Question Name</th>
+										<th>Author</th>
+									</tr>
+									<tr>
+										<th>QID</th>
+										<th>QNAME</th>
+										<th>Author#</th>
+									</tr>
+									<tr>
+										<th>QID</th>
+										<th>QNAME</th>
+										<th>Author#</th>
+									</tr>
+									<tr>
+										<th>QID</th>
+										<th>QNAME</th>
+										<th>Author#</th>
+									</tr>
+								</thead>
+							</table>
+							<div align="left"><a href="#" class="btn btn-default add a question">Add a Question</a></div>
+						</div>
+						</br>
+					<div align="center"><a href="#" class="btn btn-default create">Create</a></div>
+        </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 ">
             <div class="calender well">
             </div>
         </div>
@@ -107,3 +173,6 @@
 </div>
 </body>
 </html>
+
+
+
