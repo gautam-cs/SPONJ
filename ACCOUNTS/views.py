@@ -54,10 +54,9 @@ def professor_register(request):
             uf.is_admin = True
             uf.is_staff = True
             uf.is_superuser = True
-            uf.save()
+            uf=uf.save()
             userprofile=upf.save(commit=False)
             #userprofile.username(uf.username)
-            userprofile.username = User.objects.all()
             userprofile.save()
             return redirect('professorlist')
     else:
@@ -81,7 +80,7 @@ def professorlist(request):
 
 @login_required
 def professor_home(request):
-    Coursepost = CourseDetail.objects.filter(username=request.POST.get('username'))
+    Coursepost = CourseDetail.objects.all()
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
 
 def question(request):
@@ -151,8 +150,8 @@ def student_register(request):
             sf.is_staff = True
             sf.is_superuser = False
             sf=sf.save()
+            #spf.username=sf.cleaned_data['username']
             studentprofile=spf.save(commit=False)
-            spf.username= sf
             studentprofile.save()
             return redirect('studentlist')
     else:
@@ -162,7 +161,8 @@ def student_register(request):
 
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    stposts=User.objects.all()
+    #stposts=User.objects.all()
+    stposts=User.objects.filter(username='studentposts.username')
     list=zip(studentposts,stposts)
     return render(request, 'student\studentlist.html', {'list': list})
 
