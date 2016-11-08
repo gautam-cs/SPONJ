@@ -78,7 +78,7 @@ def professorlist(request):
     list=zip(professorposts,profposts)
     return render(request, 'professor\professorlist.html', {'list': list})
 
-@login_required
+
 def professor_home(request):
     Coursepost = CourseDetail.objects.all()
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
