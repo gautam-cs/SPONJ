@@ -54,10 +54,9 @@ def professor_register(request):
             uf.is_admin = True
             uf.is_staff = True
             uf.is_superuser = True
-            uf.save()
+            uf=uf.save()
             userprofile=upf.save(commit=False)
             #userprofile.username(uf.username)
-            userprofile.username = User.objects.all()
             userprofile.save()
             return redirect('professorlist')
     else:
@@ -79,14 +78,14 @@ def professorlist(request):
     list=zip(professorposts,profposts)
     return render(request, 'professor\professorlist.html', {'list': list})
 
-@login_required
+
 def professor_home(request):
     Coursepost = CourseDetail.objects.all()
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
 
 def question(request):
     if request.method=="POST":
-        form=QuestionForm(request.POST)
+        form=QuestionForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form = QuestionDetail(TestCaseInputFile1=request.FILES['TestCaseInputFile1'])
             form.save()
@@ -151,8 +150,8 @@ def student_register(request):
             sf.is_staff = True
             sf.is_superuser = False
             sf=sf.save()
+            #spf.username=sf.cleaned_data['username']
             studentprofile=spf.save(commit=False)
-            spf.username= sf
             studentprofile.save()
             return redirect('studentlist')
     else:
@@ -162,7 +161,8 @@ def student_register(request):
 
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    stposts=User.objects.all()
+    #stposts=User.objects.all()
+    stposts=User.objects.filter(username='studentposts.username')
     list=zip(studentposts,stposts)
     return render(request, 'student\studentlist.html', {'list': list})
 
@@ -228,7 +228,6 @@ def assistant_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        #print("auth",str(authenticate(username=username, password=password)))
 
         if user is not None:
             if user.is_active:
@@ -237,7 +236,6 @@ def assistant_login(request):
             else:
                 return HttpResponse("already login")
         else:
-            #print ("please choose your valid username & password: {0}, {1}".format(username, password))
             return HttpResponse("please choose your valid username & password ")
     else:
         return render_to_response('assistant/assistant_login.html', {}, context)
@@ -245,6 +243,5 @@ def assistant_login(request):
 def professor_logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
-
 ############################################################################################################################
 

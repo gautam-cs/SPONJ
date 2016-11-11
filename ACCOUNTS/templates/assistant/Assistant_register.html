@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>assistant_register</title>
+</head>
+<body>
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-12">
+            <h1 class="title">Submissions Portal and ONline Judge</h1>
+        </div>
+    </div>
+    </div>
+
+<div class="datamining">
+<h2 class="subhead">create account</h2></br>
+    <!--<form id="user_form" method="post" action="professor_list">-->
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ af.as_p }}
+        {{apf.as_p}}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+
+</body>
+</html>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>Create course</title>
+    <title>assistantlist</title>
 </head>
 <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
@@ -21,13 +21,12 @@
     </div>
 
 {% block main %}<br><br><br>
-<center><h1>Professors List</h1></center>
+<center><h1>Assistant List</h1></center>
 <center>
                 <table style="width:60%" class="table table-striped">
                 <tr>
-                <th class="cell">Batch</th>
-                <th class="cell">Qualification</th>
-                <th class="cell">Interest</th>
+                <th class="cell">Course Id</th>
+                <th class="cell">Ta Id</th>
                 <th class="cell">Username</th> &nbsp
                 <th class="cell">First name</th> &nbsp
                 <th class="cell">Last name</th> &nbsp
@@ -37,9 +36,8 @@
                 </tr>
            {% for c,d in list %}
             <tr>
-                <td class="cell">{{c.Batch}}</td>
-            <td class="cell">{{c.Qualification}}</td>
-            <td class="cell">{{c.Interests}}</td>
+            <td class="cell">{{c.CourseId}}</td>
+            <td class="cell">{{c.TaId}}</td>
             <td class="cell">{{d.username}}</td>
             <td class="cell">{{d.first_name}}</td>
             <td class="cell">{{d.last_name}}</td>

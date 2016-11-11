@@ -1,0 +1,159 @@
+.header {
+    text-align: center;
+    display: inline;
+}
+
+body {
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
+}
+
+.login {
+    float: right;
+    margin: auto;
+}
+
+.login-btn {
+    position: relative;
+    left: 50%;
+}
+
+.title-for-selector {
+
+}
+
+.questions_table {
+    width: 100%;
+}
+
+.assignments {
+    width: 100%;
+    margin: auto;
+}
+
+.assignment_report_title {
+    /*width: 100%;*/
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    background-color: #4cae4c;
+    margin: auto;
+    border-bottom: 1px solid #418741;
+
+}
+
+.assignment_report_description {
+    display: none;
+    padding: 10px;
+    margin: auto;
+}
+
+.assignment_report {
+    padding: 0px;
+    margin: auto;
+}
+
+.navigation-tree {
+    float: left;
+    width: 100%;
+}
+
+.calender {
+    float: right;
+    /*width: 25%;*/
+}
+
+.content {
+    /**width: 50%;*/
+    /*margin-left: 10px;*/
+    /*padding: 10px;*/
+    /*background-color: #dedede;*/
+    position: relative;
+}
+
+.box-card {
+    position: relative;
+    width: 30%;
+    background-color: #5d1769;
+    color: #f9f9f9;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.box-card1{
+    position: relative;
+    width:100%;
+    color: #000000;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.tab-card{
+    position: relative;
+    width:100%;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.no_of_questions{
+    float: right;
+}
+
+.active .assignment_report_title{
+    background-color: #2aabd2;
+    border-bottom: 1px solid #237999;
+}
+
+.assignments_table{
+    width: 100%;
+}
+.overall_report_table{
+    width: 75%;
+}
+
+.add_icon {
+    height: 3em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.row{
+    margin: auto;
+}
+
+.assignments-tab{
+}
+
+.students-tab{
+    display: none;
+}
+.tas-tab{
+    display: none;
+}
+
+.datamining{
+    width: 400px;
+    padding: 10px;
+    margin-top: 3%;
+    border: 0.1px solid #263238;
+    margin-left: 35%;
+}
+
+.subhead{
+    text-align: center;
+}
+
+border.ridge {border-style: ridge;
+         width:30%;}
+		 
+border.ridge1 {border-style: ridge;
+         width:50%;}
+
+.table{
+	width:100%;
+}

@@ -3,9 +3,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
@@ -13,11 +10,7 @@
 </head>
 <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '//js/script.js' %}"></script>
-    <!--<script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
-height="80" align="left"  />  -->
+    <script src="{% static '/js/script.js' %}"></script>
 
     <div class="header">
         <h1 class="title">Submissions Portal and ONline Judge</h1>
@@ -26,9 +19,9 @@ height="80" align="left"  />  -->
         <div class="form-group">
             <legend>Login</legend>
             <ul class="nav nav-tabs" id="selector">
-                <li class="user"><a href="/">Student</a></li>
+                <li class="user active"><a href="/">Student</a></li>
                 <li class="user"><a href="professor_login">Professor</a></li>
-                <li class="user active"><a href="assistant_login">Teaching Assistant</a></li>
+                <li class="user"><a href="assistant_login">Teaching Assistant</a></li>
             </ul>
         </div>
   <form class="form-horizontal" method="POST" action="student_login">
@@ -49,7 +42,7 @@ height="80" align="left"  />  -->
         <button class="btn btn-default login-btn" type="submit">Login</button>
         </fieldset>
     </form>
-        Not Registered? <a href="assistant_register"> Register Here</a>
+        Not Registered? <a href="student_register"> Register Here</a>
     </div>
 
 </body>
