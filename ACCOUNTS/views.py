@@ -78,7 +78,7 @@ def professorlist(request):
     list=zip(professorposts,profposts)
     return render(request, 'professor\professorlist.html', {'list': list})
 
-@login_required
+#@login_required
 def professor_home(request):
     Coursepost = CourseDetail.objects.all()
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
@@ -150,7 +150,8 @@ def student_register(request):
             sf.is_staff = True
             sf.is_superuser = False
             sf=sf.save()
-            #spf.username=sf.cleaned_data['username']
+            un=User.objects.get(username=sf['username'].value())
+            spf.username=un.username
             studentprofile=spf.save(commit=False)
             studentprofile.save()
             return redirect('studentlist')
@@ -161,8 +162,8 @@ def student_register(request):
 
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    #stposts=User.objects.all()
-    stposts=User.objects.filter(username='studentposts.username')
+    stposts=User.objects.all()
+    #stposts=User.objects.filter(username='studentposts.username')
     list=zip(studentposts,stposts)
     return render(request, 'student\studentlist.html', {'list': list})
 
