@@ -61,8 +61,6 @@ body {
 .calender {
     float: right;
     /*width: 25%;*/
-    height: 100px;
-    background-color: #adadad;
 }
 
 .content {
@@ -148,4 +146,14 @@ body {
 
 .subhead{
     text-align: center;
+}
+
+border.ridge {border-style: ridge;
+         width:30%;}
+		 
+border.ridge1 {border-style: ridge;
+         width:50%;}
+
+.table{
+	width:100%;
 }

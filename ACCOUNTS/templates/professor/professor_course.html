@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
     <title>Create course</title>
 </head>
 <body>
@@ -21,7 +22,15 @@
 
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/script.js' %}"></script>
+    <script src="{% static '/js/monthly.js' %}"></script>
+    <script type="text/javascript">
+    $(window).load( function() {
+        $('#mycalendar').monthly({mode:'event',
+            jsonUrl: "{% static '/json/events.json' %}",
+            dataType: 'json'});
 
+    });
+    </script>
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
@@ -219,6 +228,7 @@
         </div>
         <div class="col-md-3 ">
             <div class="calender well">
+                <div class="monthly" id="mycalendar"></div>
             </div>
         </div>
     </div>

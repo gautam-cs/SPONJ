@@ -2,6 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f5a8d4e-3d03-4a32-a272-bf84e4289cbf" name="Default" comment="">
+<<<<<<< HEAD
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/professor/professorlist.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PROFESSOR/templates/psignup.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/apps.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/apps.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ASSISTANT/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/STUDENT/admin.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/image/LOGO_IIITV.png" afterPath="$PROJECT_DIR$/ACCOUNTS/static/image/LOGO_IIITV.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/apps.py" afterPath="$PROJECT_DIR$/ACCOUNTS/apps.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/templates/question.html" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/question/question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPONJ/settings.py" afterPath="$PROJECT_DIR$/SPONJ/settings.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/js/npm.js" afterPath="$PROJECT_DIR$/ACCOUNTS/static/js/npm.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap.min.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/image/q.jpg" afterPath="$PROJECT_DIR$/ACCOUNTS/static/image/q.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/admin.py" afterPath="$PROJECT_DIR$/ACCOUNTS/admin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/ACCOUNTS/static/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/templates/register.html" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/professor/pregister.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/tests.py" afterPath="$PROJECT_DIR$/ACCOUNTS/tests.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/post_list.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/post_list.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/ACCOUNTS/static/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap-theme.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/templates/index.html" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/ACCOUNTS/migrations/0001_initial.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/js/bootstrap.js" afterPath="$PROJECT_DIR$/ACCOUNTS/static/js/bootstrap.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/templates/login.html" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/professor/plogin.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/models.py" afterPath="$PROJECT_DIR$/ACCOUNTS/models.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/ACCOUNTS/static/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/index.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/__init__.py" afterPath="$PROJECT_DIR$/ACCOUNTS/migrations/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPONJ/urls.py" afterPath="$PROJECT_DIR$/SPONJ/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/ACCOUNTS/static/js/bootstrap.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/ACCOUNTS/static/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap-theme.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ACCOUNTS/templates/qbank.html" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/question/qbank.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/migrations/__init__.py" afterPath="$PROJECT_DIR$/ACCOUNTS/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/urls.py" afterPath="$PROJECT_DIR$/ACCOUNTS/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/ACCOUNTS/static/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap-theme.min.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap-theme.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/static/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/ACCOUNTS/static/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/views.py" afterPath="$PROJECT_DIR$/ACCOUNTS/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROFESSOR/forms.py" afterPath="$PROJECT_DIR$/ACCOUNTS/forms.py" />
+=======
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/assistant/Assistantlist.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/professor/assignmentlist.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ACCOUNTS/templates/professor/courselist.html" />
@@ -37,6 +94,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPONJ/settings.py" afterPath="$PROJECT_DIR$/SPONJ/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPONJ/urls.py" afterPath="$PROJECT_DIR$/SPONJ/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPONJ/wsgi.py" afterPath="$PROJECT_DIR$/SPONJ/wsgi.py" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
     </list>
     <ignored path="SPONJ.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,6 +115,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+=======
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACCOUNTS/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -65,6 +131,7 @@
               <folding>
                 <element signature="e#23#141#0" expanded="true" />
               </folding>
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
             </state>
           </provider>
         </entry>
@@ -72,18 +139,41 @@
       <file leaf-file-name="professor_course.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professor_course.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="799">
+              <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+=======
             <state relative-caret-position="3383">
               <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="assistant_login.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/assistant/assistant_login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="question.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/question/question.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+=======
       <file leaf-file-name="professor_home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professor_home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1819">
               <caret line="107" column="7" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
               <folding />
             </state>
           </provider>
@@ -92,8 +182,13 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACCOUNTS/forms.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="153">
+              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+=======
             <state relative-caret-position="901">
               <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
               <folding>
                 <element signature="e#22#46#0" expanded="true" />
               </folding>
@@ -104,6 +199,10 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACCOUNTS/models.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="901">
+              <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+=======
             <state relative-caret-position="374">
               <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
               <folding>
@@ -118,11 +217,40 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="16" column="74" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="74" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="36" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ACCOUNTS/apps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+=======
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SPONJ/urls.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -143,6 +271,7 @@
               <folding>
                 <element signature="e#306#315#0" expanded="true" />
               </folding>
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
             </state>
           </provider>
         </entry>
@@ -224,10 +353,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -300,6 +429,14 @@
               <option name="myItemId" value="ACCOUNTS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assistant" />
+=======
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -316,6 +453,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,7 +463,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gbike-master" />
+    <property name="last_opened_file_path" value="F:/SPONJ" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="prop_add_unversioned_files" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -638,17 +776,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11886503" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19364598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25931677" sideWeight="0.5121396" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41798943" sideWeight="0.48786038" order="7" side_tool="false" content_ui="tabs" />
+=======
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41384864" sideWeight="0.48786038" order="11" side_tool="false" content_ui="tabs" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -713,6 +862,9 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/forms.py">
+=======
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -722,6 +874,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/static/css/index.css" />
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/index.html">
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -937,6 +1090,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/question/qbank.html">
+=======
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/student/student_register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -945,6 +1101,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/assistant/Assistant_register.html">
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
@@ -961,6 +1118,14 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professor_list.html" />
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/views (1).py" />
+    <entry file="file://$PROJECT_DIR$/SPONJ/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+=======
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -973,11 +1138,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SPONJ/urls.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="255">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professorlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding />
+=======
         <state relative-caret-position="153">
           <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
           <folding>
@@ -990,35 +1168,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professor_home.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="782">
+          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+=======
         <state relative-caret-position="1819">
           <caret line="107" column="7" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/professor_course.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3383">
           <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ACCOUNTS/views.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="153">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+=======
         <state relative-caret-position="119">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
           <folding>
             <element signature="e#23#141#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/professor/pregister.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACCOUNTS/templates/assistant/assistant_login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+=======
     <entry file="file://$PROJECT_DIR$/SPONJ/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="559">
@@ -1026,6 +1261,7 @@
           <folding>
             <element signature="e#306#315#0" expanded="true" />
           </folding>
+>>>>>>> 1dcc9f997c49152d15398d0a47d20298269ec51a
         </state>
       </provider>
     </entry>
