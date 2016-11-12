@@ -24,7 +24,6 @@ class ProfessorDetail(models.Model):
     def __str__(self):
         return str(self.PId)
 
-
 class CourseDetail(models.Model):
     CourseId = models.CharField(max_length=20, null=False)
     Year = models.CharField(max_length=4,null=False)
