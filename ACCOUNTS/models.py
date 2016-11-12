@@ -100,6 +100,7 @@ class Course_student(models.Model):
     CourseId=models.ForeignKey(CourseDetail,null=False)
     Year=models.DateField()
 
+
 class Assignment_languages(models.Model):
     AssignmentId=models.ForeignKey(AssistantDetail,null=False)
     Programming_Language=models.CharField(max_length=20,null=True)
