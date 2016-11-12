@@ -46,3 +46,16 @@ class AssistantForm(forms.ModelForm):
     class Meta:
         model=AssistantDetail
         fields=('TaId','CourseId', 'Email','Name','Password')
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    def clean_message(self):
+        username = self.cleaned_data.get("username")
+        dbuser = StudentDetail.objects.filter(name=username)
+
+        if not dbuser:
+            raise forms.ValidationError("User does not exist in our db!")
+        return username

@@ -33,6 +33,9 @@ class CourseDetail(models.Model):
     StartDate= models.DateField(null=False)
     EndDate= models.DateField(null=False)
     Semester=models.IntegerField(null=False)
+
+    class Meta:
+        unique_together=('CourseId','Year')
     
     def __str__(self):
         return str(self.CourseId)
@@ -99,6 +102,7 @@ class Course_student(models.Model):
     SId=models.ForeignKey(StudentDetail,null=False)
     CourseId=models.ForeignKey(CourseDetail,null=False)
     Year=models.DateField()
+
 
 class Assignment_languages(models.Model):
     AssignmentId=models.ForeignKey(AssistantDetail,null=False)
