@@ -29,25 +29,20 @@
                 <th class="cell">Batch</th>
                 <th class="cell">Brach</th> &nbsp
                 <th class="cell">Programmme</th> &nbsp
-                <th class="cell">Username</th> &nbsp
-                <th class="cell">First name</th> &nbsp
-                <th class="cell">Last name</th> &nbsp
+                <th class="cell">Name</th> &nbsp
                 <th class="cell">Email</th>
                <!-- <th class="cell">Password</th>-->
 
                 </tr>
-           {% for c,d in list %}
+           {% for c in list %}
             <tr>
-            <td class="cell">{{c.SiD}}</td>
+            <td class="cell">{{c.SId}}</td>
             <td class="cell">{{c.Batch}}</td>
             <td class="cell">{{c.Branch}}</td>
             <td class="cell">{{c.Programme}}</td>
-            <td class="cell">{{c.username}}</td>
-            <td class="cell">{{d.first_name}}</td>
-            <td class="cell">{{d.last_name}}</td>
-            <td class="cell">{{d.email}}</td>
-            <!--<td class="cell">{{d.password}}</td>-->
-                </tr>
+            <td class="cell">{{c.Name}}</td>
+            <td class="cell">{{c.Email}}</td>
+            <
             {% endfor %}
 
 </table></center>

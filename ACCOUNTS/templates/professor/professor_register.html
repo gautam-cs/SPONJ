@@ -26,8 +26,7 @@
     <!--<form id="user_form" method="post" action="professor_list">-->
     <form method="POST" class="post-form">
         {% csrf_token %}
-        {{ uf.as_p }}
-        {{upf.as_p}}
+        {{ pf.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
     </div>

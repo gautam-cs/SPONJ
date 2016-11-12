@@ -1,8 +1,8 @@
 __author__ = 'Gautam'
 
 from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
-from ACCOUNTS.forms import QuestionForm,UserForm,UserProfileForm,CourseForm,AssignmentForm,AssistantForm,AssistantProfileForm,\
-    StudentForm ,StudentProfileForm,QForm
+from ACCOUNTS.forms import QuestionForm,ProfessorForm,CourseForm,AssignmentForm,AssistantForm,\
+    StudentForm ,QForm
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -46,23 +46,14 @@ def professor_logout(request):
 def professor_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
-        uf = UserForm(data=request.POST, prefix='user')
-        upf = UserProfileForm(data=request.POST, prefix='userprofile')
-        if uf.is_valid() * upf.is_valid():
-            uf=uf.save()
-            uf.set_password(uf.password)
-            uf.is_admin = True
-            uf.is_staff = True
-            uf.is_superuser = True
-            uf=uf.save()
-            userprofile=upf.save(commit=False)
-            #userprofile.username(uf.username)
-            userprofile.save()
+        pf = ProfessorForm(data=request.POST, prefix='professor')
+        if pf.is_valid():
+            pf.save()
             return redirect('professorlist')
     else:
-        uf=UserForm(prefix='user')
-        upf = UserProfileForm(prefix='userprofile')
-    return render(request,'professor\professor_register.html', {'uf':uf,'upf':upf}, context)
+        pf = ProfessorForm(prefix='professor')
+    return render(request, 'professor\professor_register.html', {'pf': pf}, context)
+
 
 def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
@@ -152,30 +143,20 @@ def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
         sf = StudentForm(data=request.POST, prefix='student')
-        spf = StudentProfileForm(data=request.POST, prefix='studentprofile')
-        if sf.is_valid() * spf.is_valid():
-            sf=sf.save()
-            sf.set_password(sf.password)
-            sf.is_admin = True
-            sf.is_staff = True
-            sf.is_superuser = False
-            sf=sf.save()
-            #un=User.objects.get(username=sf['username'].value())
-            #spf.username=un.username
-            studentprofile=spf.save(commit=False)
-            studentprofile.save()
+        #spf = StudentProfileForm(data=request.POST, prefix='studentprofile')
+        if sf.is_valid():
+            sf.save()
             return redirect('studentlist')
     else:
         sf=StudentForm(prefix='student')
-        spf =StudentProfileForm(prefix='studentprofile')
-    return render(request,'student\student_register.html', {'sf':sf,'spf':spf}, context)
+    return render(request,'student\student_register.html', {'sf':sf}, context)
 
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    stposts=User.objects.all()
+    #stposts=User.objects.all()
     #stposts=User.objects.filter(username='studentposts.username')
-    list=zip(studentposts,stposts)
-    return render(request, 'student\studentlist.html', {'list': list})
+    #list=zip(studentposts,stposts)
+    return render(request, 'student\studentlist.html', {'list': studentposts})
 
 def student_login(request):
     context = RequestContext(request)
@@ -208,23 +189,13 @@ def professor_logout(request):
 def assistant_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
-        af = AssistantForm(data=request.POST, prefix='assistant')
-        apf = AssistantProfileForm(data=request.POST, prefix='assistantprofile')
-        if af.is_valid() * apf.is_valid():
-            af=af.save()
-            af.set_password(af.password)
-            af.is_admin = True
-            af.is_staff = True
-            af.is_superuser = False
-            af=af.save()
-            assistantprofile=apf.save(commit=False)
-            apf.username= af
-            assistantprofile.save()
-            return redirect("assistantlist")
+        Af = AssistantForm(data=request.POST, prefix='student')
+        if Af.is_valid():
+            Af.save()
+            return redirect('Assistantlist')
     else:
-        af=AssistantForm(prefix='assistant')
-        apf =AssistantProfileForm(prefix='assistantprofile')
-    return render(request,'assistant\Assistant_register.html', {'af':af,'apf':apf}, context)
+        Af = AssistantForm(prefix='Assistant')
+    return render(request, 'Assistant\Assistant_register.html', {'Af': Af}, context)
 
 def assistantlist(request):
     assistantposts = AssistantDetail.objects.all()
