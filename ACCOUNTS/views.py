@@ -1,8 +1,7 @@
 __author__ = 'Gautam'
 
 from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
-from ACCOUNTS.forms import QuestionForm,ProfessorForm,CourseForm,AssignmentForm,AssistantForm,\
-    StudentForm ,QForm
+from ACCOUNTS.forms import QuestionForm,ProfessorForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -57,17 +56,8 @@ def professor_register(request):
 
 def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
-    profposts=User.objects.all()
-    # if request.professorposts.get(username=User.objects.all()):
-    # Person.objects.raw('SELECT * FROM myapp_person WHERE last_name = %s', [lname])
-    """ list = zip(ProfessorDetail.objects.raw('SELECT * FROM ACCOUNTS_ProfessorDetail join ACCOUNTS_User ON'
-                                            '(ACCOUNTS_User.username=ACCOUNTS_ProfessorDetail.username)'),
-                User.objects.raw(
-                    'SELECT * FROM ACCOUNTS_ProfessorDetail join User ON'
-                    '(ACCOUNTS_User.username=ACCOUNTS_ProfessorDetail.username)'))"""
-    # list=ProfessorDetail.objects.select_related()
-    list=zip(professorposts,profposts)
-    return render(request, 'professor\professorlist.html', {'list': list})
+    #list=zip(professorposts,profposts)
+    return render(request, 'professor\professorlist.html', {'list': professorposts})
 
 #@login_required
 def professor_home(request):
