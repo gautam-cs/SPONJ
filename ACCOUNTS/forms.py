@@ -17,16 +17,11 @@ class QForm(forms.ModelForm):
     QDescription = forms.CharField(max_length=20)
     #Question = forms.TextField(max_length=200)
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    class Meta:
-        model=User
-        fields=('first_name','last_name', 'email','username','password')
-
-class UserProfileForm(forms.ModelForm):
+class ProfessorForm(forms.ModelForm):
+    Password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = ProfessorDetail
-        fields = ('Interests','Qualification')
+        fields = ('Name','PId','Email','Password','Interests','Qualification')
 
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -38,24 +33,16 @@ class AssignmentForm(forms.ModelForm):
         model = AssignmentDetail
         fields = '__all__'
 #################################################Student Forms########################################################
-class StudentForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    class Meta:
-        model=User
-        fields=('first_name','last_name', 'email','username','password')
 
-class StudentProfileForm(forms.ModelForm):
+
+class StudentForm(forms.ModelForm):
+    Password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = StudentDetail
-        fields = ('Batch','Branch','Programme')
+        fields = ('SId','Name','Email','Password','Batch','Branch','Programme')
 #################################################Assistant FOrms######################################################
 class AssistantForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    Password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
-        model=User
-        fields=('first_name','last_name', 'email','username','password')
-
-class AssistantProfileForm(forms.ModelForm):
-    class Meta:
-        model = AssistantDetail
-        fields =('TaId','CourseId')
+        model=AssistantDetail
+        fields=('TaId','CourseId', 'Email','Name','Password')

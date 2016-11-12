@@ -2,18 +2,22 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class StudentDetail(models.Model):
-    SId = models.ForeignKey(User,primary_key=True,null=False)
+    SId = models.CharField(primary_key=True,max_length=20,null=False)
     Batch=models.CharField(max_length=20,null=False)
     Branch=models.CharField(max_length=20,null=False)
+    Name=models.CharField(max_length=30,null=False)
+    Email = models.EmailField()
+    Password=models.CharField(max_length=20,null=False)
     Programme=models.CharField(max_length=20,null=False)
 
     def __str__(self):
         return str(self.SId)
 
-
 class ProfessorDetail(models.Model):
-    #user = models.ForeignKey(User, unique=True,null=True)
-    PId = models.ForeignKey(User,primary_key=True,null=False)
+    PId = models.CharField(primary_key=True,max_length=20,null=False)
+    Name=models.CharField(max_length=20,null=False)
+    Email= models.EmailField()
+    Password=models.CharField(max_length=20,null=False)
     Qualification= models.TextField(max_length=20,null=False)
     Interests = models.TextField(max_length=200,null=False)
 
@@ -36,16 +40,16 @@ class CourseDetail(models.Model):
     
 
 class AssistantDetail(models.Model):
-    TaId = models.ForeignKey(User,primary_key=True,null=False)
-    Batch = models.CharField(max_length=20,null=False)
+    TaId = models.CharField(primary_key=True,max_length=20,null=False)
+    Name = models.CharField(max_length=20,null=False)
+    Email = models.EmailField()
     CourseId= models.ForeignKey(CourseDetail,max_length=20,null=False)
+    Password=models.CharField(max_length=20,null=False)
 
 
     def __str__(self):
-        return str(self.AId)
+        return str(self.TaId)
 
-
-    
 
 class QuestionDetail(models.Model):
     Qid = models.CharField(primary_key=True,max_length=20)
@@ -70,11 +74,9 @@ class AssignmentDetail(models.Model):
     def __str__(self):
         return str(self.AssignmentID)
 
-
 class AssignmentQuestion(models.Model):
     QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)
     AId=models.ForeignKey(AssignmentDetail,null=False,max_length=20)
-
 
 class Submission(models.Model):
     SubmissionId=models.CharField(primary_key=True,max_length=20)
@@ -102,8 +104,3 @@ class Course_student(models.Model):
 class Assignment_languages(models.Model):
     AssignmentId=models.ForeignKey(AssistantDetail,null=False)
     Programming_Language=models.CharField(max_length=20,null=True)
-
-
-
-
-

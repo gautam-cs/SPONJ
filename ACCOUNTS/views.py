@@ -1,7 +1,7 @@
 __author__ = 'Gautam'
 
 from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
-from ACCOUNTS.forms import QuestionForm,ProfessorForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm
+from ACCOUNTS.forms import QuestionForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm,ProfessorForm
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
