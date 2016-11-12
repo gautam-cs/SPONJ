@@ -33,6 +33,9 @@ class CourseDetail(models.Model):
     StartDate= models.DateField(null=False)
     EndDate= models.DateField(null=False)
     Semester=models.IntegerField(null=False)
+
+    class Meta:
+        unique_together=('CourseId','Year')
     
     def __str__(self):
         return str(self.CourseId)
