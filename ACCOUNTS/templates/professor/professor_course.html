@@ -20,13 +20,14 @@
     }
 </style>
 
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
-    <script src="{% static '/js/monthly.js' %}"></script>
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/monthly.js"></script>
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "{% static '/json/events.json' %}",
+            jsonUrl: "static/json/events.json",
             dataType: 'json'});
 
     });
@@ -101,33 +102,30 @@
 
         <div class="col-md-7">
             <div class="content well">
-                  ###
                 <div class="row">
                     <div class="box-card1">
-                        <h3>Course ID : Course Name</h3>
+                        <h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
                         </br>
                         <h3>
-                            <div align="right">By : Prof. Professor_Name</div>
+                            <div align="right">By : Prof. {{ professor_name }}</div>
                         </h3>
                         </br>
                     </div>
                 </div>
                 </br>
                 <div>
-                    <p class="right">Course Started on:dd/mm/yyyy</p>
-                    <p class="left">Course Ends on:dd/mm/yyyy</p></br>
+                    <p class="right">Course Started on: {{ course.StartDate }}</p>
+                    <p class="left">Course Ends on: {{ course.EndDate }}</p></br>
                 </div>
                 </br>
                 <div class="row">
                     <div class="box-card1">
                         <h4>Course Description:</h4>
-                        <div class="course-name">Probability sbjsdkdsbssbskfdssdjkbdskfnds jkdsbkdsfbdsbjdsbdskjfdsbfkj
-                            dsbdskjbdf jdsbfkdfjdbkfvjbf kjdfdfbdf
+                        <div class="course-name">{{ course.Description }}
                         </div>
                         </br>
                     </div>
                 </div>
-                ###
                 </br>
                 <ul class="nav nav-tabs" id="selector">
                     <li class="prof-tab active" id="assignment"><a href="#">Assignments</a></li>
@@ -145,26 +143,17 @@
                                 <th>Start Date</th>
                                 <th>Deadline</th>
                             </tr>
-                            <tr>
-                                <th>Name1</th>
-                                <th>Description1</th>
-                                <th>Start Date1</th>
-                                <th>Deadline1</th>
-                            </tr>
-                            <tr>
-                                <th>Name2</th>
-                                <th>Description2</th>
-                                <th>Start Date2</th>
-                                <th>Deadline2</th>
-                            </tr>
-                            <tr>
-                                <th>Name3</th>
-                                <th>Description3</th>
-                                <th>Start Date3</th>
-                                <th>Deadline3</th>
-                                </br>
-                            </tr>
                             </thead>
+                            {% for assignment in assignmentlist %}
+                            <tr>
+                                <td>{{ assignment.Name }}</td>
+                                <td>{{ assignment.Description }}</td>
+                                <td>{{ assignment.StartTime }}</td>
+                                <td>{{ assignment.EndTime }}</td>
+                            </tr>
+                            {% endfor %}
+
+
                         </table>
                         <div align="left"><a href="#" class="btn btn-default add assignment-btn">Add Assignment</a></div>
                     </div>
@@ -178,25 +167,16 @@
                                 <th>Semester</th>
                                 <th>Year</th>
                             </tr>
-                            <tr>
-                                <th>Name</th>
-                                <th>StudentID</th>
-                                <th>Semester</th>
-                                <th>Year</th>
-                            </tr>
-                            <tr>
-                                <th>Name</th>
-                                <th>StudentID</th>
-                                <th>Semester</th>
-                                <th>Year</th>
-                            </tr>
-                            <tr>
-                                <th>Name</th>
-                                <th>StudentID</th>
-                                <th>Semester</th>
-                                <th>Year</th>
-                            </tr>
                             </thead>
+                            {% for student in studentlist %}
+                            <tr>
+                                <td>{{ student.Name }}</td>
+                                <td>{{ student.SId }}</td>
+                                <td>{{ 5 }}</td>
+                                <td>{{ student.Batch }}</td>
+                            </tr>
+                            {% endfor %}
+
                         </table>
                         <div align="left"><a href="#" class="btn btn-default add student-btn">Add Student</a></div>
                         </br>

@@ -9,13 +9,13 @@
     <title>professorhome</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
-    <script src="{% static '/js/monthly.js' %}"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/monthly.js"></script>
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "{% static '/json/events.json' %}",
+            jsonUrl: "static/json/events.json",
             dataType: 'json'});
 
     });
@@ -88,15 +88,16 @@
             <div class="content well">
                 <h2>List of courses</h2>
                 <div class="row">
-                    <!---->
                     <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
                         {% for course in Coursepost %}
+                            <a href="professorcourse">
                         <div class="course box-card col-lg-2">
-                        <a href="professorcourse"><div class="course-name"> <h4>{{course.CourseName}}</h4></div></a>
+                            <h4>{{ course.CourseId }}</h4>
+                        <div class="course-name"> {{course.CourseName}}</div>
                         <div class="prof-name">{{course.PId}}</div>
-                        <div class="course-year-sem">{{course.Year}}</div>
-                        <br/>
-                            </div>
+                        <div class="course-year-sem">{{course.Semester}} - {{course.Year}}</div>
+
+                            </div></a>
                         {% endfor %}
                     <div class="box-card col-lg-10">
                         <h5>Create New Course</h5>

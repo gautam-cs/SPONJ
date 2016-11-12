@@ -1,7 +1,7 @@
 __author__ = 'Gautam'
 
-from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
-from ACCOUNTS.forms import QuestionForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm,ProfessorForm
+from ACCOUNTS.models import *
+from ACCOUNTS.forms import *
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -61,7 +61,8 @@ def professorlist(request):
 
 #@login_required
 def professor_home(request):
-    Coursepost = CourseDetail.objects.all()
+    pid='a'#get pid from request
+    Coursepost = CourseDetail.objects.filter(PId='ramesh')
     return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
 
 def question(request):
@@ -104,7 +105,16 @@ def courselist(request):
 	return render(request, 'professor\courselist.html',{'CoursePosts':CoursePosts})
 
 def professor_course(request):
-	return render(request, 'professor\professor_course.html')
+    courseid="MA203"
+    year="2016"
+    course=CourseDetail.objects.filter(CourseId=courseid,Year=year)
+    professor=ProfessorDetail.objects.filter(PId=course[0].PId)
+    assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
+    print(course[0].id)
+    studentlist=Course_student.objects.filter(CourseId=course[0].id)
+    talist=Courses_Ta.objects.filter(Course_id=course[0].id)
+    return render(request, 'professor\professor_course.html',
+                  {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 
 
 def specificcourse(request):
