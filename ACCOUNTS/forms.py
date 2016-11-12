@@ -47,7 +47,7 @@ class StudentForm(forms.ModelForm):
 class StudentProfileForm(forms.ModelForm):
     class Meta:
         model = StudentDetail
-        fields = ('Batch','Branch','Programme','SId')
+        fields = ('Batch','Branch','Programme')
 #################################################Assistant FOrms######################################################
 class AssistantForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
