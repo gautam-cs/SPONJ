@@ -6,12 +6,16 @@ import datetime
 
 ######################################################Professor FOrms#############################################
 class QuestionForm(forms.ModelForm):
-    TestCaseInputFile1 = forms.FileField(
-        label='Select a file',)
-        #help_text='max. 42 megabytes')
     class Meta:
         model = QuestionDetail
         fields = '__all__'
+
+class QForm(forms.ModelForm):
+    QId = forms.CharField(max_length=20)
+    QName = forms.CharField(max_length=20)
+    QAuthor = forms.CharField(max_length=20)
+    QDescription = forms.CharField(max_length=20)
+    #Question = forms.TextField(max_length=200)
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -22,7 +26,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = ProfessorDetail
-        fields = ('Batch','Interests','Qualification')
+        fields = ('Interests','Qualification')
 
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -43,7 +47,7 @@ class StudentForm(forms.ModelForm):
 class StudentProfileForm(forms.ModelForm):
     class Meta:
         model = StudentDetail
-        fields = ('Batch','Branch','Programme','SiD')
+        fields = ('Batch','Branch','Programme','SId')
 #################################################Assistant FOrms######################################################
 class AssistantForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

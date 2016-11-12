@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title><studentlist>        </studentlist></title>
+    <title>studentlist</title>
 </head>
 <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
@@ -42,7 +42,7 @@
             <td class="cell">{{c.Batch}}</td>
             <td class="cell">{{c.Branch}}</td>
             <td class="cell">{{c.Programme}}</td>
-            <td class="cell">{{d.username}}</td>
+            <td class="cell">{{c.username}}</td>
             <td class="cell">{{d.first_name}}</td>
             <td class="cell">{{d.last_name}}</td>
             <td class="cell">{{d.email}}</td>

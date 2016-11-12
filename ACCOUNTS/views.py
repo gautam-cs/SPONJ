@@ -2,7 +2,7 @@ __author__ = 'Gautam'
 
 from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
 from ACCOUNTS.forms import QuestionForm,UserForm,UserProfileForm,CourseForm,AssignmentForm,AssistantForm,AssistantProfileForm,\
-    StudentForm ,StudentProfileForm
+    StudentForm ,StudentProfileForm,QForm
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -87,15 +87,25 @@ def question(request):
     if request.method=="POST":
         form=QuestionForm(request.POST or None, request.FILES or None)
         if form.is_valid():
-            form = QuestionDetail(TestCaseInputFile1=request.FILES['TestCaseInputFile1'])
+            newdoc =QuestionDetail(TestCaseInputFile1=request.FILES['docfile'])
+            newdoc.save()
             form.save()
             return redirect('questionbank')
     else:
         form=QuestionForm()
     return render(request,'professor\question.html',{'form':form})
 
+def que(request):
+    if request.method == 'POST':
+        form = QForm(data=request.POST)
+        if form.is_valid():
+           form.save()
+    else:
+        form = QuestionForm()
+    return render(request, 'professor\Create_Question_Professor.html', {'form': form})
+
 def questionbank(request):
-	QuestionPosts=QuestionDetail.objects.all()
+	QuestionPosts=QForm.objects.all()
 	return render(request, 'professor\questionbank.html',{'QuestionPosts':QuestionPosts})
 
 def createcourse(request):
@@ -150,8 +160,8 @@ def student_register(request):
             sf.is_staff = True
             sf.is_superuser = False
             sf=sf.save()
-            un=User.objects.get(username=sf['username'].value())
-            spf.username=un.username
+            #un=User.objects.get(username=sf['username'].value())
+            #spf.username=un.username
             studentprofile=spf.save(commit=False)
             studentprofile.save()
             return redirect('studentlist')

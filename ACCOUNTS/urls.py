@@ -2,7 +2,6 @@ __author__ = 'Gautam'
 
 from django.conf.urls import url
 from . import views
-
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -19,6 +18,7 @@ urlpatterns = [
     url(r'^professor_register$',views.professor_register, name='professor_register'),
     url(r'^professorlist$',views.professorlist,name='professorlist'),
     url(r'^question$', views.question, name='question'),
+    url(r'^quee$', views.que, name='que'),
     url(r'^questionbank$', views.questionbank, name='questionbank'),
     url(r'^createcourse$',views.createcourse,name='createcourse'),
     url(r'^courselist$',views.courselist,name='courselist'),
