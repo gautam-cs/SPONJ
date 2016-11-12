@@ -1,80 +1,109 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from phonenumber_field.modelfields import PhoneNumberField
 
-##########################################Assistant########################
-class AssistantDetail(models.Model):
-    #user = models.ForeignKey(User, unique=True,null=True)
-    Batch = models.CharField(max_length=20)
-    username = models.ForeignKey(User,null=True)
-    CourseId= models.CharField(max_length=20, blank='False')
-    TaId = models.CharField(max_length=20, blank='False')
+class StudentDetail(models.Model):
+    SId = models.ForeignKey(User,primary_key=True,null=False)
+    Batch=models.CharField(max_length=20,null=False)
+    Branch=models.CharField(max_length=20,null=False)
+    Programme=models.CharField(max_length=20,null=False)
 
     def __str__(self):
-        return str(self.username)
+        return str(self.SId)
 
-############################################################################
-
-
-class QuestionDetail(models.Model):
-    Qid = models.CharField(max_length=20)
-    QName = models.CharField(max_length=20)
-    QAuthor = models.CharField(max_length=20)
-    QDescription = models.CharField(max_length=20)
-    Question = models.TextField(max_length=200)
-    Image = models.FileField(null=True,blank=True)
-    TestCaseInputFile1 = models.FileField(upload_to='documents/%Y/%m/%d',null=True)
-    #file = models.FileField()
-
-    def __str__(self):
-        return self.Qid;
 
 class ProfessorDetail(models.Model):
     #user = models.ForeignKey(User, unique=True,null=True)
-    Batch = models.CharField(max_length=20)
-    username = models.ForeignKey(User,null=True)
-    Qualification= models.TextField(max_length=20)
-    Interests = models.TextField(max_length=200, blank='False')
+    PId = models.ForeignKey(User,primary_key=True,null=False)
+    Qualification= models.TextField(max_length=20,null=False)
+    Interests = models.TextField(max_length=200,null=False)
 
     def __str__(self):
-        return str(self.username)
+        return str(self.PId)
 
 
-class StudentDetail(models.Model):
-    username = models.ForeignKey(User,null=True)
-    SiD = models.CharField(max_length=20)
-    Batch=models.CharField(max_length=20)
-    Branch=models.CharField(max_length=20)
-    Programme=models.CharField(max_length=20)
+class CourseDetail(models.Model):
+    CourseId = models.CharField(max_length=20, null=False)
+    Year = models.CharField(max_length=4,null=False)
+    CourseName=models.CharField(max_length=20,null=False)
+    Description=models.TextField(max_length=200,null=False)
+    PId=models.ForeignKey(ProfessorDetail,max_length=20,null=False)
+    StartDate= models.DateField(null=False)
+    EndDate= models.DateField(null=False)
+    Semester=models.IntegerField(null=False)
+    
+    def __str__(self):
+        return str(self.CourseId)
+    
+
+class AssistantDetail(models.Model):
+    TaId = models.ForeignKey(User,primary_key=True,null=False)
+    Batch = models.CharField(max_length=20,null=False)
+    CourseId= models.ForeignKey(CourseDetail,max_length=20,null=False)
+
 
     def __str__(self):
-        return str(self.username)
+        return str(self.AId)
 
 
+    
+
+class QuestionDetail(models.Model):
+    Qid = models.CharField(primary_key=True,max_length=20)
+    QName = models.CharField(max_length=20,null=False)
+    QAuthor = models.CharField(max_length=20,null=False)
+    QDescription = models.CharField(max_length=20,null=False)
+    Image = models.ImageField(upload_to = 'images/albums/',null=False)
+    TestCaseInputFile1 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
+    TestCaseInputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
+    OutputFile1 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
+    OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
 class AssignmentDetail(models.Model):
     AssignmentID = models.CharField(max_length=20,null=True)
-    CreationDate = models.DateField(max_length=20)
-    StartTime =  models.DateTimeField()
-    EndTime =  models.DateTimeField()
-    Courseid = models.CharField(max_length=20)
-    Description = models.TextField(max_length=200)
+    CreationDate = models.DateField(max_length=20,null=False)
+    StartTime =  models.DateTimeField(null=False)
+    EndTime =  models.DateTimeField(null=False)
+    Courseid = models.ForeignKey(CourseDetail,max_length=20,null=False)
+    Description = models.TextField(null=False)
     Language = models.CharField(max_length=20)
 
     def __str__(self):
         return str(self.AssignmentID)
 
-class CourseDetail(models.Model):
-    CourseName=models.CharField(max_length=20,null=False)
-    CourseId=models.CharField(max_length=20,null=False)
-    Description=models.TextField(max_length=200)
-    PId=models.CharField(max_length=20)
-    StartDate= models.DateField(null=True)
-    EndDate= models.DateField(null=True)
-    Semester=models.IntegerField(null=False)
-    Year=models.CharField(max_length=4)
+
+class AssignmentQuestion(models.Model):
+    QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)
+    AId=models.ForeignKey(AssignmentDetail,null=False,max_length=20)
+
+
+class Submission(models.Model):
+    SubmissionId=models.CharField(primary_key=True,max_length=20)
+    StudentId=models.ForeignKey(StudentDetail,null=False)
+    AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
+    QuestionId=models.ForeignKey(QuestionDetail,null=False)
+    PercentagePass=models.IntegerField()
+    Result=models.CharField(max_length=20)
+    SubmissionTime=models.DateTimeField()
+    StdOutError=models.TextField(null=True)
 
     def __str__(self):
-        return str(self.CourseId)
+        return self.Qid;
+
+class Courses_Ta(models.Model):
+    Course=models.ForeignKey(CourseDetail,null=False)
+    Year=models.DateField(null=False)
+    TaId=models.ForeignKey(AssistantDetail,null=False)
+
+class Course_student(models.Model):
+    SId=models.ForeignKey(StudentDetail,null=False)
+    CourseId=models.ForeignKey(CourseDetail,null=False)
+    Year=models.DateField()
+
+class Assignment_languages(models.Model):
+    AssignmentId=models.ForeignKey(AssistantDetail,null=False)
+    Programming_Language=models.CharField(max_length=20,null=True)
+
+
+
+
 
