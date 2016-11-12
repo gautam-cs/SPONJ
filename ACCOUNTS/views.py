@@ -1,7 +1,7 @@
 __author__ = 'Gautam'
 
 from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
-from ACCOUNTS.forms import QuestionForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm,ProfessorForm
+from ACCOUNTS.forms import QuestionForm,CourseForm,AssignmentForm,AssistantForm,StudentForm ,QForm,ProfessorForm,LoginForm
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -24,7 +24,6 @@ def professor_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        #print("auth",str(authenticate(username=username, password=password)))
 
         if user is not None:
             if user.is_active:
@@ -133,7 +132,6 @@ def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
         sf = StudentForm(data=request.POST, prefix='student')
-        #spf = StudentProfileForm(data=request.POST, prefix='studentprofile')
         if sf.is_valid():
             sf.save()
             return redirect('studentlist')
@@ -141,33 +139,40 @@ def student_register(request):
         sf=StudentForm(prefix='student')
     return render(request,'student\student_register.html', {'sf':sf}, context)
 
+
+def login(request):
+    username = "not logged in"
+
+    if request.method == "POST":
+        # Get the posted form
+        MyLoginForm = LoginForm(request.POST)
+
+        if MyLoginForm.is_valid():
+            username = MyLoginForm.cleaned_data['username']
+            request.session['username'] = username
+            s=StudentDetail.objects.filter(SId=username)
+            if(s[0].Password!=MyLoginForm.cleaned_data['password']):
+                return HttpResponse("Enter valid username & password")
+
+    else:
+        MyLoginForm = LoginForm()
+        return render(request, 'student/student_login.html')
+    return redirect('studentlist')
+    #return redirect( request,'test', {"username": username})
+
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    #stposts=User.objects.all()
-    #stposts=User.objects.filter(username='studentposts.username')
-    #list=zip(studentposts,stposts)
     return render(request, 'student\studentlist.html', {'list': studentposts})
 
-def student_login(request):
-    context = RequestContext(request)
-    user=User.objects.all()
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        #print("auth",str(authenticate(username=username, password=password)))
+def test(request):
+    return HttpResponse('done')
 
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('studentlist')
-            else:
-                return HttpResponse("already login")
-        else:
-            #print ("please choose your valid username & password: {0}, {1}".format(username, password))
-            return HttpResponse("please choose your valid username & password ")
-    else:
-        return render_to_response('student/student_login.html', {}, context)
+def formView(request):
+   if request.session.has_key('username'):
+      username = request.session['username']
+      return render(request, 'student/studentlist.html', {"username" : username})
+   else:
+      return render(request, 'student/student_login.html', {})
 
 def professor_logout(request):
     auth.logout(request)
