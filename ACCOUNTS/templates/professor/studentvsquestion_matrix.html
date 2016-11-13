@@ -97,18 +97,19 @@
                         <th class="q_id">{{ question.Qid }}</th>
                         {% endfor %}
                     </tr>
-                    {% for studentsubmissiondetail in finalsubmissionlist %}
+                    {% for studentsubmissiondetail in submissionlist %}
                         <tr class="student_row">
                         <td class="student_id">{{ studentsubmissiondetail.id }}</td>
                         <td class="student_name">{{ studentsubmissiondetail.name }}</td>
                             {% for submission in studentsubmissiondetail.submissions %}
-                                {% if submission.Result == 'correct'%}
+                                {% if submission == None%}
+                                    <td><div class="q_status"></div></td>
+                                {% elif submission.Result == 'correct'%}
                                     <td><a href="\viewsubmission\{{ submission.SubmissionId }}" ><div class="q_status q_correct"></div></a></td>
 
                                 {% elif submission.Result == 'wrong'%}
                                     <td><a href="\viewsubmission\{{ submission.SubmissionId }}" ><div class="q_status q_wrong"></div></a></td>
                                 {% endif %}
-                                <td><div class="q_status"></div></td>
                             {% endfor %}
                     </tr>
                     {% endfor %}

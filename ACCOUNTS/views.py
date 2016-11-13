@@ -115,16 +115,17 @@ def studentvsques_matrix(request,asid):
     finalsubmissionlist=[]
     studentlist=StudentDetail.objects.filter(course_student__CourseId=course.id)
     questions = QuestionDetail.objects.filter(assignmentquestion__AId=asid)
+    print(questions)
     for student in studentlist:
         q_submissions=[]
         for question in questions:
-            submissions = Submission.objects.filter(StudentId_id=student.id,QuestionId_id=question.Qid)
+            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.Qid)
             if(submissions.count()!=0):
                 lastsubmission=submissions.order_by('-SubmissionTime').first()
                 q_submissions.append(lastsubmission)
             else:
                 q_submissions.append(None)
-        dict={"name":student.Name,"submissions":q_submissions,"id":student.id}
+        dict={"name":student.Name,"submissions":q_submissions,"id":student.SId}
         finalsubmissionlist.append(dict)
     print(finalsubmissionlist)
     return render(request,'professor/studentvsquestion_matrix.html',context={'assignment':assignment,
