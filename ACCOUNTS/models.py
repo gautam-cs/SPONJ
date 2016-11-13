@@ -65,7 +65,7 @@ class QuestionDetail(models.Model):
     OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
 class AssignmentDetail(models.Model):
-    AssignmentID = models.CharField(max_length=20,null=True)
+    AssignmentID = models.CharField(primary_key=True,max_length=20,null=False)
     AssignmentName = models.CharField(max_length=20,null=True)
     CreationDate = models.DateField(null=False)
     StartTime =  models.DateTimeField(null=False)
