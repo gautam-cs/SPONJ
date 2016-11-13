@@ -35,9 +35,13 @@ def professorlist(request):
 
 #@login_required
 def professor_home(request):
-    pid='a'#get pid from request
-    Coursepost = CourseDetail.objects.filter(PId='ramesh')
-    return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
+    if request.session.has_key('username'):
+        pid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(PId=pid)
+        print(Coursepost[0])
+        return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
+    return HttpResponse("Not Logged in")
+
 
 def question(request):
     if request.method=="POST":
@@ -69,15 +73,16 @@ def courselist(request):
 	CoursePosts=CourseDetail.objects.all()
 	return render(request, 'professor\courselist.html',{'CoursePosts':CoursePosts})
 
-def professor_course(request):
-    courseid="MA203"
+def professor_course(request,cid):
+    print(cid)
+    courseid=cid
     year="2016"
     course=CourseDetail.objects.filter(CourseId=courseid,Year=year)
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
-    print(course[0].id)
-    studentlist=Course_student.objects.filter(CourseId=course[0].id)
-    talist=Courses_Ta.objects.filter(Course_id=course[0].id)
+    studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
+    s=StudentDetail.objects.raw('select * from ACCOUNTS_studentdetail JOIN ACCOUNTS_course_student ON SId=SId_id')
+    talist=AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
     return render(request, 'professor\professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 

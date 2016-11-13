@@ -23,9 +23,10 @@ urlpatterns = [
     url(r'^courselist$',views.courselist,name='courselist'),
     url(r'^createassignment$',views.createassignment,name='createassignment'),
     url(r'^assignmentlist$',views.assignmentlist,name='assignmentlist'),
-    url(r'^professorcourse$',views.professor_course,name='professor_course'),
+    url(r'^professorcourse/(?P<cid>([A-Za-z0-9]+))/$',views.professor_course,name='professor_course'),
+    url(r'^professorcourse$', views.professor_course, name='professor_course'),
 
-    ################Assistant Url################################
+                  ################Assistant Url################################
     url(r'^assistant_login$', views.Assistant_login, name='Assistant_login'),
     url(r'^assistant_register$',views.assistant_register, name='assistant_register'),
     url(r'^assistantlist$', views.assistantlist, name='assistantlist'),

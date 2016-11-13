@@ -90,7 +90,7 @@
                 <div class="row">
                     <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
                         {% for course in Coursepost %}
-                            <a href="professorcourse">
+                            <a href="professorcourse/{{ course.CourseId }}">
                         <div class="course box-card col-lg-2">
                             <h4>{{ course.CourseId }}</h4>
                         <div class="course-name"> {{course.CourseName}}</div>

@@ -21,9 +21,10 @@
 </style>
 
 
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/script.js"></script>
-    <script src="static/js/monthly.js"></script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/monthly.js'%}"></script>
+
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
@@ -146,7 +147,7 @@
                             </thead>
                             {% for assignment in assignmentlist %}
                             <tr>
-                                <td>{{ assignment.Name }}</td>
+                                <td>{{ assignment.AssignmentName }}</td>
                                 <td>{{ assignment.Description }}</td>
                                 <td>{{ assignment.StartTime }}</td>
                                 <td>{{ assignment.EndTime }}</td>
@@ -164,7 +165,6 @@
                             <tr>
                                 <th>Name</th>
                                 <th>StudentID</th>
-                                <th>Semester</th>
                                 <th>Year</th>
                             </tr>
                             </thead>
@@ -172,7 +172,6 @@
                             <tr>
                                 <td>{{ student.Name }}</td>
                                 <td>{{ student.SId }}</td>
-                                <td>{{ 5 }}</td>
                                 <td>{{ student.Batch }}</td>
                             </tr>
                             {% endfor %}
@@ -188,16 +187,17 @@
                             <tr>
                                 <th>Name</th>
                                 <th>StudentID</th>
-                                <th>Semester</th>
                                 <th>EmailID</th>
                             </tr>
-                            <tr>
-                                <th>Name</th>
-                                <th>StudentID</th>
-                                <th>Semester</th>
-                                <th>EmailID</th>
-                            </tr>
+
                             </thead>
+                            {% for ta in talist %}
+                            <tr>
+                                <td>{{ ta.Name }}</td>
+                                <td>{{ ta.TaId }}</td>
+                                <td>{{ ta.Email }}</td>
+                            </tr>
+                            {% endfor %}
                         </table>
                         <div align="left"><a href="#" class="btn btn-default add a teaching assistant-btn">Add a
                             Teaching Assistant</a></div>
