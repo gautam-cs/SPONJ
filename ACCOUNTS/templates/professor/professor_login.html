@@ -24,7 +24,9 @@
                 <li class="user"><a href="assistant_login">Teaching Assistant</a></li>
             </ul>
         </div>
-  <form class="form-horizontal" method="POST" action="professor_login">
+
+      <form name = "form" action = "{% url "ACCOUNTS.views.professor_login" %}"
+         method = "POST" >
   <fieldset>
   {% csrf_token %}
       <div class="form-group">

@@ -7,10 +7,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     ###############Student url####################################
-    url(r'^connection$',views.formView, name = 'loginform'),
-    url(r'^$', views.index, name='student_login'),
+    url(r'^connection$', views.StudentFormView, name ='loginform'),
+    url(r'^$', views.Student_login, name='login'),
     url(r'^student_register$',views.student_register, name='student_register'),
-    url(r'^login$', views.login, name='login'),
+    #url(r'^login$', views.login, name='login'),
     url(r'^studentlist$', views.studentlist, name='studentlist'),
     ###################Professor URL#############################
     url(r'^professor_login$', views.professor_login, name='professor_login'),
@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^professorcourse$',views.professor_course,name='professor_course'),
 
     ################Assistant Url################################
-    url(r'^assistant_login$', views.assistant_login, name='assistant_login'),
+    url(r'^assistant_login$', views.Assistant_login, name='Assistant_login'),
     url(r'^assistant_register$',views.assistant_register, name='assistant_register'),
     url(r'^assistantlist$', views.assistantlist, name='assistantlist'),
     ############################################################

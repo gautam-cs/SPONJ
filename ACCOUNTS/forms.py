@@ -48,13 +48,38 @@ class AssistantForm(forms.ModelForm):
         fields=('TaId','CourseId', 'Email','Name','Password')
 
 
-class LoginForm(forms.Form):
+class StudentLoginForm(forms.Form):
     username = forms.CharField(max_length=20)
     password = forms.CharField(widget=forms.PasswordInput())
 
     def clean_message(self):
         username = self.cleaned_data.get("username")
         dbuser = StudentDetail.objects.filter(name=username)
+
+        if not dbuser:
+            raise forms.ValidationError("User does not exist in our db!")
+        return username
+
+
+class ProfessorLoginForm(forms.Form):
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    def clean_message(self):
+        username = self.cleaned_data.get("username")
+        dbuser = ProfessorDetail.objects.filter(name=username)
+
+        if not dbuser:
+            raise forms.ValidationError("User does not exist in our db!")
+        return username
+
+class AssistantLoginForm(forms.Form):
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    def clean_message(self):
+        username = self.cleaned_data.get("username")
+        dbuser = AssistantDetail.objects.filter(name=username)
 
         if not dbuser:
             raise forms.ValidationError("User does not exist in our db!")

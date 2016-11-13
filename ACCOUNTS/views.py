@@ -16,30 +16,6 @@ def index(request):
     return render (request, "index.html")
 
 ############################################PROFESSOR IMPLEMENTATION#######################################################
-def professor_login(request):
-    context = RequestContext(request)
-    user=User.objects.all()
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('professor_home')
-            else:
-                return HttpResponse("already login")
-        else:
-            #print ("please choose your valid username & password: {0}, {1}".format(username, password))
-            return HttpResponse("please choose your valid username & password ")
-    else:
-        return render_to_response('professor/professor_login.html', {}, context)
-
-def professor_logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect('/')
-
 def professor_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
@@ -74,15 +50,6 @@ def question(request):
     else:
         form=QuestionForm()
     return render(request,'professor\question.html',{'form':form})
-
-def que(request):
-    if request.method == 'POST':
-        form = QForm(data=request.POST)
-        if form.is_valid():
-           form.save()
-    else:
-        form = QuestionForm()
-    return render(request, 'professor\Create_Question_Professor.html', {'form': form})
 
 def questionbank(request):
 	QuestionPosts=QForm.objects.all()
@@ -133,6 +100,49 @@ def createassignment(request):
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
 	return render(request, 'professor/assignmentlist.html',{'AssignmentPosts':AssignmentPosts})
+
+
+def student_register(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        sf = StudentForm(data=request.POST, prefix='student')
+        if sf.is_valid():
+            sf.save()
+            return redirect('studentlist')
+    else:
+        sf=StudentForm(prefix='student')
+    return render(request,'student\student_register.html', {'sf':sf}, context)
+
+
+def professor_login(request):
+    username = "not logged in"
+
+    if request.method == "POST":
+        # Get the posted form
+        ProfessorLoginForm = StudentLoginForm(request.POST)
+
+        if ProfessorLoginForm.is_valid():
+            username = ProfessorLoginForm.cleaned_data['username']
+            request.session['username'] = username
+            s=ProfessorDetail.objects.filter(PId=username)
+            if(s[0].Password!=ProfessorLoginForm.cleaned_data['password']):
+                return HttpResponse("Enter valid username & password")
+
+    else:
+        ProfessorLoginForm = StudentLoginForm()
+        return render(request, 'professor/professor_login.html')
+    return redirect('professor_home')
+
+def ProfessorFormView(request):
+   if request.session.has_key('username'):
+      username = request.session['username']
+      return render(request, 'professor/professor_home.html', {"username" : username})
+   else:
+      return render(request, 'student/student_login.html', {})
+
+def Professor_logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/')
 ###########################################################################################################################
 
 
@@ -149,43 +159,39 @@ def student_register(request):
     return render(request,'student\student_register.html', {'sf':sf}, context)
 
 
-def login(request):
+def Student_login(request):
     username = "not logged in"
 
     if request.method == "POST":
         # Get the posted form
-        MyLoginForm = LoginForm(request.POST)
+        MyStudentLoginForm = StudentLoginForm(request.POST)
 
-        if MyLoginForm.is_valid():
-            username = MyLoginForm.cleaned_data['username']
+        if StudentLoginForm.is_valid():
+            username = StudentLoginForm.cleaned_data['username']
             request.session['username'] = username
             s=StudentDetail.objects.filter(SId=username)
-            if(s[0].Password!=MyLoginForm.cleaned_data['password']):
+            if(s[0].Password!=StudentLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
     else:
-        MyLoginForm = LoginForm()
+        MyStudentLoginForm = StudentLoginForm()
         return render(request, 'student/student_login.html')
     return redirect('studentlist')
-    #return redirect( request,'test', {"username": username})
 
-def studentlist(request):
-    studentposts = StudentDetail.objects.all()
-    return render(request, 'student\studentlist.html', {'list': studentposts})
-
-def test(request):
-    return HttpResponse('done')
-
-def formView(request):
+def StudentFormView(request):
    if request.session.has_key('username'):
       username = request.session['username']
       return render(request, 'student/studentlist.html', {"username" : username})
    else:
       return render(request, 'student/student_login.html', {})
 
-def professor_logout(request):
+def Student_logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
+
+def studentlist(request):
+    studentposts = StudentDetail.objects.all()
+    return render(request, 'student\studentlist.html', {'list': studentposts})
 #############################################################################################################################
 
 
@@ -207,27 +213,31 @@ def assistantlist(request):
     list=zip(assistantposts,asposts)
     return render(request, 'assistant\Assistantlist.html', {'list': list})
 
-def assistant_login(request):
-    context = RequestContext(request)
-    user=User.objects.all()
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
+def Assistant_login(request):
+    username = "not logged in"
 
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('assistantlist')
-            else:
-                return HttpResponse("already login")
-        else:
-            return HttpResponse("please choose your valid username & password ")
+    if request.method == "POST":
+        # Get the posted form
+        MyAssistantLoginForm = AssistantLoginForm(request.POST)
+
+        if AssistantLoginForm.is_valid():
+            username = AssistantLoginForm.cleaned_data['username']
+            request.session['username'] = username
+            s=ProfessorDetail.objects.filter(PId=username)
+            if(s[0].Password!=AssistantLoginForm.cleaned_data['password']):
+                return HttpResponse("Enter valid username & password")
+
     else:
-        return render_to_response('assistant/assistant_login.html', {}, context)
+        MyAssistantLoginForm =AssistantLoginForm()
+        return render(request, 'assistant/Assistant_login.html')
+    return redirect('professor_home')
 
-def professor_logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect('/')
+def ProfessorFormView(request):
+   if request.session.has_key('username'):
+      username = request.session['username']
+      return render(request, 'professor/professor_home.html', {"username" : username})
+
+   else:
+      return render(request, 'student/student_login.html', {})
 ############################################################################################################################
 
