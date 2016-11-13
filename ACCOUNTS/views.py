@@ -98,6 +98,13 @@ def createassignment(request,cid):
         assignmentform=AssignmentForm()
     return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
+def view_assignment(request,asid):
+    assignment=AssignmentDetail.objects.get(pk=asid)
+    professor=ProfessorDetail.objects.get(pk=request.session['username'])
+    languages=Assignment_languages.objects.filter(AssignmentId=asid)
+    questions=QuestionDetail.objects.filter(assignmentquestion__AId=asid)
+    return render(request,'professor/viewassignmentprof.html',context={'assignment':assignment,'professor':professor,'languages':languages,'questions':questions})
+
 
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
