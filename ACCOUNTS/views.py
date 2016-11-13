@@ -75,16 +75,14 @@ def courselist(request):
 
 def professor_course(request,cid):
     print(cid)
-    courseid="MA201"
+    courseid=cid
     year="2016"
     course=CourseDetail.objects.filter(CourseId=courseid,Year=year)
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
-    print(course[0].id)
-    studentlist=StudentDetail.objects.select_related(field='SId')
-
+    studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
     s=StudentDetail.objects.raw('select * from ACCOUNTS_studentdetail JOIN ACCOUNTS_course_student ON SId=SId_id')
-    talist=Courses_Ta.objects.filter(CourseId=course[0].id)
+    talist=AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
     return render(request, 'professor\professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 
