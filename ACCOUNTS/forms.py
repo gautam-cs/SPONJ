@@ -10,12 +10,6 @@ class QuestionForm(forms.ModelForm):
         model = QuestionDetail
         fields = '__all__'
 
-class QForm(forms.ModelForm):
-    QId = forms.CharField(max_length=20)
-    QName = forms.CharField(max_length=20)
-    QAuthor = forms.CharField(max_length=20)
-    QDescription = forms.CharField(max_length=20)
-    #Question = forms.TextField(max_length=200)
 
 class ProfessorForm(forms.ModelForm):
     Password = forms.CharField(widget=forms.PasswordInput)

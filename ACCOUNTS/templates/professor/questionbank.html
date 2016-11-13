@@ -30,31 +30,29 @@
     <td><h4>QName</h4></td>
     <td><h4>QAuthor</h4></td>
     <td><h4>QDescription</h4></td>
-    <!--<td><h4>Question</h4></td>
     <td><h4>TestCaseInputFile1</h4></td>
     <td><h4>Image</h4></td>-->
-    <!--<td><h4>TestCaseInput2</h4></td>
+    <td><h4>TestCaseInput2</h4></td>
     <td><h4>Output1</h4></td>
     <td><h4>Output2</h4></td>
-    <td><h4>Image</h4></td>-->
+    <td><h4>Image</h4></td>
 
     </tr>
   </thead>
   <tbody>
 
- {% for que in QuestionPosts %}
+ {% for que in QuestionPost %}
   <tr>
       <td>{{que.Qid}} </td>
       <td>{{que.QName}} </td>
       <td>{{que.QAuthor}} </td>
       <td>{{que.QDescription}} </td>
-      <!--<td>{{que.Question}} </td>
       <td>{{que.Image}} </td>
-      <td>{{que.TestCaseInputFile1}} </td>-->
-      <!--<td>{{que.TestCaseInput2}} </td>
-      <td>{{que.Output1}} </td>
-      <td>{{que.Output2}} </td>
-      <td>{{que.Image}} </td>-->
+      <td>{{que.TestCaseInputFile1}} </td>
+      <td>{{que.TestCaseInputFile2}} </td>
+      <td>{{que.OutputFile1}} </td>
+      <td>{{que.OutputFile2}} </td>
+      <td>{{que.Image}} </td>
 
     </tr>
     {% endfor %}

@@ -158,26 +158,26 @@
                     {% endfor %}
 
 
-                </table>
-                <div align="left"><a href="#" class="btn btn-default add assignment-btn">Add Assignment</a></div>
-            </div>
-            <div class="tab-card row students-tab">
-                <h4>List of Students:</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>StudentID</th>
-                        <th>Year</th>
-                    </tr>
-                    </thead>
-                    {% for student in studentlist %}
-                        <tr>
-                            <td>{{ student.Name }}</td>
-                            <td>{{ student.SId }}</td>
-                            <td>{{ student.Batch }}</td>
-                        </tr>
-                    {% endfor %}
+                        </table>
+                        <div align="left"><a href="/createassignment/{{ course.id }}" class="btn btn-default add assignment-btn">Add Assignment</a></div>
+                    </div>
+                    <div class="tab-card row students-tab">
+                        <h4>List of Students:</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>StudentID</th>
+                                <th>Year</th>
+                            </tr>
+                            </thead>
+                            {% for student in studentlist %}
+                            <tr>
+                                <td>{{ student.Name }}</td>
+                                <td>{{ student.SId }}</td>
+                                <td>{{ student.Batch }}</td>
+                            </tr>
+                            {% endfor %}
 
                 </table>
                 <div align="left"><a href="#" class="btn btn-default add student-btn">Add Student</a></div>

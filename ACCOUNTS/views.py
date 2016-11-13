@@ -47,8 +47,6 @@ def question(request):
     if request.method=="POST":
         form=QuestionForm(request.POST or None, request.FILES or None)
         if form.is_valid():
-            newdoc =QuestionDetail(TestCaseInputFile1=request.FILES['docfile'])
-            newdoc.save()
             form.save()
             return redirect('questionbank')
     else:
@@ -56,8 +54,8 @@ def question(request):
     return render(request,'professor\question.html',{'form':form})
 
 def questionbank(request):
-	QuestionPosts=QForm.objects.all()
-	return render(request, 'professor\questionbank.html',{'QuestionPosts':QuestionPosts})
+	QuestionPost=QuestionDetail.objects.all()
+	return render(request, 'professor\questionbank.html',{'QuestionPost':QuestionPost})
 
 def createcourse(request):
     if request.method=="POST":
@@ -89,7 +87,7 @@ def specificcourse(request):
 	specific_course_post=CourseDetail.objects.all()
 	return render(request, 'professor\professor_course.html',{'specific_course_post':specific_course_post})
 
-def createassignment(request):
+def createassignment(request,cid):
     if request.method=="POST":
         assignmentform=AssignmentForm(request.POST)
         if assignmentform.is_valid():
@@ -97,7 +95,7 @@ def createassignment(request):
             return redirect('assignmentlist')
     else:
         assignmentform=AssignmentForm()
-    return render(request,'professor\createassignment.html',{'assignmentform':assignmentform})
+    return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 def view_assignment(request,asid):
     assignment=AssignmentDetail.objects.get(pk=asid)
