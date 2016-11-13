@@ -75,9 +75,8 @@ def courselist(request):
 
 def professor_course(request,cid):
     print(cid)
-    courseid=cid
-    year="2016"
-    course=CourseDetail.objects.filter(CourseId=courseid,Year=year)
+
+    course=CourseDetail.objects.filter(id=cid)
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
     studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
