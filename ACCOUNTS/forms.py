@@ -24,16 +24,22 @@ class ProfessorForm(forms.ModelForm):
         fields = ('Name','PId','Email','Password','Interests','Qualification')
 
 class CourseForm(forms.ModelForm):
+    StartDate = forms.DateTimeField(widget=forms.SelectDateWidget,initial=datetime.date.today())
+    EndDate = forms.DateTimeField(widget=forms.SelectDateWidget,initial=datetime.date.today())
+
+
     class Meta:
         model=CourseDetail
-        fields='__all__'
+        fields=('CourseId','Year','CourseName','Description','StartDate','EndDate','PId','Semester')
 
 class AssignmentForm(forms.ModelForm):
     class Meta:
         model = AssignmentDetail
         fields = '__all__'
 #################################################Student Forms########################################################
-
+class CourseStudentForm(forms.Form):
+    class Meta:
+        fields='__all__'
 
 class StudentForm(forms.ModelForm):
     Password = forms.CharField(widget=forms.PasswordInput)

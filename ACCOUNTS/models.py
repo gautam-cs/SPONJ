@@ -32,7 +32,7 @@ class CourseDetail(models.Model):
     PId=models.ForeignKey(ProfessorDetail,max_length=20,null=False)
     StartDate= models.DateField(null=False)
     EndDate= models.DateField(null=False)
-    Semester=models.IntegerField(null=False)
+    Semester=models.CharField(max_length=10,null=False)
 
     class Meta:
         unique_together=('CourseId','Year')
@@ -66,7 +66,8 @@ class QuestionDetail(models.Model):
 
 class AssignmentDetail(models.Model):
     AssignmentID = models.CharField(max_length=20,null=True)
-    CreationDate = models.DateField(max_length=20,null=False)
+    AssignmentName = models.CharField(max_length=20,null=True)
+    CreationDate = models.DateField(null=False)
     StartTime =  models.DateTimeField(null=False)
     EndTime =  models.DateTimeField(null=False)
     Courseid = models.ForeignKey(CourseDetail,max_length=20,null=False)
@@ -94,16 +95,14 @@ class Submission(models.Model):
         return self.Qid;
 
 class Courses_Ta(models.Model):
-    Course=models.ForeignKey(CourseDetail,null=False)
-    Year=models.DateField(null=False)
+    CourseId=models.ForeignKey(CourseDetail,null=False)
     TaId=models.ForeignKey(AssistantDetail,null=False)
 
 class Course_student(models.Model):
-    SId=models.ForeignKey(StudentDetail,null=False)
+    SId=models.ForeignKey(StudentDetail,to_field='SId',null=False)
     CourseId=models.ForeignKey(CourseDetail,null=False)
-    Year=models.DateField()
 
 
 class Assignment_languages(models.Model):
-    AssignmentId=models.ForeignKey(AssistantDetail,null=False)
+    AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
     Programming_Language=models.CharField(max_length=20,null=True)

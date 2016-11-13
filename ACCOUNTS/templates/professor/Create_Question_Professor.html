@@ -1,0 +1,174 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>Create Questions</title>
+</head>
+<br><br><br>
+        <div class="container" style="margin:auto; border-radius:5px;background-color:#f2f2f2;padding:20px;">
+        <h1>Change Your Password!</h1><br><br>
+        {% if form.errors %}
+            <h3 style="color:red;">Form Errors</h3>
+            <p style="color:red;">Please check the username you have provided</p>
+            <p style="color:red;">Username should be unique</p>
+        {% endif %}
+            <h3><strong></strong></h3>
+
+        <form id="user_form" method="post" >
+            {% csrf_token %}
+           <label for="QId">QId:</label>
+           <div style="width:3%;margin:8px 0;dispaly:inline-block;border:1px solid #ccc;border-radius:4px;
+                       box-sizing:border-box;">{{ form.QId }}</div>
+           <label for="QName">QName:</label>
+           <div style="width:3%;margin:8px 0;dispaly:inline-block;border:1px solid #ccc;border-radius:4px;
+                       box-sizing:border-box;">{{form.QName }}</div>
+           <label for="QAuthor">QAuthor:</label>
+           <div style="width:3%;margin:8px 0;dispaly:inline-block;border:1px solid #ccc;border-radius:4px;
+                       box-sizing:border-box;">{{form.QAuthor }}</div>
+           <label for="QDescription">QDescription:</label>
+           <div style="width:3%;margin:8px 0;dispaly:inline-block;border:1px solid #ccc;border-radius:4px;
+                       box-sizing:border-box;">{{form.QDescription }}</div>
+            <input type="submit" name="submit" value="Save" />
+        </form>
+
+
+    </div>
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/stylesheet.css" rel="stylesheet">
+    <title>Courses</title>
+</head>
+<body>
+
+<style>
+.right{
+float:right;
+}
+.left{
+float:left;
+}
+</style>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/filetree.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-12">
+            <h1 class="title">Submissions Portal and ONline Judge</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="navigation-tree well">
+                <ul class="nav nav-list">
+                    <li><label class="tree-toggler nav-header">Header 1</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="tree-toggler nav-header">Header 1.1</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><label class="tree-toggler nav-header">Header 2</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="tree-toggler nav-header">Header 2.1</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><label class="tree-toggler nav-header">Header 2.2</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="content well">					
+					
+
+						<h3>&ensp;Create New Question</h3>
+                <div class="form-group">
+                    <label for="q_name">Question Name</label>
+                    <input type="text" class="form-control" id="q_name">
+                </div>
+                <div class="form-group">
+                    <label for="q_desc">Question Description</label>
+                    <textarea class="form-control" rows="5" id="q_desc"></textarea>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label for="q_img_path">Add Image for question</label>
+                    <input type="file" class="form-control" id="q_img_path">
+                </div>
+                <div class="col-lg-6">
+                    <img src="http://dubaiofw.com/wp-content/uploads/2016/04/marvel-img-worlds-of-adventure-dubai.jpg" width="100%" alt="An image icon"></div>
+                <div class="form-group col-lg-6">
+                    <label for="q_inp_1">Add input file #1</label>
+                    <input type="file" class="form-control" id="q_inp_1">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label for="q_inp_2">Add input file #2</label>
+                    <input type="file" class="form-control" id="q_inp_2">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label for="q_out_1">Add output file #1</label>
+                    <input type="file" class="form-control" id="q_out_1">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="q_out_2">Add output file #2</label>
+                    <input type="file" class="form-control" id="q_out_2">
+                </div>
+					
+					<div align="center"><a href="#" class="btn btn-default create-btn">Create</a></div>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class="calender well">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>-->
