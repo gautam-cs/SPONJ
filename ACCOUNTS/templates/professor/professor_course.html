@@ -21,9 +21,10 @@
 </style>
 
 
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/script.js"></script>
-    <script src="static/js/monthly.js"></script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/monthly.js'%}"></script>
+
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
@@ -146,7 +147,7 @@
                             </thead>
                             {% for assignment in assignmentlist %}
                             <tr>
-                                <td>{{ assignment.Name }}</td>
+                                <td>{{ assignment.AssignmentName }}</td>
                                 <td>{{ assignment.Description }}</td>
                                 <td>{{ assignment.StartTime }}</td>
                                 <td>{{ assignment.EndTime }}</td>
