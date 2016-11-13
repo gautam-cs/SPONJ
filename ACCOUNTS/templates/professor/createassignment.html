@@ -1,45 +1,56 @@
 {% load staticfiles %}
 <html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>Create Assignment</title>
+    <title>create assignment</title>
 </head>
 <body>
-
-<style>
-.right{
-float:right;
-}
-.left{
-float:left;
-}
-</style>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
-    <script src="{% static 'js/filetree.js' %}"></script>
-    <script src="{% static '/js/monthly.js' %}"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/monthly.js"></script>
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "{% static '/json/events.json' %}",
+            jsonUrl: "static/json/events.json",
             dataType: 'json'});
 
     });
     </script>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/filetree.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="../css/monthly.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({dateFormat:'dd/mm/yy'});
+        $("#datepicker1").datepicker({dateFormat:'dd/mm/yy'});
+    });
+</script>
+<script type="text/javascript" src="../js/monthly.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#mycalendar').monthly({
+            mode: 'event',
+            jsonUrl: '../events.json',
+            dataType: 'json'
+        });
+
+    });
+</script>
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
             <h1 class="title">Submissions Portal and ONline Judge</h1>
         </div>
     </div>
-    </div>
-
-
     <div class="row">
         <div class="col-md-2">
             <div class="navigation-tree well">
@@ -97,51 +108,46 @@ float:left;
 
             </div>
         </div>
-
-       <!-- <form method="POST" action="">
-     {% for model in models %}
-     <label>{{model.name}}</label> <input value='{{model.value}}' />
-     <p>{{model.description}}</p>
-     {% endfor %}
-</form>-->
-        <form method="POST" action="">
         <div class="col-md-7">
             <div class="content well">
 
+                <h4>
+                    <div align="center">{{ course.CourseId }} : {{ course.CourseName }}</div>
+                </h4>
+                </br>
+                <div class="form-group">
+                    <label for="AssignmentName">Assignment Name</label>
+                    <input type="text" class="form-control" id="assignment_name">
+                </div>
+                <div class="form-group">
+                    <label for="Description">Assignment Description</label>
+                    <textarea class="form-control" rows="5" id="assignment_description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="StartTime">Start Date</label>
+                    <input type="text" class="form-control" id="datepicker">
+                </div>
+                <div class="form-group">
+                    <label for="EndTime">End Date</label>
+                    <input type="text" class="form-control" id="datepicker1">
+                </div>
+
+                Languages:
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Java</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">C</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" >C++</label>
+                </div>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Python</label>
+                </div>
+					
 					<div class="row">
-						<div class="box-card1">
-							<h4><div align="center">Course ID : Course_Name</div></h4>
-							</br>
-							<b>Assignment No.:-</b> <input type="text" value="Assignment Name here..." width="100"></br>
-							</br>
-						</div>
-					</div>
-					</br>
-
-
-					<div class="row">
-						<div class="box-card1">
-							<b>Assignment Description:</b></br>
-							<textarea rows="10" cols="80">Description goes here.....
-							</textarea></br>
-						</div>
-						</br>
-					</div>
-
-					<div>
-					<p class="right">Assignment Started on:<border class="ridge">dd/mm/yyyy</border></p>
-					<p class="left">Assignment Ends on:<border class="ridge">dd/mm/yyyy</border></p></br>
-					</div>
-					</br>
-
-					Languages:
-					<a href="#" class="btn btn-default Java-btn">Java</a>&emsp;
-					<a href="#" class="btn btn-default CPP-btn">CPP</a>&emsp;
-					<a href="#" class="btn btn-default C-btn">C</a>&emsp;
-					<a href="#" class="btn btn-default Add Language-btn">Add Language</a>
-
-					<div class="row">
-						<div class="box-card1">
 							<b>Questions:</b>
 							<table class="table table-bordered">
 								<thead>
@@ -151,24 +157,23 @@ float:left;
 										<th>Author</th>
 									</tr>
 									<tr>
-										<th>QID</th>
-										<th>QNAME</th>
-										<th>Author#</th>
+										<td>QID</td>
+										<td>QNAME</td>
+										<td>Author#</td>
 									</tr>
 									<tr>
-										<th>QID</th>
-										<th>QNAME</th>
-										<th>Author#</th>
+										<td>QID</td>
+										<td>QNAME</td>
+										<td>Author#</td>
 									</tr>
 									<tr>
-										<th>QID</th>
-										<th>QNAME</th>
-										<th>Author#</th>
+										<td>QID</td>
+										<td>QNAME</td>
+										<td>Author#</td>
 									</tr>
 								</thead>
 							</table>
 							<div align="left"><a href="#" class="btn btn-default add a question">Add a Question</a></div>
-						</div>
 						</br>
 					<div align="center"><a href="#" class="btn btn-default create">Create</a></div>
         </div>
@@ -183,6 +188,3 @@ float:left;
 </div>
 </body>
 </html>
-
-
-
