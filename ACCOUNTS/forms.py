@@ -29,9 +29,14 @@ class AssignmentForm(forms.ModelForm):
         model = AssignmentDetail
         fields = '__all__'
 #################################################Student Forms########################################################
-class CourseStudentForm(forms.Form):
+class CourseStudentForm(forms.ModelForm):
     class Meta:
         model=Course_student
+        fields='__all__'
+
+class CourseTaForm(forms.ModelForm):
+    class Meta:
+        model=Courses_Ta
         fields='__all__'
 
 class StudentForm(forms.ModelForm):
