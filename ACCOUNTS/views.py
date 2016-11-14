@@ -26,6 +26,29 @@ def professor_register(request):
         pf = ProfessorForm(prefix='professor')
     return render(request, 'professor\professor_register.html', {'pf': pf}, context)
 
+
+def course_student(request,cid):
+    context=RequestContext(request)
+    if request.method=='POST':
+        csf=CourseStudentForm(data=request.POST,prefix='student')
+        if csf.is_valid():
+            csf.save()
+            return redirect(professor_course,cid)
+    else:
+        csf = CourseStudentForm(prefix='student')
+    return render(request, 'professor\coursestudent.html', {'csf': csf}, context)
+
+def course_ta(request,cid):
+    context=RequestContext(request)
+    if request.method=='POST':
+        ctf=CourseTaForm(data=request.POST,prefix='ta')
+        if ctf.is_valid():
+            ctf.save()
+            return redirect(professor_course,cid)
+    else:
+        ctf = CourseStudentForm(prefix='ta')
+    return render(request, 'professor\courseta.html', {'ctf': ctf}, context)
+
 def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
     #list=zip(professorposts,profposts)
@@ -134,6 +157,8 @@ def studentvsques_matrix(request,asid):
                                                                              'course':course,
                                                                              'submissionlist':finalsubmissionlist,
                                                                              'questions':questions})
+
+
 def view_submission(request,subid):
     lastsubmission=Submission.objects.get(pk=subid)
     question=QuestionDetail.objects.get(pk=lastsubmission.QuestionId_id)
@@ -187,6 +212,7 @@ def ProfessorFormView(request):
       return render(request, 'professor/professor_home.html', {"username" : username})
    else:
       return render(request, 'student/student_login.html', {})
+
 
 def Professor_logout(request):
     auth.logout(request)
