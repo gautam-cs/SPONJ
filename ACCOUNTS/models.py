@@ -64,6 +64,9 @@ class QuestionDetail(models.Model):
     OutputFile1 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
     OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
+    def __str__(self):
+        return self.Qid;
+
 class AssignmentDetail(models.Model):
     AssignmentName = models.CharField(max_length=20,null=True)
     CreationDate = models.DateField(null=False)
@@ -74,14 +77,16 @@ class AssignmentDetail(models.Model):
     Language = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.AssignmentName)
+        return str(self.CreationDate)
 
 class AssignmentQuestion(models.Model):
     QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)
     AId=models.ForeignKey(AssignmentDetail,null=False,max_length=20)
 
+    def __str__(self):
+        return self.id;
+
 class Submission(models.Model):
-    SubmissionId=models.CharField(primary_key=True,max_length=20)
     StudentId=models.ForeignKey(StudentDetail,null=False)
     AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
     QuestionId=models.ForeignKey(QuestionDetail,null=False)
@@ -91,17 +96,27 @@ class Submission(models.Model):
     StdOutError=models.TextField(null=True)
 
     def __str__(self):
-        return self.Qid;
+        return self.id;
+
 
 class Courses_Ta(models.Model):
     CourseId=models.ForeignKey(CourseDetail,null=False)
     TaId=models.ForeignKey(AssistantDetail,null=False)
 
+    def __str__(self):
+        return self.id;
+
 class Course_student(models.Model):
     SId=models.ForeignKey(StudentDetail,to_field='SId',null=False)
     CourseId=models.ForeignKey(CourseDetail,null=False)
+
+    def __str__(self):
+        return self.id;
 
 
 class Assignment_languages(models.Model):
     AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
     Programming_Language=models.CharField(max_length=20,null=True)
+
+    def __str__(self):
+        return self.id;
