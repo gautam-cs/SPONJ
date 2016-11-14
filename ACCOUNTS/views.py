@@ -129,7 +129,7 @@ def studentvsques_matrix(request,asid):
                 q_submissions.append(None)
         dict={"name":student.Name,"submissions":q_submissions,"id":student.SId}
         finalsubmissionlist.append(dict)
-    print(finalsubmissionlist)
+    # print(finalsubmissionlist)
     return render(request,'professor/studentvsquestion_matrix.html',context={'assignment':assignment,
                                                                              'course':course,
                                                                              'submissionlist':finalsubmissionlist,
