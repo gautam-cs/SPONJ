@@ -1,6 +1,6 @@
 __author__ = 'Gautam'
 from django import forms
-from ACCOUNTS.models import QuestionDetail,ProfessorDetail,CourseDetail,AssignmentDetail,AssistantDetail,StudentDetail
+from ACCOUNTS.models import *
 from django.contrib.auth.models import User
 import datetime
 
@@ -31,6 +31,7 @@ class AssignmentForm(forms.ModelForm):
 #################################################Student Forms########################################################
 class CourseStudentForm(forms.Form):
     class Meta:
+        model=Course_student
         fields='__all__'
 
 class StudentForm(forms.ModelForm):

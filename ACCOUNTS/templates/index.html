@@ -2,26 +2,32 @@
 <html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!--<link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">-->
+<meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>Login to SPONJ</title>
+    <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
+    <title>Login to sponj</title>
 </head>
 <body>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    <!--<script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <img src="{% static 'image/LOGO_IIITV.png' %}"  width="80"
-height="80" align="left"  />  -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/monthly.js"></script>
+    <script type="text/javascript">
+    $(window).load( function() {
+        $('#mycalendar').monthly({mode:'event',
+            jsonUrl: "static/json/events.json",
+            dataType: 'json'});
 
-    <div class="header">
-        <h1 class="title">Submissions Portal and ONline Judge</h1>
+    });
+    </script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-12">
+            <h1 class="title">Submissions Portal and ONline Judge</h1>
+        </div>
     </div>
+
     <div class="login col-sm-6" >
         <div class="form-group">
             <legend>Login</legend>

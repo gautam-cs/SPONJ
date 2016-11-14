@@ -54,7 +54,6 @@ class AssistantDetail(models.Model):
 
 
 class QuestionDetail(models.Model):
-    Qid = models.CharField(primary_key=True,max_length=20)
     QName = models.CharField(max_length=20,null=False)
     QAuthor = models.CharField(max_length=20,null=False)
     QDescription = models.CharField(max_length=20,null=False)
@@ -65,7 +64,7 @@ class QuestionDetail(models.Model):
     OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
     def __str__(self):
-        return self.Qid;
+        return self.QName;
 
 class AssignmentDetail(models.Model):
     AssignmentName = models.CharField(max_length=20,null=True)
@@ -74,7 +73,6 @@ class AssignmentDetail(models.Model):
     EndTime =  models.DateTimeField(null=False)
     Courseid = models.ForeignKey(CourseDetail,max_length=20,null=False)
     Description = models.TextField(null=False)
-    Language = models.CharField(max_length=20)
 
     def __str__(self):
         return str(self.CreationDate)
@@ -104,14 +102,14 @@ class Courses_Ta(models.Model):
     TaId=models.ForeignKey(AssistantDetail,null=False)
 
     def __str__(self):
-        return self.id;
+        return self.CourseId;
 
 class Course_student(models.Model):
     SId=models.ForeignKey(StudentDetail,to_field='SId',null=False)
     CourseId=models.ForeignKey(CourseDetail,null=False)
 
     def __str__(self):
-        return self.id;
+        return self.CourseId;
 
 
 class Assignment_languages(models.Model):

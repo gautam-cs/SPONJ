@@ -98,6 +98,7 @@ def createassignment(request,cid):
     return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 
+
 def view_assignment(request,asid):
     assignment=AssignmentDetail.objects.get(pk=asid)
     professor=ProfessorDetail.objects.get(pk=request.session['username'])
