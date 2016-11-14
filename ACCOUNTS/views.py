@@ -129,7 +129,8 @@ def view_assignment(request,asid):
     questions=QuestionDetail.objects.filter(assignmentquestion__AId=asid)
     return render(request,'professor/viewassignmentprof.html',context={'assignment':assignment,'professor':professor,'languages':languages,'questions':questions})
 
-
+def view_question(request,qid):
+    render()
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
 	return render(request, 'professor/assignmentlist.html',{'AssignmentPosts':AssignmentPosts})
