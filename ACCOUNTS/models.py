@@ -65,7 +65,6 @@ class QuestionDetail(models.Model):
     OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
 class AssignmentDetail(models.Model):
-    AssignmentID = models.CharField(primary_key=True,max_length=20,null=False)
     AssignmentName = models.CharField(max_length=20,null=True)
     CreationDate = models.DateField(null=False)
     StartTime =  models.DateTimeField(null=False)
@@ -75,7 +74,7 @@ class AssignmentDetail(models.Model):
     Language = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.AssignmentID)
+        return str(self.AssignmentName)
 
 class AssignmentQuestion(models.Model):
     QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)

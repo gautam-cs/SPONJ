@@ -20,8 +20,6 @@ class ProfessorForm(forms.ModelForm):
 class CourseForm(forms.ModelForm):
     StartDate = forms.DateTimeField(widget=forms.SelectDateWidget,initial=datetime.date.today())
     EndDate = forms.DateTimeField(widget=forms.SelectDateWidget,initial=datetime.date.today())
-
-
     class Meta:
         model=CourseDetail
         fields=('CourseId','Year','CourseName','Description','StartDate','EndDate','PId','Semester')

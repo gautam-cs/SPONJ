@@ -5,12 +5,11 @@ from ACCOUNTS.forms import *
 from django.shortcuts import render, get_object_or_404,render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate,login
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from datetime import date
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render (request, "index.html")
@@ -26,7 +25,6 @@ def professor_register(request):
     else:
         pf = ProfessorForm(prefix='professor')
     return render(request, 'professor\professor_register.html', {'pf': pf}, context)
-
 
 def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
@@ -72,8 +70,6 @@ def courselist(request):
 	return render(request, 'professor\courselist.html',{'CoursePosts':CoursePosts})
 
 def professor_course(request,cid):
-    print(cid)
-
     course=CourseDetail.objects.filter(id=cid)
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
@@ -83,7 +79,6 @@ def professor_course(request,cid):
     return render(request, 'professor\professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 
-
 def specificcourse(request):
 	specific_course_post=CourseDetail.objects.all()
 	return render(request, 'professor\professor_course.html',{'specific_course_post':specific_course_post})
@@ -91,12 +86,18 @@ def specificcourse(request):
 def createassignment(request,cid):
     if request.method=="POST":
         assignmentform=AssignmentForm(request.POST)
+        #assignmentform.CreationDate = date.today()
+        assignmentform.save()
         if assignmentform.is_valid():
             assignmentform.save()
             return redirect('assignmentlist')
+        else:
+            print(assignmentform.errors)
+
     else:
         assignmentform=AssignmentForm()
     return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
+
 
 def view_assignment(request,asid):
     assignment=AssignmentDetail.objects.get(pk=asid)
