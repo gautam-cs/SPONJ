@@ -160,7 +160,21 @@ def studentvsques_matrix(request,asid):
 
 
 def view_submission(request,subid):
-    return HttpResponse(subid)
+    lastsubmission=Submission.objects.get(pk=subid)
+    question=QuestionDetail.objects.get(pk=lastsubmission.QuestionId_id)
+    assignment=AssignmentDetail.objects.get(pk=lastsubmission.AssignmentId_id)
+    course=CourseDetail.objects.get(pk=assignment.Courseid_id)
+    print(lastsubmission.StudentId_id)
+    student=StudentDetail.objects.get(SId=lastsubmission.StudentId_id)
+    all_submissions_of_question=Submission.objects.filter(QuestionId_id=lastsubmission.QuestionId_id,StudentId_id=lastsubmission.StudentId_id).order_by('-SubmissionTime')
+
+    return render(request,'professor/view_submissions.html',context={'assignment':assignment,
+                                                                     'course':course,
+                                                                     'question':question,
+                                                                     'submissions':all_submissions_of_question,
+                                                                     'student':student})
+
+
 def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
