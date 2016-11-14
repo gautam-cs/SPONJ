@@ -121,7 +121,7 @@ def studentvsques_matrix(request,asid):
     for student in studentlist:
         q_submissions=[]
         for question in questions:
-            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.Qid)
+            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.id)
             if(submissions.count()!=0):
                 lastsubmission=submissions.order_by('-SubmissionTime').first()
                 q_submissions.append(lastsubmission)
