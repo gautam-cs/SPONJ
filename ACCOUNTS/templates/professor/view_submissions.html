@@ -1,26 +1,40 @@
 {% load staticfiles %}
-<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>Student vs Question Matrix</title>
+    <title>View Submissions</title>
 </head>
 <body>
-<script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/script.js"></script>
-    <script src="/static/js/monthly.js"></script>
-    <script type="/text/javascript">
-    $(window).load( function() {
-        $('#mycalendar').monthly({mode:'event',
+<style>
+    .right {
+        float: right;
+    }
+
+    .left {
+        float: left;
+    }
+</style>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#mycalendar').monthly({
+            mode: 'event',
             jsonUrl: "static/json/events.json",
-            dataType: 'json'});
+            dataType: 'json'
+        });
 
     });
-    </script>
-
+</script>
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
@@ -87,34 +101,44 @@
         </div>
         <div class="col-md-7">
             <div class="content well">
-                <h2>{{ course.CourseId }}: {{ course.CourseName }}</h2>
-                <h3>{{ assignment.AssignmentName }}</h3>
-                <table class="studentvsqmatrix">
-                    <tr class="studentvsqmatrix_heading">
-                        <th>ID</th>
-                        <th>Name</th>
-                        {% for question in questions%}
-                        <th class="q_id">{{ question.id }}</th>
-                        {% endfor %}
-                    </tr>
-                    {% for studentsubmissiondetail in submissionlist %}
-                        <tr class="student_row">
-                        <td class="student_id">{{ studentsubmissiondetail.id }}</td>
-                        <td class="student_name">{{ studentsubmissiondetail.name }}</td>
-                            {% for submission in studentsubmissiondetail.submissions %}
-                                {% if submission == None%}
-                                    <td><div class="q_status"></div></td>
-                                {% elif submission.Result == 'correct'%}
-                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_correct"></div></a></td>
+                <div class="row">
+							<div class="center">
+							</br>
+								<h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
+								<h4>Assignment Name: {{ assignment.AssignmentName }}</h4>
+								<h4>Student Id: {{ student.SId }} Student Name: {{ student.Name }}</h4>
+							</div>
+				</div>
 
-                                {% elif submission.Result == 'wrong'%}
-                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_wrong"></div></a></td>
-                                {% endif %}
-                            {% endfor %}
-                    </tr>
+				
+				<h4>Question ID: {{ question.id }}</h4><h4> Question Name: {{ question.QName }}</h4>
+								<div class="center">
+									Description</br>
+									{{ question.Qdescription }}
+								</div></br>
+							</br>
+				<h4>Submissions</h4>			
+				<div class="box-card1">
+				{% for submission in submissions %}
+				<div class="row">			
+					<div class="box-card1">
+						<h4>Submission No: {{ forloop.counter }}, Submission_ID: {{ submission.id }}</h4>
+							Submission on : {{ submission.SubmissionTime }}<br>
+							Acceptance : {{ submission.Result }}<br>
+							Result : <br>
+                        Console Output:{{ submission.StdOutError }}.
+					</div></br>
+					<div class="boxed">
+						CODE HERE.
+					</div>
+					</br>
+				</div>
                     {% endfor %}
+				</div>
+				</br>
+				
 
-                </table>
+				
             </div>
         </div>
         <div class="col-md-3 ">

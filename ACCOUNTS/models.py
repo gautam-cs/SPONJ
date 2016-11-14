@@ -75,7 +75,7 @@ class AssignmentDetail(models.Model):
     Description = models.TextField(null=False)
 
     def __str__(self):
-        return str(self.CreationDate)
+        return self.AssignmentName
 
 class AssignmentQuestion(models.Model):
     QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)
@@ -94,7 +94,7 @@ class Submission(models.Model):
     StdOutError=models.TextField(null=True)
 
     def __str__(self):
-        return self.id;
+        return str(self.id);
 
 
 class Courses_Ta(models.Model):
