@@ -144,7 +144,7 @@ def studentvsques_matrix(request,asid):
     for student in studentlist:
         q_submissions=[]
         for question in questions:
-            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.Qid)
+            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.id)
             if(submissions.count()!=0):
                 lastsubmission=submissions.order_by('-SubmissionTime').first()
                 q_submissions.append(lastsubmission)
@@ -152,7 +152,7 @@ def studentvsques_matrix(request,asid):
                 q_submissions.append(None)
         dict={"name":student.Name,"submissions":q_submissions,"id":student.SId}
         finalsubmissionlist.append(dict)
-    print(finalsubmissionlist)
+    # print(finalsubmissionlist)
     return render(request,'professor/studentvsquestion_matrix.html',context={'assignment':assignment,
                                                                              'course':course,
                                                                              'submissionlist':finalsubmissionlist,

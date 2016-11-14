@@ -99,7 +99,7 @@
 					{% endfor %}
 					</h5></div>
 
-                    <a href="\studentvsquestion_matrix\{{ assignment.AssignmentID }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
+                    <a href="\studentvsquestion_matrix\{{ assignment.id }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
 
 <br>
                 <div class="row">
@@ -124,7 +124,7 @@
 								</thead>
                         {% for question in questions %}
                                     <tr>
-										<td>{{ question.Qid }}</td>
+										<td>{{ question.id }}</td>
 										<td>{{ question.QName }}</td>
 										<td>{{ question.QAuthor }}</td>
 									</tr>
