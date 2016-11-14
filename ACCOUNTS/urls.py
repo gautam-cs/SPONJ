@@ -10,8 +10,10 @@ urlpatterns = [
     url(r'^connection$', views.StudentFormView, name ='loginform'),
     url(r'^$', views.Student_login, name='login'),
     url(r'^student_register$',views.student_register, name='student_register'),
-    #url(r'^login$', views.login, name='login'),
+    url(r'^student_home$', views.student_home, name='student_home'),
     url(r'^studentlist$', views.studentlist, name='studentlist'),
+
+
     ###################Professor URL#############################
     url(r'^professor_login$', views.professor_login, name='professor_login'),
     url(r'^professor_home$', views.professor_home, name='professor_home'),
@@ -31,7 +33,9 @@ urlpatterns = [
     url(r'^studentvsquestion_matrix/(?P<asid>([A-Za-z0-9]+))/$',views.studentvsques_matrix,name='view_studentvsquestion_matrix'),
     url(r'^professorcourse$', views.professor_course, name='professor_course'),
 
-                  ################Assistant Url################################
+
+
+    ################Assistant Url################################
     url(r'^assistant_login$', views.Assistant_login, name='Assistant_login'),
     url(r'^assistant_register$',views.assistant_register, name='assistant_register'),
     url(r'^assistantlist$', views.assistantlist, name='assistantlist'),

@@ -238,7 +238,15 @@ def Student_login(request):
     else:
         studentLoginForm = StudentLoginForm()
         return render(request, 'student/student_login.html')
-    return redirect('studentlist')
+    return redirect('student_home')
+
+def student_home(request):
+    if request.session.has_key('username'):
+        sid = request.session['username']
+        Studentpost = StudentDetail.objects.filter(SId=sid)
+        return render(request, 'professor\professor_home.html', {'Studentpost': Studentpost})
+    return HttpResponse("Not Logged in")
+
 
 def StudentFormView(request):
    if request.session.has_key('username'):
