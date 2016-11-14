@@ -148,12 +148,60 @@ body {
     text-align: center;
 }
 
-border.ridge {border-style: ridge;
-         width:30%;}
-		 
-border.ridge1 {border-style: ridge;
-         width:50%;}
-
+.head_q{
+    background-color: #FFFFFF;
+    padding: 10px;
+}
 .table{
 	width:100%;
+}
+
+.q_status{
+    background-color: #2aabd2;
+    padding: 5px;
+}
+.q_correct{
+    background-color: #2b542c;
+}
+
+.q_wrong{
+    background-color: #761c19;
+}
+.test_case_input{
+    background-color: #FFFFFF;
+    padding: 5px;
+    font-family: monospace;
+    border-width: thick;
+}
+
+.studentvsqmatrix{
+    border-spacing: 5px;
+    width: 100%;
+    border-collapse: separate;
+}
+.q_id{
+    text-align: center;
+}
+
+.space { margin-top: 230px; }
+.test_case_output{
+    background-color: #FFFFFF;
+    padding: 5px;
+    font-family: monospace;
+}
+
+#editor {
+    margin: 0;
+    height:400px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.boxed {
+  border: 1px solid #808080 ;
+  width: 690px;
+  height: 100px;
 }

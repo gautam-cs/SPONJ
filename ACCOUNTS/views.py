@@ -74,7 +74,6 @@ def professor_course(request,cid):
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
     studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
-    s=StudentDetail.objects.raw('select * from ACCOUNTS_studentdetail JOIN ACCOUNTS_course_student ON SId=SId_id')
     talist=AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
     return render(request, 'professor\professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
@@ -111,7 +110,31 @@ def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
 	return render(request, 'professor/assignmentlist.html',{'AssignmentPosts':AssignmentPosts})
 
-
+def studentvsques_matrix(request,asid):
+    assignment=AssignmentDetail.objects.get(pk=asid)
+    course=CourseDetail.objects.get(id=assignment.Courseid_id)
+    finalsubmissionlist=[]
+    studentlist=StudentDetail.objects.filter(course_student__CourseId=course.id)
+    questions = QuestionDetail.objects.filter(assignmentquestion__AId=asid)
+    print(questions)
+    for student in studentlist:
+        q_submissions=[]
+        for question in questions:
+            submissions = Submission.objects.filter(StudentId_id=student.SId,QuestionId_id=question.Qid)
+            if(submissions.count()!=0):
+                lastsubmission=submissions.order_by('-SubmissionTime').first()
+                q_submissions.append(lastsubmission)
+            else:
+                q_submissions.append(None)
+        dict={"name":student.Name,"submissions":q_submissions,"id":student.SId}
+        finalsubmissionlist.append(dict)
+    print(finalsubmissionlist)
+    return render(request,'professor/studentvsquestion_matrix.html',context={'assignment':assignment,
+                                                                             'course':course,
+                                                                             'submissionlist':finalsubmissionlist,
+                                                                             'questions':questions})
+def view_submission(request,subid):
+    return HttpResponse(subid)
 def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
