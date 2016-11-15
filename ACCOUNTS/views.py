@@ -267,6 +267,14 @@ def Professor_logout(request):
 
 
 ##############################################STUDENT IMPLEMENTATION#######################################################
+
+def student_course(request,cid):
+    course=CourseDetail.objects.filter(id=cid)
+    professor=ProfessorDetail.objects.filter(PId=course[0].PId)
+    assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
+    return render(request, 'student/student_course.html',
+                  {'course':course[0],'assignmentlist':assignmentlist,'professor_name':professor[0].Name,})
+
 def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
@@ -292,16 +300,20 @@ def Student_login(request):
             if(s[0].Password!=studentLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
+        return redirect('student_home')
+
     else:
         studentLoginForm = StudentLoginForm()
         return render(request, 'student/student_login.html')
-    return redirect('student_home')
+
 
 def student_home(request):
     if request.session.has_key('username'):
         sid = request.session['username']
+        courses = CourseDetail.objects.filter(course_student__SId_id=sid)
         Studentpost = StudentDetail.objects.filter(SId=sid)
-        return render(request, 'professor/professor_home.html', {'Studentpost': Studentpost})
+        return render(request, 'student/student_home.html', context={'Studentpost': Studentpost,
+                                                                         'courses':courses})
     return HttpResponse("Not Logged in")
 
 
