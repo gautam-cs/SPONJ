@@ -79,12 +79,10 @@ def question_as(request,asid):
     if request.method=="POST":
         form=QuestionForm(request.POST or None, request.FILES or None)
         if form.is_valid():
-            print(form.auto_id)
-            q_a_form=AssignmentQuestionForm()
-            q_a_form.AId=asid
-            q_a_form.QId=form.auto_id
-            form.save()
-            return redirect('viewassignment/'+asid)
+            q=form.save()
+            ques_ass=AssignmentQuestion(AId_id=asid,QId_id=q.id)
+            ques_ass.save()
+            return redirect('''/viewassignment/'''+asid)
     else:
         form=QuestionForm()
     return render(request,'professor\question.html',{'form':form})
@@ -126,8 +124,8 @@ def createassignment(request,cid):
         #assignmentform.CreationDate = date.today()
         assignmentform.save()
         if assignmentform.is_valid():
-            assignmentform.save()
-            return redirect('assignmentlist')
+            a=assignmentform.save()
+            return redirect('/question/'+str(a.id)+'/')
         else:
             print(assignmentform.errors)
 
@@ -135,6 +133,20 @@ def createassignment(request,cid):
         assignmentform=AssignmentForm()
     return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
+def createassignment_and_add_q(request,cid):
+    if request.method=="POST":
+        assignmentform=AssignmentForm(request.POST)
+        #assignmentform.CreationDate = date.today()
+        assignmentform.save()
+        if assignmentform.is_valid():
+            a=assignmentform.save()
+            return redirect('question/'+a.id)
+        else:
+            print(assignmentform.errors)
+
+    else:
+        assignmentform=AssignmentForm()
+    return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 
 def view_assignment(request,asid):

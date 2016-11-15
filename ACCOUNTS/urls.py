@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^coursestudent/(?P<cid>([A-Za-z0-9]+))/$',views.course_student,name='coursestudent'),
     url(r'^courseta/(?P<cid>([A-Za-z0-9]+))/$',views.course_ta,name='courseta'),
     url(r'^createassignment/(?P<cid>([A-Za-z0-9]+))/$',views.createassignment,name='createassignment'),
+    url(r'^createassignment_q/(?P<cid>([A-Za-z0-9]+))/$',views.createassignment_and_add_q,name='createassignmentwithq'),
     url(r'^assignmentlist$',views.assignmentlist,name='assignmentlist'),
     url(r'^professorcourse/(?P<cid>([A-Za-z0-9]+))/$',views.professor_course,name='professor_course'),
     url(r'^viewassignment/(?P<asid>([A-Za-z0-9]+))/$',views.view_assignment,name='view_assignmentprof'),
