@@ -3,12 +3,17 @@ from django import forms
 from ACCOUNTS.models import *
 from django.contrib.auth.models import User
 import datetime
-
 ######################################################Professor FOrms#############################################
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = QuestionDetail
         fields = '__all__'
+
+class AssignmentQuestionForm(forms.ModelForm):
+    class Meta:
+        model = AssignmentQuestion
+        fields = '__all__'
+
 
 
 class ProfessorForm(forms.ModelForm):

@@ -105,10 +105,10 @@
                                 {% if submission == None%}
                                     <td><div class="q_status"></div></td>
                                 {% elif submission.Result == 'correct'%}
-                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_correct"></div></a></td>
+                                    <td><a href="/viewsubmission/{{ submission.id }}/" ><div class="q_status q_correct"></div></a></td>
 
                                 {% elif submission.Result == 'wrong'%}
-                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_wrong"></div></a></td>
+                                    <td><a href="/viewsubmission/{{ submission.id }}/" ><div class="q_status q_wrong"></div></a></td>
                                 {% endif %}
                             {% endfor %}
                     </tr>

@@ -100,7 +100,7 @@
         </div>
         <div class="col-md-7">
             <div class="content well">
-                <form method="POST"  action="/createassignment/{{course.id  }}/" class="post-form">{% csrf_token %}
+                <form method="POST"  action="/createassignment/{{course.id}}/" class="post-form">{% csrf_token %}
                 <h4>
                     <div align="center">{{ course.CourseId }} : {{ course.CourseName }}</div>
                 </h4>
@@ -114,7 +114,7 @@
                     <textarea class="form-control" rows="5" id="assignment_description" name="Description"></textarea>
                 </div>
                    <div class="form-group">
-                    <input class="form-control" rows="5" id="_description" name="CreationDate" value="2016-11-16">
+                   <input class="form-control" rows="5" id="ent_description" name="CreationDate" value="2016-11-13">
                     <input class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
                 </div>
                 <div class="form-group">
@@ -142,37 +142,7 @@
                     <label><input type="checkbox" value="">Python</label>
                 </div>
 				{% endcomment %}
-					<div class="row">
-							<b>Questions:</b>
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th>QuestionID</th>
-										<th>Question Name</th>
-										<th>Author</th>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-								</thead>
-							</table>
-							<div align="left"><a href="#" class="btn btn-default add a question">Add a Question</a></div>
-						</br>
-                        <button type="submit" class="save btn btn-default">Create</button>
-					{% comment %}<div align="center"><a href="#" class="btn btn-default create">Create</a></div>{% endcomment %}
-        </div>
+                    <button type="submit" class="save btn btn-default">Create</button>
                     </form>
             </div>
         </div>
