@@ -1,21 +1,21 @@
 {% load staticfiles %}
-<html>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
+<head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>View Assignment</title>
+    <title>Student vs Question Matrix</title>
 </head>
 <body>
-    <script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/script.js"></script>
     <script src="/static/js/monthly.js"></script>
-    <script type="text/javascript">
+    <script type="/text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "/static/json/events.json",
+            jsonUrl: "static/json/events.json",
             dataType: 'json'});
 
     });
@@ -30,6 +30,7 @@
     <div class="row">
         <div class="col-md-2">
             <div class="navigation-tree well">
+
                 <ul class="nav nav-list">
                     <li><label class="tree-toggler nav-header">Header 1</label>
                         <ul class="nav nav-list tree">
@@ -85,65 +86,43 @@
             </div>
         </div>
         <div class="col-md-7">
-			<div class="content well">
-            
-				
-				<h4> {{ assignment.AssignmentName }}</h4>
-					<div align="right">By : Prof {{ professor.Name }}</div><br />
-					<div style="float: left">Assignment Starts On {{ assignment.StartTime|date }}</div>
-					
-					<div style="float: right">Assignment Ends On {{ assignment.EndTime|date }}</div></br></br>
-				
-					<div align="left"><h5>Languages:{% for language in languages %}
-					{{ language.Programming_Language }}
-					{% endfor %}
-					</h5></div>
-
-                    <a href="\studentvsquestion_matrix\{{ assignment.id }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
-
-<br>
-                <div class="row">
-							<h4>Assignment Description:</h4>
-							<div class="course-name">
-                                {{ assignment.Description }}
-							</div>
-					</div>
-					</br>
-					</br>
-					
-					<div class="row">
-					<h4>Course Assignments:</h4>
-					<table class="table table-bordered">
-					<thead>
-									<tr>
-										<th>Question ID</th>
-										<th>Question Name</th>
-										<th>Author</th>
-										
-									</tr>
-								</thead>
-                        {% for question in questions %}
-                                    <tr>
-										<td>{{ question.id }}</td>
-										<td>{{ question.QName }}</td>
-										<td>{{ question.QAuthor }}</td>
-									</tr>
+            <div class="content well">
+                <h2>{{ course.CourseId }}: {{ course.CourseName }}</h2>
+                <h3>{{ assignment.AssignmentName }}</h3>
+                <table class="studentvsqmatrix">
+                    <tr class="studentvsqmatrix_heading">
+                        <th>ID</th>
+                        <th>Name</th>
+                        {% for question in questions%}
+                        <th class="q_id">{{ question.id }}</th>
                         {% endfor %}
+                    </tr>
+                    {% for studentsubmissiondetail in submissionlist %}
+                        <tr class="student_row">
+                        <td class="student_id">{{ studentsubmissiondetail.id }}</td>
+                        <td class="student_name">{{ studentsubmissiondetail.name }}</td>
+                            {% for submission in studentsubmissiondetail.submissions %}
+                                {% if submission == None%}
+                                    <td><div class="q_status"></div></td>
+                                {% elif submission.Result == 'correct'%}
+                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_correct"></div></a></td>
 
-		            </table>
-                                      
-					</div>
-					</br>
-			<a href="#" class="btn btn-default view course progress-btn">Add Question</a>
-		</div>
-	</div>	
-		
-    <div class="col-md-3">
+                                {% elif submission.Result == 'wrong'%}
+                                    <td><a href="\viewsubmission\{{ submission.id }}\" ><div class="q_status q_wrong"></div></a></td>
+                                {% endif %}
+                            {% endfor %}
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3 ">
             <div class="calender well">
                 <div class="monthly" id="mycalendar"></div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 </body>
 </html>

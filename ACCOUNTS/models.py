@@ -54,7 +54,6 @@ class AssistantDetail(models.Model):
 
 
 class QuestionDetail(models.Model):
-    Qid = models.CharField(primary_key=True,max_length=20)
     QName = models.CharField(max_length=20,null=False)
     QAuthor = models.CharField(max_length=20,null=False)
     QDescription = models.CharField(max_length=20,null=False)
@@ -64,25 +63,28 @@ class QuestionDetail(models.Model):
     OutputFile1 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
     OutputFile2 = models.FileField(upload_to='documents/%Y/%m/%d',null=False)
 
+    def __str__(self):
+        return self.QName;
+
 class AssignmentDetail(models.Model):
-    AssignmentID = models.CharField(primary_key=True,max_length=20,null=False)
     AssignmentName = models.CharField(max_length=20,null=True)
     CreationDate = models.DateField(null=False)
     StartTime =  models.DateTimeField(null=False)
     EndTime =  models.DateTimeField(null=False)
     Courseid = models.ForeignKey(CourseDetail,max_length=20,null=False)
     Description = models.TextField(null=False)
-    Language = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.AssignmentID)
+        return self.AssignmentName
 
 class AssignmentQuestion(models.Model):
     QId=models.ForeignKey(QuestionDetail,null=False,max_length=20)
     AId=models.ForeignKey(AssignmentDetail,null=False,max_length=20)
 
+    def __str__(self):
+        return self.id;
+
 class Submission(models.Model):
-    SubmissionId=models.CharField(primary_key=True,max_length=20)
     StudentId=models.ForeignKey(StudentDetail,null=False)
     AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
     QuestionId=models.ForeignKey(QuestionDetail,null=False)
@@ -92,17 +94,27 @@ class Submission(models.Model):
     StdOutError=models.TextField(null=True)
 
     def __str__(self):
-        return self.Qid;
+        return str(self.id);
+
 
 class Courses_Ta(models.Model):
     CourseId=models.ForeignKey(CourseDetail,null=False)
     TaId=models.ForeignKey(AssistantDetail,null=False)
 
+    def __str__(self):
+        return self.CourseId;
+
 class Course_student(models.Model):
     SId=models.ForeignKey(StudentDetail,to_field='SId',null=False)
     CourseId=models.ForeignKey(CourseDetail,null=False)
+
+    def __str__(self):
+        return self.CourseId;
 
 
 class Assignment_languages(models.Model):
     AssignmentId=models.ForeignKey(AssignmentDetail,null=False)
     Programming_Language=models.CharField(max_length=20,null=True)
+
+    def __str__(self):
+        return self.id;

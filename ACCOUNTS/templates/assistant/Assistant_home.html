@@ -159,7 +159,8 @@
 
 
                         </table>
-                        <div align="left"><a href="/createassignment/{{ course.id }}" class="btn btn-default add assignment-btn">Add Assignment</a></div>
+                        {% comment %}<div align="left"><a href="/createassignment/{{ course.id }}
+                            " class="btn btn-default add assignment-btn">Add Assignment</a></div>{% endcomment %}
                     </div>
                     <div class="tab-card row students-tab">
                         <h4>List of Students:</h4>
@@ -180,7 +181,8 @@
                             {% endfor %}
 
                 </table>
-                <div align="left"><a href="/coursestudent/{{ course.id }}" class="btn btn-default add student-btn">Add Student</a></div>
+                {% comment %}<div align="left"><a href="/coursestudent/{{ course.id }}" class="btn btn-default add student-btn">
+                    Add Student</a></div>{% endcomment %}
                 </br>
             </div>
             <div class="tab-card row tas-tab">
@@ -202,8 +204,8 @@
                         </tr>
                     {% endfor %}
                 </table>
-                <div align="left"><a href="/courseta/{{ course.id }}" class="btn btn-default add a teaching assistant-btn">Add a
-                    Teaching Assistant</a></div>
+                {% comment %}<div align="left"><a href="/courseta/{{ course.id }}" class="btn btn-default add a teaching assistant-btn">Add a
+                    Teaching Assistant</a></div>{% endcomment %}
                 </br>
             </div>
             </br>

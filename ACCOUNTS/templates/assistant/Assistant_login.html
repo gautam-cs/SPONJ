@@ -32,7 +32,7 @@
   <fieldset>
   {% csrf_token %}
       <div class="form-group">
-        <label for="username" class="col-lg-2 control-label">Username</label>
+        <label for="username" class="col-lg-2 control-label"> Username</label>
         <div class="col-lg-10"><input type="text" id="username" name="username" class="form-control" value="User Name"
         onfocus="if(this.value  == 'User Name'){ this.value = ''; } " onblur="if(this.value == '')
         { this.value = 'User Name'; } " required ><br>
@@ -45,6 +45,7 @@
           </div>
         <button class="btn btn-default login-btn" type="submit">Login</button>
         </fieldset>
+
     </form>
         Not Registered? <a href="assistant_register"> Register Here</a>
     </div>

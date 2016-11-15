@@ -1,45 +1,35 @@
 {% load staticfiles %}
 <html>
 <html lang="en">
-<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>create assignment</title>
+    <title>Create course</title>
 </head>
 <body>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/script.js"></script>
-    <script src="static/js/monthly.js"></script>
-    <script type="text/javascript">
-    $(window).load( function() {
-        $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "static/json/events.json",
-            dataType: 'json'});
+<style>
+    .right {
+        float: right;
+    }
 
-    });
-    </script>
+    .left {
+        float: left;
+    }
+</style>
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/script.js"></script>
-<script src="../js/filetree.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="../css/monthly.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker({dateFormat:'dd/mm/yy'});
-        $("#datepicker1").datepicker({dateFormat:'dd/mm/yy'});
-    });
-</script>
-<script type="text/javascript" src="../js/monthly.js"></script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
+
 <script type="text/javascript">
     $(window).load(function () {
         $('#mycalendar').monthly({
             mode: 'event',
-            jsonUrl: '../events.json',
+            jsonUrl: "static/json/events.json",
             dataType: 'json'
         });
 
@@ -110,29 +100,34 @@
         </div>
         <div class="col-md-7">
             <div class="content well">
-
+                <form method="POST"  action="/createassignment/{{course.id  }}/" class="post-form">{% csrf_token %}
                 <h4>
                     <div align="center">{{ course.CourseId }} : {{ course.CourseName }}</div>
                 </h4>
                 </br>
                 <div class="form-group">
                     <label for="AssignmentName">Assignment Name</label>
-                    <input type="text" class="form-control" id="assignment_name">
+                    <input type="text" class="form-control" id="assignment_name" name="AssignmentName">
                 </div>
                 <div class="form-group">
                     <label for="Description">Assignment Description</label>
-                    <textarea class="form-control" rows="5" id="assignment_description"></textarea>
+                    <textarea class="form-control" rows="5" id="assignment_description" name="Description"></textarea>
+                </div>
+                   <div class="form-group">
+                    <input class="form-control" rows="5" id="_description" name="CreationDate" value="2016-11-16">
+                    <input class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
                 </div>
                 <div class="form-group">
                     <label for="StartTime">Start Date</label>
-                    <input type="text" class="form-control" id="datepicker">
+                    <input type="text" class="form-control"  name="StartTime">
                 </div>
                 <div class="form-group">
                     <label for="EndTime">End Date</label>
-                    <input type="text" class="form-control" id="datepicker1">
+                    <input type="text" class="form-control"  name="EndTime">
                 </div>
 
-                Languages:
+
+                {% comment %}Languages:
                 <div class="checkbox">
                     <label><input type="checkbox" value="">Java</label>
                 </div>
@@ -146,7 +141,7 @@
                 <div class="checkbox">
                     <label><input type="checkbox" value="">Python</label>
                 </div>
-					
+				{% endcomment %}
 					<div class="row">
 							<b>Questions:</b>
 							<table class="table table-bordered">
@@ -175,8 +170,10 @@
 							</table>
 							<div align="left"><a href="#" class="btn btn-default add a question">Add a Question</a></div>
 						</br>
-					<div align="center"><a href="#" class="btn btn-default create">Create</a></div>
+                        <button type="submit" class="save btn btn-default">Create</button>
+					{% comment %}<div align="center"><a href="#" class="btn btn-default create">Create</a></div>{% endcomment %}
         </div>
+                    </form>
             </div>
         </div>
         <div class="col-md-3 ">

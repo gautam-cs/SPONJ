@@ -1,26 +1,40 @@
 {% load staticfiles %}
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <html lang="en">
-<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>View Assignment</title>
+    <title>View Submissions</title>
 </head>
 <body>
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/script.js"></script>
-    <script src="/static/js/monthly.js"></script>
-    <script type="text/javascript">
-    $(window).load( function() {
-        $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "/static/json/events.json",
-            dataType: 'json'});
+<style>
+    .right {
+        float: right;
+    }
+
+    .left {
+        float: left;
+    }
+</style>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#mycalendar').monthly({
+            mode: 'event',
+            jsonUrl: "static/json/events.json",
+            dataType: 'json'
+        });
 
     });
-    </script>
-
+</script>
 <div class="container-fluid">
     <div class="row">
         <div class="header col-lg-12">
@@ -30,6 +44,7 @@
     <div class="row">
         <div class="col-md-2">
             <div class="navigation-tree well">
+
                 <ul class="nav nav-list">
                     <li><label class="tree-toggler nav-header">Header 1</label>
                         <ul class="nav nav-list tree">
@@ -85,65 +100,53 @@
             </div>
         </div>
         <div class="col-md-7">
-			<div class="content well">
-            
-				
-				<h4> {{ assignment.AssignmentName }}</h4>
-					<div align="right">By : Prof {{ professor.Name }}</div><br />
-					<div style="float: left">Assignment Starts On {{ assignment.StartTime|date }}</div>
-					
-					<div style="float: right">Assignment Ends On {{ assignment.EndTime|date }}</div></br></br>
-				
-					<div align="left"><h5>Languages:{% for language in languages %}
-					{{ language.Programming_Language }}
-					{% endfor %}
-					</h5></div>
-
-                    <a href="\studentvsquestion_matrix\{{ assignment.id }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
-
-<br>
+            <div class="content well">
                 <div class="row">
-							<h4>Assignment Description:</h4>
-							<div class="course-name">
-                                {{ assignment.Description }}
+							<div class="center">
+							</br>
+								<h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
+								<h4>Assignment Name: {{ assignment.AssignmentName }}</h4>
+								<h4>Student Id: {{ student.SId }} Student Name: {{ student.Name }}</h4>
 							</div>
-					</div>
-					</br>
-					</br>
-					
-					<div class="row">
-					<h4>Course Assignments:</h4>
-					<table class="table table-bordered">
-					<thead>
-									<tr>
-										<th>Question ID</th>
-										<th>Question Name</th>
-										<th>Author</th>
-										
-									</tr>
-								</thead>
-                        {% for question in questions %}
-                                    <tr>
-										<td>{{ question.id }}</td>
-										<td>{{ question.QName }}</td>
-										<td>{{ question.QAuthor }}</td>
-									</tr>
-                        {% endfor %}
+				</div>
 
-		            </table>
-                                      
+				
+				<h4>Question ID: {{ question.id }}</h4><h4> Question Name: {{ question.QName }}</h4>
+								<div class="center">
+									Description</br>
+									{{ question.Qdescription }}
+								</div></br>
+							</br>
+				<h4>Submissions</h4>			
+				<div class="box-card1">
+				{% for submission in submissions %}
+				<div class="row">			
+					<div class="box-card1">
+						<h4>Submission No: {{ forloop.counter }}, Submission_ID: {{ submission.id }}</h4>
+							Submission on : {{ submission.SubmissionTime }}<br>
+							Acceptance : {{ submission.Result }}<br>
+							Result : <br>
+                        Console Output:{{ submission.StdOutError }}.
+					</div></br>
+					<div class="boxed">
+						CODE HERE.
 					</div>
 					</br>
-			<a href="#" class="btn btn-default view course progress-btn">Add Question</a>
-		</div>
-	</div>	
-		
-    <div class="col-md-3">
+				</div>
+                    {% endfor %}
+				</div>
+				</br>
+				
+
+				
+            </div>
+        </div>
+        <div class="col-md-3 ">
             <div class="calender well">
                 <div class="monthly" id="mycalendar"></div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 </body>
 </html>
