@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 class StudentDetail(models.Model):
     SId = models.CharField(primary_key=True,max_length=20,null=False)
@@ -68,7 +69,7 @@ class QuestionDetail(models.Model):
 
 class AssignmentDetail(models.Model):
     AssignmentName = models.CharField(max_length=20,null=True)
-    CreationDate = models.DateField(null=False)
+    CreationDate = models.DateField(null=False, default=date.today())
     StartTime =  models.DateTimeField(null=False)
     EndTime =  models.DateTimeField(null=False)
     Courseid = models.ForeignKey(CourseDetail,max_length=20,null=False)

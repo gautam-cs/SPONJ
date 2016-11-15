@@ -57,13 +57,6 @@ def professorlist(request):
     return render(request, 'professor/professorlist.html', {'list': professorposts})
 
 #@login_required
-def professor_home(request):
-    if request.session.has_key('username'):
-        pid = request.session['username']
-        Coursepost = CourseDetail.objects.filter(PId=pid)
-        return render(request, 'professor/professor_home.html', {'Coursepost': Coursepost})
-    return HttpResponse("Not Logged in")
-
 
 def question(request):
     if request.method=="POST":
@@ -114,14 +107,10 @@ def professor_course(request,cid):
     return render(request, 'professor/professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 
-def specificcourse(request):
-	specific_course_post=CourseDetail.objects.all()
-	return render(request, 'professor/professor_course.html',{'specific_course_post':specific_course_post})
 
 def createassignment(request,cid):
     if request.method=="POST":
         assignmentform=AssignmentForm(request.POST)
-        assignmentform.CreationDate = date.today()
         assignmentform.save()
         if assignmentform.is_valid():
             a=assignmentform.save()
@@ -131,12 +120,13 @@ def createassignment(request,cid):
 
     else:
         assignmentform=AssignmentForm()
-    return render(request,'professor/createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
+    return render(request,'professor/createassignment.html'
+    ,{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 def createassignment_and_add_q(request,cid):
     if request.method=="POST":
         assignmentform=AssignmentForm(request.POST)
-        #assignmentform.CreationDate = date.today()
+        assignmentform.CreationDate = date.today()
         assignmentform.save()
         if assignmentform.is_valid():
             a=assignmentform.save()
@@ -146,7 +136,8 @@ def createassignment_and_add_q(request,cid):
 
     else:
         assignmentform=AssignmentForm()
-    return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
+    return render(request,'professor\createassignment.html'
+                  ,{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 
 def view_assignment(request,asid):
@@ -187,6 +178,7 @@ def view_question(request,aid_qid):
                                                                   'inp1':inp1,'inp2':inp2,
                                                                   'out1':out1,'out2':out2,
                                                                   'course':course,"professor":professor})
+
 
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
@@ -252,6 +244,13 @@ def professor_login(request):
         professorLoginForm = ProfessorLoginForm()
         return render(request, 'professor/professor_login.html')
     return redirect('professor_home')
+
+def professor_home(request):
+    if request.session.has_key('username'):
+        pid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(PId=pid)
+        return render(request, 'professor/professor_home.html', {'Coursepost': Coursepost})
+    return HttpResponse("Not Logged in")
 
 def ProfessorFormView(request):
    if request.session.has_key('username'):
@@ -343,30 +342,36 @@ def assistantlist(request):
 
 def Assistant_login(request):
     username = "not logged in"
-
     if request.method == "POST":
-        # Get the posted form
         assistantLoginForm = AssistantLoginForm(request.POST)
-
         if assistantLoginForm.is_valid():
             username = assistantLoginForm.cleaned_data['username']
             request.session['username'] = username
-            s=AssistantDetail.objects.filter(TaId=username)
-            if(s[0].Password!=assistantLoginForm.cleaned_data['password']):
+            taid = AssistantDetail.objects.filter(TaId=username)
+            post =Courses_Ta.objects.get(TaId_id=taid)
+            coursepost = CourseDetail.objects.get(id=post.CourseId_id)
+            if(taid[0].Password!=assistantLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
-
     else:
         assistantLoginForm =AssistantLoginForm()
         return render(request, 'assistant/Assistant_login.html')
-    return redirect('assistant_home')
+    return render(request, 'assistant/assistant_home.html', {'Course': coursepost})
 
 
-def assistant_home(request):
+
+def assistant_home(request,taid):
     if request.session.has_key('username'):
         taid = request.session['username']
         post =Courses_Ta.objects.get(TaId_id=taid)
-        coursepost=CourseDetail.objects.get(id=post.CourseId_id)
-        return render(request, 'assistant/Assistant_home.html', {'coursepost': coursepost})
-    return HttpResponse("Not Logged in")
+        coursepost = CourseDetail.objects.get(id=post.CourseId_id)
+        course=CourseDetail.objects.filter(id=taid)
+        assistant=AssistantDetail.objects.filter(TaId=course[0].TaId)
+        assignmentlist=AssignmentDetail.objects.all()
+        studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
+        talist=AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
+
+    return render(request, 'assistant/Assistant_home.html',
+                  {'Course': coursepost,'assignmentlist':assignmentlist,
+                   'talist':talist,'assistant':assistant.Name,'studentlist':studentlist})
 ############################################################################################################################
 

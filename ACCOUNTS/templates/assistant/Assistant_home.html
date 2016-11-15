@@ -107,24 +107,24 @@
         <div class="content well">
             <div class="row">
                 <div class="box-card1">
-                    <h3>{{ coursepost.CourseId }} : {{ coursepost.CourseName }}</h3>
+                    <h3>{{ Course.CourseId }} : {{ Course.CourseName }}</h3>
                     </br>
                     <h3>
-                        <div align="right">By : Prof. {{ coursepost.PId_id }}</div>
+                        <div align="right">By : {{ Course.PId_id }}</div>
                     </h3>
                     </br>
                 </div>
             </div>
             </br>
             <div>
-                <p class="right">Course Started on: {{ coursepost.StartDate }}</p>
-                <p class="left">Course Ends on: {{ coursepost.EndDate }}</p></br>
+                <p class="right">Course Started on: {{ Course.StartDate }}</p>
+                <p class="left">Course Ends on: {{ Course.EndDate }}</p></br>
             </div>
             </br>
             <div class="row">
                 <div class="box-card1">
                     <h4>Course Description:</h4>
-                    <div class="course-name">{{ coursepost.Description }}
+                    <div class="course-name">{{ Course.Description }}
                     </div>
                     </br>
                 </div>

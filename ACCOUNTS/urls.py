@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^assistant_login$', views.Assistant_login, name='Assistant_login'),
     url(r'^assistant_register$',views.assistant_register, name='assistant_register'),
     url(r'^assistantlist$', views.assistantlist, name='assistantlist'),
-    url(r'^assistant_home$', views.assistant_home, name='assistant_home'),
+    url(r'^assistant_home/(?P<taid>([A-Za-z0-9]+))/$', views.assistant_home, name='assistant_home'),
     ############################################################
     #url(r'^assignment$' , views.assignment, name='assigment')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
