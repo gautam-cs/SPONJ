@@ -107,24 +107,24 @@
         <div class="content well">
             <div class="row">
                 <div class="box-card1">
-                    <h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
+                    <h3>{{ coursepost.CourseId }} : {{ coursepost.CourseName }}</h3>
                     </br>
                     <h3>
-                        <div align="right">By : Prof. {{ professor_name }}</div>
+                        <div align="right">By : Prof. {{ coursepost.PId_id }}</div>
                     </h3>
                     </br>
                 </div>
             </div>
             </br>
             <div>
-                <p class="right">Course Started on: {{ course.StartDate }}</p>
-                <p class="left">Course Ends on: {{ course.EndDate }}</p></br>
+                <p class="right">Course Started on: {{ coursepost.StartDate }}</p>
+                <p class="left">Course Ends on: {{ coursepost.EndDate }}</p></br>
             </div>
             </br>
             <div class="row">
                 <div class="box-card1">
                     <h4>Course Description:</h4>
-                    <div class="course-name">{{ course.Description }}
+                    <div class="course-name">{{ coursepost.Description }}
                     </div>
                     </br>
                 </div>
@@ -133,7 +133,7 @@
             <ul class="nav nav-tabs" id="selector">
                 <li class="prof-tab active" id="assignment"><a href="#">Assignments</a></li>
                 <li class="prof-tab" id="student"><a href="#">Students</a></li>
-                <li class="prof-tab" id="ta"><a href="#">Teaching Assitants</a></li>
+                <li class="prof-tab" id="ta"><a href="#">Teaching Assistants</a></li>
             </ul>
 
             <div class="tab-card row assignments-tab ">
@@ -159,8 +159,8 @@
 
 
                         </table>
-                        {% comment %}<div align="left"><a href="/createassignment/{{ course.id }}
-                            " class="btn btn-default add assignment-btn">Add Assignment</a></div>{% endcomment %}
+                        <div align="left"><a href="/createassignment/{{ coursepost.id }}
+                            " class="btn btn-default add assignment-btn">Add Assignment</a></div>
                     </div>
                     <div class="tab-card row students-tab">
                         <h4>List of Students:</h4>

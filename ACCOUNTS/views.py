@@ -26,7 +26,7 @@ def professor_register(request):
             return redirect('professorlist')
     else:
         pf = ProfessorForm(prefix='professor')
-    return render(request, 'professor\professor_register.html', {'pf': pf}, context)
+    return render(request, 'professor/professor_register.html', {'pf': pf}, context)
 
 
 def course_student(request,cid):
@@ -38,7 +38,7 @@ def course_student(request,cid):
             return redirect(professor_course,cid)
     else:
         csf = CourseStudentForm(prefix='student')
-    return render(request, 'professor\coursestudent.html', {'csf': csf}, context)
+    return render(request, 'professor/coursestudent.html', {'csf': csf}, context)
 
 def course_ta(request,cid):
     context=RequestContext(request)
@@ -49,19 +49,19 @@ def course_ta(request,cid):
             return redirect(professor_course,cid)
     else:
         ctf = CourseStudentForm(prefix='ta')
-    return render(request, 'professor\courseta.html', {'ctf': ctf}, context)
+    return render(request, 'professor/courseta.html', {'ctf': ctf}, context)
 
 def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
     #list=zip(professorposts,profposts)
-    return render(request, 'professor\professorlist.html', {'list': professorposts})
+    return render(request, 'professor/professorlist.html', {'list': professorposts})
 
 #@login_required
 def professor_home(request):
     if request.session.has_key('username'):
         pid = request.session['username']
         Coursepost = CourseDetail.objects.filter(PId=pid)
-        return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
+        return render(request, 'professor/professor_home.html', {'Coursepost': Coursepost})
     return HttpResponse("Not Logged in")
 
 
@@ -73,11 +73,11 @@ def question(request):
             return redirect('questionbank')
     else:
         form=QuestionForm()
-    return render(request,'professor\question.html',{'form':form})
+    return render(request,'professor/question.html',{'form':form})
 
 def questionbank(request):
 	QuestionPost=QuestionDetail.objects.all()
-	return render(request, 'professor\questionbank.html',{'QuestionPost':QuestionPost})
+	return render(request, 'professor/questionbank.html',{'QuestionPost':QuestionPost})
 
 def createcourse(request):
     if request.method=="POST":
@@ -87,11 +87,11 @@ def createcourse(request):
             return redirect('professor_home')
     else:
         courseform=CourseForm()
-    return render(request,'professor\createcourse.html',{'courseform':courseform})
+    return render(request,'professor/createcourse.html',{'courseform':courseform})
 
 def courselist(request):
 	CoursePosts=CourseDetail.objects.all()
-	return render(request, 'professor\courselist.html',{'CoursePosts':CoursePosts})
+	return render(request, 'professor/courselist.html',{'CoursePosts':CoursePosts})
 
 def professor_course(request,cid):
     course=CourseDetail.objects.filter(id=cid)
@@ -99,17 +99,17 @@ def professor_course(request,cid):
     assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
     studentlist=StudentDetail.objects.filter(course_student__CourseId=course[0].id)
     talist=AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
-    return render(request, 'professor\professor_course.html',
+    return render(request, 'professor/professor_course.html',
                   {'course':course[0],'assignmentlist':assignmentlist,'talist':talist,'professor_name':professor[0].Name,'studentlist':studentlist})
 
 def specificcourse(request):
 	specific_course_post=CourseDetail.objects.all()
-	return render(request, 'professor\professor_course.html',{'specific_course_post':specific_course_post})
+	return render(request, 'professor/professor_course.html',{'specific_course_post':specific_course_post})
 
 def createassignment(request,cid):
     if request.method=="POST":
         assignmentform=AssignmentForm(request.POST)
-        #assignmentform.CreationDate = date.today()
+        assignmentform.CreationDate = date.today()
         assignmentform.save()
         if assignmentform.is_valid():
             assignmentform.save()
@@ -119,7 +119,7 @@ def createassignment(request,cid):
 
     else:
         assignmentform=AssignmentForm()
-    return render(request,'professor\createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
+    return render(request,'professor/createassignment.html',{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 
 
@@ -144,7 +144,7 @@ def view_question(request,aid_qid):
     inpf1.open(mode='rb')
     inp1 = inpf1.read()
     inpf1.close()
-    inpf2 = question.TestCaseInputFile2
+    inpf2 = question.TestCaseInputFile2aa
     inpf2.open(mode='rb')
     inp2 = inpf2.read()
     inpf2.close()
@@ -251,7 +251,7 @@ def student_register(request):
             return redirect('studentlist')
     else:
         sf=StudentForm(prefix='student')
-    return render(request,'student\student_register.html', {'sf':sf}, context)
+    return render(request,'student/student_register.html', {'sf':sf}, context)
 
 
 def Student_login(request):
@@ -338,8 +338,9 @@ def Assistant_login(request):
 def assistant_home(request):
     if request.session.has_key('username'):
         taid = request.session['username']
-        coursepost = AssistantDetail.objects.filter(TaId=taid)
-        return render(request, 'assistant/Assistant_home.html', {'Coursepost': coursepost})
+        post =Courses_Ta.objects.get(TaId_id=taid)
+        coursepost=CourseDetail.objects.get(id=post.CourseId_id)
+        return render(request, 'assistant/Assistant_home.html', {'coursepost': coursepost})
     return HttpResponse("Not Logged in")
 ############################################################################################################################
 
