@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^student_home$', views.student_home, name='student_home'),
     url(r'^studentlist$', views.studentlist, name='studentlist'),
     url(r'^studentcourse/(?P<cid>([A-Za-z0-9]+))/$', views.student_course, name='student_course'),
+    url(r'^viewassignment_student/(?P<asid>([A-Za-z0-9]+))/$', views.view_assignment_student, name='view_assignment_stud'),
+    url(r'^viewquestion_student/(?P<aid_qid>([A-Za-z0-9_]+))/$', views.view_question_student, name='view_question'),
 
                   ###################Professor URL#############################
     url(r'^professor_login$', views.professor_login, name='professor_login'),

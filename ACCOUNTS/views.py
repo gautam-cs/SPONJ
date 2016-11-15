@@ -170,7 +170,7 @@ def view_question(request,aid_qid):
     inpf1.open(mode='rb')
     inp1 = inpf1.read()
     inpf1.close()
-    inpf2 = question.TestCaseInputFile2aa
+    inpf2 = question.TestCaseInputFile2
     inpf2.open(mode='rb')
     inp2 = inpf2.read()
     inpf2.close()
@@ -269,6 +269,35 @@ def Professor_logout(request):
 
 ##############################################STUDENT IMPLEMENTATION#######################################################
 
+def view_question_student(request,aid_qid):
+    aid=aid_qid.split("_")[0]
+    qid=aid_qid.split("_")[1]
+    question=QuestionDetail.objects.get(pk=qid)
+    assignment=AssignmentDetail.objects.get(pk=aid)
+    course=CourseDetail.objects.get(id=1)
+    professor=ProfessorDetail.objects.get(pk=course.PId_id)
+    inpf1 = question.TestCaseInputFile1
+    inpf1.open(mode='rb')
+    inp1 = inpf1.read()
+    inpf1.close()
+    inpf2 = question.TestCaseInputFile2
+    inpf2.open(mode='rb')
+    inp2 = inpf2.read()
+    inpf2.close()
+    outf2 = question.OutputFile2
+    outf2.open(mode='rb')
+    out2 = outf2.read()
+    outf2.close()
+    outf1 = question.OutputFile1
+    outf1.open(mode='rb')
+    out1 = outf1.read()
+    outf1.close()
+    return render(request,'student/view_question_student.html',context={'question':question,
+                                                                  'assignment':assignment,
+                                                                  'inp1':inp1,'inp2':inp2,
+                                                                  'out1':out1,'out2':out2,
+                                                                  'course':course,"professor":professor})
+
 def student_course(request,cid):
     course=CourseDetail.objects.filter(id=cid)
     professor=ProfessorDetail.objects.filter(PId=course[0].PId)
@@ -317,6 +346,16 @@ def student_home(request):
                                                                          'courses':courses})
     return HttpResponse("Not Logged in")
 
+
+def view_assignment_student(request,asid):
+    assignment=AssignmentDetail.objects.get(pk=asid)
+    professor=ProfessorDetail.objects.get(pk=CourseDetail.objects.get(pk=assignment.Courseid_id).PId_id)
+    languages=Assignment_languages.objects.filter(AssignmentId=asid)
+    questions=QuestionDetail.objects.filter(assignmentquestion__AId=asid)
+    return render(request,'student/viewassignmentstudent.html',context={'assignment':assignment,
+                                                                       'professor':professor,
+                                                                       'languages':languages,
+                                                                       'questions':questions})
 
 def StudentFormView(request):
    if request.session.has_key('username'):
