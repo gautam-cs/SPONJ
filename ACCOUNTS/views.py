@@ -78,7 +78,7 @@ def question_as(request,asid):
             return redirect('''/viewassignment/'''+asid)
     else:
         form=QuestionForm()
-    return render(request,'professor\question.html',{'form':form})
+    return render(request,'professor/question.html',{'form':form})
 
 def questionbank(request):
 	QuestionPost=QuestionDetail.objects.all()
@@ -136,7 +136,7 @@ def createassignment_and_add_q(request,cid):
 
     else:
         assignmentform=AssignmentForm()
-    return render(request,'professor\createassignment.html'
+    return render(request,'professor/createassignment.html'
                   ,{'assignmentform':assignmentform,'course':CourseDetail.objects.get(pk=cid)})
 
 
