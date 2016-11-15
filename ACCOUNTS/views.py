@@ -293,16 +293,20 @@ def Student_login(request):
             if(s[0].Password!=studentLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
+        return redirect('student_home')
+
     else:
         studentLoginForm = StudentLoginForm()
         return render(request, 'student/student_login.html')
-    return redirect('student_home')
+
 
 def student_home(request):
     if request.session.has_key('username'):
         sid = request.session['username']
+        courses = CourseDetail.objects.filter(course_student__SId_id=sid)
         Studentpost = StudentDetail.objects.filter(SId=sid)
-        return render(request, 'professor/professor_home.html', {'Studentpost': Studentpost})
+        return render(request, 'student/student_home.html', context={'Studentpost': Studentpost,
+                                                                         'courses':courses})
     return HttpResponse("Not Logged in")
 
 
