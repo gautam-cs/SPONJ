@@ -75,6 +75,20 @@ def question(request):
         form=QuestionForm()
     return render(request,'professor\question.html',{'form':form})
 
+def question_as(request,asid):
+    if request.method=="POST":
+        form=QuestionForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            print(form.auto_id)
+            q_a_form=AssignmentQuestionForm()
+            q_a_form.AId=asid
+            q_a_form.QId=form.auto_id
+            form.save()
+            return redirect('viewassignment/'+asid)
+    else:
+        form=QuestionForm()
+    return render(request,'professor\question.html',{'form':form})
+
 def questionbank(request):
 	QuestionPost=QuestionDetail.objects.all()
 	return render(request, 'professor\questionbank.html',{'QuestionPost':QuestionPost})

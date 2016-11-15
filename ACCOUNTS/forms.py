@@ -10,6 +10,10 @@ class QuestionForm(forms.ModelForm):
         model = QuestionDetail
         fields = '__all__'
 
+class AssignmentQuestionForm(forms.ModelForm):
+    class Meta:
+        model = AssignmentQuestion
+        fields = '__all__'
 
 class ProfessorForm(forms.ModelForm):
     Password = forms.CharField(widget=forms.PasswordInput)

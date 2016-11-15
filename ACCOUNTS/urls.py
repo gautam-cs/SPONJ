@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^professor_register$',views.professor_register, name='professor_register'),
     url(r'^professorlist$',views.professorlist,name='professorlist'),
     url(r'^question$', views.question, name='question'),
+    url(r'^question/(?P<asid>([A-Za-z0-9]+))/$', views.question_as, name='question_as'),
     url(r'^questionbank$', views.questionbank, name='questionbank'),
     url(r'^createcourse$',views.createcourse,name='createcourse'),
     url(r'^courselist$',views.courselist,name='courselist'),
