@@ -61,7 +61,6 @@ def professor_home(request):
     if request.session.has_key('username'):
         pid = request.session['username']
         Coursepost = CourseDetail.objects.filter(PId=pid)
-        print(Coursepost[0])
         return render(request, 'professor\professor_home.html', {'Coursepost': Coursepost})
     return HttpResponse("Not Logged in")
 
@@ -208,34 +207,23 @@ def view_submission(request,subid):
                                                                      'student':student})
 
 
-def student_register(request):
-    context = RequestContext(request)
-    if request.method == 'POST':
-        sf = StudentForm(data=request.POST, prefix='student')
-        if sf.is_valid():
-            sf.save()
-            return redirect('studentlist')
-    else:
-        sf=StudentForm(prefix='student')
-    return render(request,'student\student_register.html', {'sf':sf}, context)
-
 
 def professor_login(request):
     username = "not logged in"
 
     if request.method == "POST":
         # Get the posted form
-        ProfessorLoginForm = StudentLoginForm(request.POST)
+        professorLoginForm = ProfessorLoginForm(request.POST)
 
-        if ProfessorLoginForm.is_valid():
-            username = ProfessorLoginForm.cleaned_data['username']
+        if professorLoginForm.is_valid():
+            username = professorLoginForm.cleaned_data['username']
             request.session['username'] = username
             s=ProfessorDetail.objects.filter(PId=username)
-            if(s[0].Password!=ProfessorLoginForm.cleaned_data['password']):
+            if(s[0].Password!=professorLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
     else:
-        ProfessorLoginForm = StudentLoginForm()
+        professorLoginForm = ProfessorLoginForm()
         return render(request, 'professor/professor_login.html')
     return redirect('professor_home')
 
@@ -244,7 +232,7 @@ def ProfessorFormView(request):
       username = request.session['username']
       return render(request, 'professor/professor_home.html', {"username" : username})
    else:
-      return render(request, 'student/student_login.html', {})
+      return render(request, 'professor/professor_login.html', {})
 
 
 def Professor_logout(request):
@@ -270,20 +258,27 @@ def Student_login(request):
     username = "not logged in"
 
     if request.method == "POST":
-        # Get the posted form
-        MyStudentLoginForm = StudentLoginForm(request.POST)
+        studentLoginForm = StudentLoginForm(request.POST)
 
-        if StudentLoginForm.is_valid():
-            username = StudentLoginForm.cleaned_data['username']
+        if studentLoginForm.is_valid():
+            username = studentLoginForm.cleaned_data['username']
             request.session['username'] = username
             s=StudentDetail.objects.filter(SId=username)
-            if(s[0].Password!=StudentLoginForm.cleaned_data['password']):
+            if(s[0].Password!=studentLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
     else:
-        MyStudentLoginForm = StudentLoginForm()
+        studentLoginForm = StudentLoginForm()
         return render(request, 'student/student_login.html')
-    return redirect('studentlist')
+    return redirect('student_home')
+
+def student_home(request):
+    if request.session.has_key('username'):
+        sid = request.session['username']
+        Studentpost = StudentDetail.objects.filter(SId=sid)
+        return render(request, 'professor\professor_home.html', {'Studentpost': Studentpost})
+    return HttpResponse("Not Logged in")
+
 
 def StudentFormView(request):
    if request.session.has_key('username'):
@@ -325,26 +320,26 @@ def Assistant_login(request):
 
     if request.method == "POST":
         # Get the posted form
-        MyAssistantLoginForm = AssistantLoginForm(request.POST)
+        assistantLoginForm = AssistantLoginForm(request.POST)
 
-        if AssistantLoginForm.is_valid():
-            username = AssistantLoginForm.cleaned_data['username']
+        if assistantLoginForm.is_valid():
+            username = assistantLoginForm.cleaned_data['username']
             request.session['username'] = username
-            s=ProfessorDetail.objects.filter(PId=username)
-            if(s[0].Password!=AssistantLoginForm.cleaned_data['password']):
+            s=AssistantDetail.objects.filter(TaId=username)
+            if(s[0].Password!=assistantLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
     else:
-        MyAssistantLoginForm =AssistantLoginForm()
+        assistantLoginForm =AssistantLoginForm()
         return render(request, 'assistant/Assistant_login.html')
-    return redirect('professor_home')
+    return redirect('assistant_home')
 
-def ProfessorFormView(request):
-   if request.session.has_key('username'):
-      username = request.session['username']
-      return render(request, 'professor/professor_home.html', {"username" : username})
 
-   else:
-      return render(request, 'student/student_login.html', {})
+def assistant_home(request):
+    if request.session.has_key('username'):
+        taid = request.session['username']
+        coursepost = AssistantDetail.objects.filter(TaId=taid)
+        return render(request, 'assistant\Assistant_home.html', {'Coursepost': coursepost})
+    return HttpResponse("Not Logged in")
 ############################################################################################################################
 
