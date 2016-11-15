@@ -276,7 +276,7 @@ def student_home(request):
     if request.session.has_key('username'):
         sid = request.session['username']
         Studentpost = StudentDetail.objects.filter(SId=sid)
-        return render(request, 'professor\professor_home.html', {'Studentpost': Studentpost})
+        return render(request, 'professor/professor_home.html', {'Studentpost': Studentpost})
     return HttpResponse("Not Logged in")
 
 
@@ -293,7 +293,7 @@ def Student_logout(request):
 
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
-    return render(request, 'student\studentlist.html', {'list': studentposts})
+    return render(request, 'student/studentlist.html', {'list': studentposts})
 #############################################################################################################################
 
 
@@ -307,13 +307,13 @@ def assistant_register(request):
             return redirect('Assistantlist')
     else:
         Af = AssistantForm(prefix='Assistant')
-    return render(request, 'Assistant\Assistant_register.html', {'Af': Af}, context)
+    return render(request, 'Assistant/Assistant_register.html', {'Af': Af}, context)
 
 def assistantlist(request):
     assistantposts = AssistantDetail.objects.all()
     asposts=User.objects.all()
     list=zip(assistantposts,asposts)
-    return render(request, 'assistant\Assistantlist.html', {'list': list})
+    return render(request, 'assistant/Assistantlist.html', {'list': list})
 
 def Assistant_login(request):
     username = "not logged in"
@@ -339,7 +339,7 @@ def assistant_home(request):
     if request.session.has_key('username'):
         taid = request.session['username']
         coursepost = AssistantDetail.objects.filter(TaId=taid)
-        return render(request, 'assistant\Assistant_home.html', {'Coursepost': coursepost})
+        return render(request, 'assistant/Assistant_home.html', {'Coursepost': coursepost})
     return HttpResponse("Not Logged in")
 ############################################################################################################################
 
