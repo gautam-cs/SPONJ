@@ -383,7 +383,7 @@ def assistant_register(request):
             return redirect('Assistantlist')
     else:
         Af = AssistantForm(prefix='Assistant')
-    return render(request, 'Assistant/Assistant_register.html', {'Af': Af}, context)
+    return render(request, 'assistant/Assistant_register.html', {'Af': Af}, context)
 
 def assistantlist(request):
     assistantposts = AssistantDetail.objects.all()
@@ -406,7 +406,7 @@ def Assistant_login(request):
     else:
         assistantLoginForm =AssistantLoginForm()
         return render(request, 'assistant/Assistant_login.html')
-    return render(request, 'assistant/assistant_home.html', {'Course': coursepost})
+    return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
 
 
 
