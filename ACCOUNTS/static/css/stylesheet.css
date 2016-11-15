@@ -169,9 +169,9 @@ body {
 }
 .test_case_input{
     background-color: #FFFFFF;
+
     padding: 5px;
     font-family: monospace;
-    border-width: thick;
 }
 
 .studentvsqmatrix{
@@ -185,7 +185,7 @@ body {
 
 .space { margin-top: 230px; }
 .test_case_output{
-    background-color: #FFFFFF;
+   background-color: #FFFFFF;
     padding: 5px;
     font-family: monospace;
 }
