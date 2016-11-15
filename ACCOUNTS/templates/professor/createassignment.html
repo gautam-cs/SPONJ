@@ -100,7 +100,7 @@
         </div>
         <div class="col-md-7">
             <div class="content well">
-                <form method="POST"  action="/createassignment/{{course.id  }}/" class="post-form">{% csrf_token %}
+                <form method="POST"  action="/createassignment/{{course.id}}/" class="post-form">{% csrf_token %}
                 <h4>
                     <div align="center">{{ course.CourseId }} : {{ course.CourseName }}</div>
                 </h4>
@@ -141,34 +141,7 @@
                     <label><input type="checkbox" value="">Python</label>
                 </div>
 				{% endcomment %}
-					<div class="row">
-							<b>Questions:</b>
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th>QuestionID</th>
-										<th>Question Name</th>
-										<th>Author</th>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-									<tr>
-										<td>QID</td>
-										<td>QNAME</td>
-										<td>Author#</td>
-									</tr>
-								</thead>
-							</table>
-							<div align="left"><a href="#" class="btn btn-default add a question">Add a Question</a></div>
-						</br>
+
                         <button type="submit" class="save btn btn-default">Create</button>
 					{% comment %}<div align="center"><a href="#" class="btn btn-default create">Create</a></div>{% endcomment %}
         </div>
