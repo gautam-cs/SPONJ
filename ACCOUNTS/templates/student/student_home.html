@@ -90,13 +90,12 @@
                 <div class="row">
                     <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
                         {% for course in courses %}
-                            <a href="professorcourse/{{ course.id }}">
+                            <a href="studentcourse/{{ course.id }}">
                         <div class="course box-card col-lg-2">
                             <h4>{{ course.CourseId }}</h4>
                         <div class="course-name"> {{course.CourseName}}</div>
                         <div class="prof-name">{{course.PId}}</div>
                         <div class="course-year-sem">{{course.Semester}} - {{course.Year}}</div>
-
                             </div></a>
                         {% endfor %}
                 </div>

@@ -12,9 +12,9 @@ urlpatterns = [
     url(r'^student_register$',views.student_register, name='student_register'),
     url(r'^student_home$', views.student_home, name='student_home'),
     url(r'^studentlist$', views.studentlist, name='studentlist'),
+    url(r'^studentcourse/(?P<cid>([A-Za-z0-9]+))/$', views.student_course, name='student_course'),
 
-
-    ###################Professor URL#############################
+                  ###################Professor URL#############################
     url(r'^professor_login$', views.professor_login, name='professor_login'),
     url(r'^professor_home$', views.professor_home, name='professor_home'),
     url(r'^professor_register$',views.professor_register, name='professor_register'),

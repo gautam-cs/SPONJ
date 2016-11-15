@@ -268,6 +268,14 @@ def Professor_logout(request):
 
 
 ##############################################STUDENT IMPLEMENTATION#######################################################
+
+def student_course(request,cid):
+    course=CourseDetail.objects.filter(id=cid)
+    professor=ProfessorDetail.objects.filter(PId=course[0].PId)
+    assignmentlist=AssignmentDetail.objects.filter(Courseid=course[0].id)
+    return render(request, 'student/student_course.html',
+                  {'course':course[0],'assignmentlist':assignmentlist,'professor_name':professor[0].Name,})
+
 def student_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
