@@ -3,7 +3,6 @@ from django import forms
 from ACCOUNTS.models import *
 from django.contrib.auth.models import User
 import datetime
-
 ######################################################Professor FOrms#############################################
 class QuestionForm(forms.ModelForm):
     class Meta:
@@ -14,6 +13,8 @@ class AssignmentQuestionForm(forms.ModelForm):
     class Meta:
         model = AssignmentQuestion
         fields = '__all__'
+
+
 
 class ProfessorForm(forms.ModelForm):
     Password = forms.CharField(widget=forms.PasswordInput)
