@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^assignmentlist$',views.assignmentlist,name='assignmentlist'),
     url(r'^professorcourse/(?P<cid>([A-Za-z0-9]+))/$',views.professor_course,name='professor_course'),
     url(r'^viewassignment/(?P<asid>([A-Za-z0-9]+))/$',views.view_assignment,name='view_assignmentprof'),
+    url(r'^viewquestion/(?P<aid_qid>([A-Za-z0-9_]+))/$',views.view_question,name='view_question'),
     url(r'^viewsubmission/(?P<subid>([A-Za-z0-9]+))/$',views.view_submission,name='view_submissionprof'),
     url(r'^studentvsquestion_matrix/(?P<asid>([A-Za-z0-9]+))/$',views.studentvsques_matrix,name='view_studentvsquestion_matrix'),
     url(r'^professorcourse$', views.professor_course, name='professor_course'),

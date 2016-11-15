@@ -10,6 +10,8 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from datetime import date
 from django.contrib.auth.models import User
+import os
+
 
 def index(request):
     return render (request, "index.html")
@@ -126,10 +128,40 @@ def view_assignment(request,asid):
     professor=ProfessorDetail.objects.get(pk=request.session['username'])
     languages=Assignment_languages.objects.filter(AssignmentId=asid)
     questions=QuestionDetail.objects.filter(assignmentquestion__AId=asid)
-    return render(request,'professor/viewassignmentprof.html',context={'assignment':assignment,'professor':professor,'languages':languages,'questions':questions})
+    return render(request,'professor/viewassignmentprof.html',context={'assignment':assignment,
+                                                                       'professor':professor,
+                                                                       'languages':languages,
+                                                                       'questions':questions})
 
-def view_question(request,qid):
-    render()
+def view_question(request,aid_qid):
+    aid=aid_qid.split("_")[0]
+    qid=aid_qid.split("_")[1]
+    question=QuestionDetail.objects.get(pk=qid)
+    assignment=AssignmentDetail.objects.get(pk=aid)
+    course=CourseDetail.objects.get(id=1)
+    professor=ProfessorDetail.objects.get(pk=course.PId_id)
+    inpf1 = question.TestCaseInputFile1
+    inpf1.open(mode='rb')
+    inp1 = inpf1.read()
+    inpf1.close()
+    inpf2 = question.TestCaseInputFile2
+    inpf2.open(mode='rb')
+    inp2 = inpf2.read()
+    inpf2.close()
+    outf2 = question.OutputFile2
+    outf2.open(mode='rb')
+    out2 = outf2.read()
+    outf2.close()
+    outf1 = question.OutputFile1
+    outf1.open(mode='rb')
+    out1 = outf1.read()
+    outf1.close()
+    return render(request,'professor/view_question.html',context={'question':question,
+                                                                  'assignment':assignment,
+                                                                  'inp1':inp1,'inp2':inp2,
+                                                                  'out1':out1,'out2':out2,
+                                                                  'course':course,"professor":professor})
+
 def assignmentlist(request):
 	AssignmentPosts=AssignmentDetail.objects.all()
 	return render(request, 'professor/assignmentlist.html',{'AssignmentPosts':AssignmentPosts})

@@ -9,9 +9,9 @@
     <title>View Assignment</title>
 </head>
 <body>
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/script.js"></script>
-    <script src="/static/js/monthly.js"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
     <script type="text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
@@ -99,7 +99,7 @@
 					{% endfor %}
 					</h5></div>
 
-                    <a href="\studentvsquestion_matrix\{{ assignment.id }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
+                    <a href="/studentvsquestion_matrix/{{ assignment.id }}"><div  class="btn btn-default" align="right" style="float: right">View Student v/s Question Matrix</div></a>
 
 <br>
                 <div class="row">
@@ -124,7 +124,7 @@
 								</thead>
                         {% for question in questions %}
                                     <tr>
-										<td>{{ question.id }}</td>
+										<td><a href="/viewquestion/{{ assignment.id }}_{{ question.id }}"> {{ question.id }}</a></td>
 										<td>{{ question.QName }}</td>
 										<td>{{ question.QAuthor }}</td>
 									</tr>

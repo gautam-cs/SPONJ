@@ -1,27 +1,18 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+<html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/stylesheet.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/monthly.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <title>Question Name</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="{% static 'css/monthly.css' %}">
+<title>View Question</title>
 </head>
 <body>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/script.js"></script>
-<script src="../js/filetree.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-        $("#datepicker1").datepicker({dateFormat: 'dd/mm/yy'});
-    });
-</script>
-<script type="text/javascript" src="../js/monthly.js"></script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
 <script type="text/javascript">
     $(window).load(function () {
         $('#mycalendar').monthly({
@@ -103,112 +94,43 @@
         <div class="col-md-7">
             <div class="content well">
                 <div class="head_q">
-                    <h4>Course ID : Course Name</h4>
-                    <h4>Assignment ID: Assignment Name </h4>
-                    <div align="right">By : Prof Ramesh</div>
+                    <h4>{{ course.CourseId }}: {{ course.CourseName }}</h4>
+                    <h4>Assignment Name: {{ assignment.AssignmentName }} </h4>
+                    <div align="right">By : Prof {{ professor.Name }}</div>
                 </div>
                 <div class="question">
-                    <h4> Q ID: Q Name</h4>
+                    <h4> ID: {{ question.id }} Name: {{ question.QName }} </h4>
                     <h4 align="center">Description</h4>
                     <p>
-                        ddsfugsbgfsfkjg sdufgnvfodnvbb dsfuvsfndvs dvsiudnbsdfbn skbmfunbsnbfkbg vfjvnfdbnsslvndbnsbnb
-                        bsbnfblknbb kbnsjdnvv
+                        {{ question.QDescription }}
                     </p>
                     <div class="tests row">
                         <div class="test_input col-lg-3">
                             Test Input 1 <br>
-                            <div class="test_case_input">1 2<br>3 4</div>
+                            <pre class="test_case_input">{{ inp1 }}</pre>
                         </div>
                         <div class="test_output col-lg-3">
                             Test Output 1<br>
-                            <div class="test_case_output">1 <br>4</div>
+                            <pre class="test_case_output">{{ out1 }}</pre>
                         </div>
 
                         <div class="test_input col-lg-3">
                             Test Input 2<br>
-                            <div class="test_case_input">1 2<br>3 4</div>
+                            <pre class="test_case_input">{{ inp2 }}</pre>
                         </div>
                         <div class="test_output col-lg-3">
                             Test Output 2<br>
-                            <div class="test_case_output">1 <br>4</div>
+                            <pre class="test_case_output">{{ out2 }}</pre>
                         </div>
                     </div>
                     <br>
                     <div align="center"><img
-                            src="http://dubaiofw.com/wp-content/uploads/2016/04/marvel-img-worlds-of-adventure-dubai.jpg"
+                            src="{{ question.Image.url }}"
                             width="50%" alt="An image icon"></div>
                     <br>
-                    <div align="center"><a href="#" class="btn btn-default create-btn">View Previous Submission</a>
-                    </div>
-                </div>
-                Select Programming Language:
-                <div class="form-group" style="width: 50%" id="language_select">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option id="c">C</option>
-                        <option id="c++">C++</option>
-                        <option id="java">Java</option>
-                        <option id="python3">python3</option>
-                    </select>
+
                 </div>
 
-
-                <pre id="editor">
-                function foo(items) {
-                    var i;
-                    for (i = 0; i &lt; items.length; i++) {
-                        alert("Ace Rocks " + items[i]);
-                    }
-                }
-            </pre>
-                <script src="../js/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-                <script>
-                    var editor = ace.edit("editor");
-                    editor.setTheme("ace/theme/twilight");
-                    editor.session.setMode("ace/mode/javascript");
-                    console.log('afs');
-
-                    $('body').on('change','#sel1',function () {
-                        console.log("changed"+$(this). val());
-                        if($(this). val()=='c'){
-                            editor.session.setMode("ace/mode/c_cpp");
-                        }else if ($(this). val()=='c++'){
-                            editor.session.setMode("ace/mode/c_cpp");
-                        }else if($(this). val()=='java'){
-                            editor.session.setMode("ace/mode/java");
-                        }else if($(this). val()=='python3'){
-                            editor.session.setMode("ace/mode/python");
-                        }
-//                        editor.session.setMode("ace/mode/"+$(this). val());
-//                       editor.setValue("sdkusdkgbskdbgbikadfsg sadkbfasidugfbasdi fasiudgfiasudbvasd vasiugfasidugvbak xviasdgfiuasbvilasdgvn sdfguasdfkbasdkfv")
-                    })
-                </script>
-                </br>
-                <div class="form-group col-lg-12">
-                    <label for="code_upld">Upload your code</label>
-                    <input type="file" class="form-control" id="code_upld">
-                </div>
-                <div class="btn btn-default">Run Code</div>
-                <div class="btn btn-default">Submit Code</div>
-                <div class="code_result">
-                    <h4>Result:</h4> <h5 id="result">Pass</h5>
-                    <div class="test_input">
-                        Test Input 1 <br>
-                        <div class="test_case_input">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Output Expected <br>
-                        <div class="test_case_output">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Your Output <br>
-                        <div class="test_case_output">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Compiler Message <br>
-                        <div class="test_case_output">Succesfull</div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-md-3">
