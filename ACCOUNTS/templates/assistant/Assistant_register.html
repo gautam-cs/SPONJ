@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>assistant_register</title>
+    <title>Assistant Register</title>
 </head>
 <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
@@ -21,12 +21,11 @@
     </div>
 
 <div class="datamining">
-<h2 class="subhead">create account</h2></br>
+<h2 class="subhead">Create Account</h2></br>
     <!--<form id="user_form" method="post" action="professor_list">-->
     <form method="POST" class="post-form">
         {% csrf_token %}
-        {{ af.as_p }}
-        {{apf.as_p}}
+        {{ Af.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
     </div>
