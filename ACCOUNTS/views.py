@@ -15,8 +15,6 @@ import os
 
 def index(request):
     return render(request, "index.html")
-
-
 ############################################PROFESSOR IMPLEMENTATION#######################################################
 def professor_register(request):
     context = RequestContext(request)
@@ -58,7 +56,6 @@ def professorlist(request):
     professorposts = ProfessorDetail.objects.all()
     # list=zip(professorposts,profposts)
     return render(request, 'professor/professorlist.html', {'list': professorposts})
-
 
 # @login_required
 
@@ -281,11 +278,7 @@ def Professor_logout(request):
     return HttpResponseRedirect('/')
 
 
-###########################################################################################################################
-
-
 ##############################################STUDENT IMPLEMENTATION#######################################################
-
 def view_question_student(request, aid_qid):
     aid = aid_qid.split("_")[0]
     qid = aid_qid.split("_")[1]
@@ -380,7 +373,8 @@ def view_report_student(request, cid):
                 question_report['correct'] = False
                 total_number_of_question += 1
                 question_report['question'] = question
-                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username).order_by('-SubmissionTime')
+                submissions = Submission.objects.filter(QuestionId_id=question.id,
+                                                        StudentId_id=username).order_by('-SubmissionTime')
                 question_report['no_of_submissions'] = submissions.count()
                 if submissions.count() is not 0:
                     question_report['attempted'] = True
@@ -484,9 +478,6 @@ def logout(request):
 def studentlist(request):
     studentposts = StudentDetail.objects.all()
     return render(request, 'student/studentlist.html', {'list': studentposts})
-
-
-#############################################################################################################################
 
 
 ##############################################ASSISTANT IMPLEMENTATION#######################################################
