@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^studentcourse/(?P<cid>([A-Za-z0-9]+))/$', views.student_course, name='student_course'),
     url(r'^viewassignment_student/(?P<asid>([A-Za-z0-9]+))/$', views.view_assignment_student, name='view_assignment_stud'),
     url(r'^viewquestion_student/(?P<aid_qid>([A-Za-z0-9_]+))/$', views.view_question_student, name='view_question'),
+    url(r'^viewassignmentwisereport_student/(?P<aid>([A-Za-z0-9]+))/$', views.view_report_wise_student, name='view_assignmentwise_report'),
+    url(r'^viewassignmentfullreport_student/(?P<cid>([A-Za-z0-9]+))/$', views.view_report_student, name='view_assignment_report'),
 
                   ###################Professor URL#############################
     url(r'^professor_login$', views.professor_login, name='professor_login'),

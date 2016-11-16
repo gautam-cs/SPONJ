@@ -1,0 +1,187 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="{% static 'css/monthly.css' %}">
+<title>View Report</title>
+</head>
+<body>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/monthly.js' %}"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#mycalendar').monthly({
+            mode: 'event',
+            jsonUrl: '../events.json',
+            dataType: 'json'
+        });
+
+    });
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-12">
+            <h1 class="title">Submissions Portal and ONline Judge</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="navigation-tree well">
+
+                <ul class="nav nav-list">
+                    <li><label class="tree-toggler nav-header">Header 1</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="tree-toggler nav-header">Header 1.1</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><label class="tree-toggler nav-header">Header 2</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="tree-toggler nav-header">Header 2.1</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><label class="tree-toggler nav-header">Header 2.2</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="content well">
+                <h4>Assignments:</h4>
+                <div class="assignments">
+                    <div class="assignment_report">
+                        <div class="assignment_report_title current row">
+                            <h5>Overall Report</h5>
+                        </div>
+                        <div class="assignment_report_description row overall_description">
+                            <table class="overall_report_table">
+                                <tr>
+                                    <th>Total Number of Assignments</th>
+                                    <td>{{ all_assignments_report|length  }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Number of Questions</th>
+                                    <td>{{ total_number_of_question }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Number of Attempted Questions</th>
+                                    <td>{{ total_number_of_attempted_question }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Number of Questions Solved</th>
+                                    <td>{{ total_number_of_solved_question }}</td>
+                                </tr>
+                            </table>
+                            <table class="assignments_table">
+                                <tr>
+                                    <th>Assignment Name</th>
+                                    <th>No. of Questions</th>
+                                    <th>No. of Questions Attempted</th>
+                                    <th>No. of Questions Solved</th>
+                                </tr>
+                                {% for assignment_report in all_assignments_report %}
+                                <tr>
+                                    <td>{{ assignment_report.assignment.AssignmentName }}</td>
+                                    <td>{{  assignment_report.questions|length }}</td>
+                                    <td>{{  assignment_report.no_of_attempted_question }}</td>
+                                    <td>{{  assignment_report.no_of_solved_question }}</td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </table>
+                        </div>
+                    </div>
+                    {% for assignment_report in all_assignments_report %}
+                    <div class="assignment_report {% if assignment_report.assignment.id == selected %}active{% endif %}">
+                        <div class="assignment_report_title row">
+                            <h5>{{ assignment_report.assignment.AssignmentName }}</h5>
+                        </div>
+                        <div class="assignment_report_description row ">
+                            <h5 class="assignment_name">
+                                {{ assignment_report.assignment.AssignmentName }}
+                                <span class="no_of_questions" >Total Number of Questions: {{ assignment_report.questions|length  }}
+                                </span>
+                            </h5>
+                            <table class="questions_table">
+                                <tr>
+                                    <th>Q. No.</th>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>No. of Submissions</th>
+                                    <th>Correct</th>
+                                </tr>
+                                {% for question_report in assignment_report.questions %}
+                                    <tr>
+                                    <td>{{ forloop.counter }}  </td>
+                                    <td>{{ question_report.question.QName }}</td>
+                                    <td>{{ question_report.question.id }}</td>
+                                    <td>{{ question_report.no_of_submissions }}</td>
+                                    <td>{{ question_report.correct }}</td>
+                                    <td><button>View Submissions</button></td>
+                                    </tr>
+                                {% endfor %}
+
+
+                            </table>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class="calender well">
+                <div class="monthly" id="mycalendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

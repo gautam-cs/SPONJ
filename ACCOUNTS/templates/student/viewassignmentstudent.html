@@ -103,7 +103,10 @@
                 {% endfor %}
                 </h5></div>
 
-                <div align="right" class="btn btn-default" style="float: right">View Report For This Assignment</div>
+                <a href="/viewassignmentwisereport_student/{{ assignment.id }}/">
+                    <div align="right" class="btn btn-default" style="float: right">View Report For This Assignment
+                    </div>
+                </a>
 
                 <br>
                 <div class="row">
@@ -128,7 +131,8 @@
                         </thead>
                         {% for question in questions %}
                             <tr>
-                                <td><a href="/viewquestion_student/{{ assignment.id }}_{{ question.id }}"> {{ question.id }}</a>
+                                <td>
+                                    <a href="/viewquestion_student/{{ assignment.id }}_{{ question.id }}"> {{ question.id }}</a>
                                 </td>
                                 <td>{{ question.QName }}</td>
                                 <td>{{ question.QAuthor }}</td>

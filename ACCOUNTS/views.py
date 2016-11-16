@@ -296,6 +296,93 @@ def view_question_student(request,aid_qid):
                                                                   'inp1':inp1,'inp2':inp2,
                                                                   'out1':out1,'out2':out2,
                                                                   'course':course,"professor":professor})
+def view_report_wise_student(request,aid):
+    if request.session.has_key('username'):
+        username = request.session['username']
+        all_assignments_reports=[]
+        total_number_of_question=0
+        total_number_of_attempted_question=0
+        total_number_of_solved_question=0
+        assignments=AssignmentDetail.objects.filter(Courseid_id=AssignmentDetail.objects.get(id=aid).Courseid_id)
+        for assignment in assignments:
+            assignment_report = {}
+            assignment_report['assignment']=assignment
+            assignment_report['no_of_attempted_question']=0
+            assignment_report['no_of_solved_question']=0
+            questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+            all_questions_report = []
+            for question in questions:
+                question_report = {}
+                question_report['correct'] = False
+                total_number_of_question+=1
+                question_report['question'] = question
+                submissions=Submission.objects.filter(QuestionId_id=question.id,StudentId_id=username)
+                question_report['no_of_submissions']=submissions.count()
+                if submissions.count() is not 0:
+                    question_report['attempted'] = True
+                    total_number_of_attempted_question+=1
+                    assignment_report['no_of_attempted_question']+=1
+                else:
+                    question_report['attempted'] = False
+
+                for submission in submissions:
+                    if submission.Result=='correct':
+                        question_report['correct']=True
+                if question_report['correct']==True:
+                    total_number_of_solved_question+=1
+                    assignment_report['no_of_solved_question']+=1
+                all_questions_report.append(question_report)
+            assignment_report['questions'] = all_questions_report
+            all_assignments_reports.append(assignment_report)
+        print(aid)
+        return render(request,'student/report_assignmentwise.html',context={'all_assignments_report':all_assignments_reports,
+                                                                            'total_number_of_question':total_number_of_question,
+                                                                            'total_number_of_solved_question':total_number_of_solved_question,
+                                                                            'total_number_of_attempted_question':total_number_of_attempted_question,
+                                                                            'selected':aid})
+def view_report_student(request,cid):
+    if request.session.has_key('username'):
+        username = request.session['username']
+        all_assignments_reports=[]
+        total_number_of_question=0
+        total_number_of_attempted_question=0
+        total_number_of_solved_question=0
+        assignments=AssignmentDetail.objects.filter(Courseid_id=cid)
+        for assignment in assignments:
+            assignment_report = {}
+            assignment_report['assignment']=assignment
+            assignment_report['no_of_attempted_question']=0
+            assignment_report['no_of_solved_question']=0
+            questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+            all_questions_report = []
+            for question in questions:
+                question_report = {}
+                question_report['correct'] = False
+                total_number_of_question+=1
+                question_report['question'] = question
+                submissions=Submission.objects.filter(QuestionId_id=question.id,StudentId_id=username)
+                question_report['no_of_submissions']=submissions.count()
+                if submissions.count() is not 0:
+                    question_report['attempted'] = True
+                    total_number_of_attempted_question+=1
+                    assignment_report['no_of_attempted_question']+=1
+                else:
+                    question_report['attempted'] = False
+                for submission in submissions:
+                    if submission.Result=='correct':
+                        question_report['correct']=True
+                if question_report['correct']==True:
+                    total_number_of_solved_question+=1
+                    assignment_report['no_of_solved_question']+=1
+                all_questions_report.append(question_report)
+            assignment_report['questions'] = all_questions_report
+            all_assignments_reports.append(assignment_report)
+        return render(request,'student/report_assignmentwise.html',context={'all_assignments_report':all_assignments_reports,
+                                                                            'total_number_of_question':total_number_of_question,
+                                                                            'total_number_of_solved_question':total_number_of_solved_question,
+                                                                            'total_number_of_attempted_question':total_number_of_attempted_question,
+                                                                            })
+
 
 def student_course(request,cid):
     course=CourseDetail.objects.filter(id=cid)
