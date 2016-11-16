@@ -163,7 +163,7 @@
                                     <td>{{ question_report.question.id }}</td>
                                     <td>{{ question_report.no_of_submissions }}</td>
                                     <td>{{ question_report.correct }}</td>
-                                    <td><button>View Submissions</button></td>
+                                    <td><a class="btn btn-default" href="/viewsubmission/{{ question_report.subid }}/">View Submissions</a></td>
                                     </tr>
                                 {% endfor %}
 

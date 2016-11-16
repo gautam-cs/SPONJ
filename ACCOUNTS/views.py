@@ -315,7 +315,6 @@ def view_question_student(request, aid_qid):
                                                                           'out1': out1, 'out2': out2,
                                                                           'course': course, "professor": professor})
 
-
 def view_report_wise_student(request, aid):
     if request.session.has_key('username'):
         username = request.session['username']
@@ -336,21 +335,19 @@ def view_report_wise_student(request, aid):
                 question_report['correct'] = False
                 total_number_of_question += 1
                 question_report['question'] = question
-                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username)
+                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username).order_by('-SubmissionTime')
                 question_report['no_of_submissions'] = submissions.count()
                 if submissions.count() is not 0:
                     question_report['attempted'] = True
                     total_number_of_attempted_question += 1
                     assignment_report['no_of_attempted_question'] += 1
+                    if submissions.first().Result == 'correct':
+                        question_report['correct'] = True
+                        total_number_of_solved_question += 1
+                        assignment_report['no_of_solved_question'] += 1
+                    question_report['subid'] = submissions.first().id
                 else:
                     question_report['attempted'] = False
-
-                for submission in submissions:
-                    if submission.Result == 'correct':
-                        question_report['correct'] = True
-                if question_report['correct'] == True:
-                    total_number_of_solved_question += 1
-                    assignment_report['no_of_solved_question'] += 1
                 all_questions_report.append(question_report)
             assignment_report['questions'] = all_questions_report
             all_assignments_reports.append(assignment_report)
@@ -383,20 +380,19 @@ def view_report_student(request, cid):
                 question_report['correct'] = False
                 total_number_of_question += 1
                 question_report['question'] = question
-                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username)
+                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username).order_by('-SubmissionTime')
                 question_report['no_of_submissions'] = submissions.count()
                 if submissions.count() is not 0:
                     question_report['attempted'] = True
                     total_number_of_attempted_question += 1
                     assignment_report['no_of_attempted_question'] += 1
+                    if submissions.first().Result == 'correct':
+                        question_report['correct'] = True
+                        total_number_of_solved_question += 1
+                        assignment_report['no_of_solved_question'] += 1
+                    question_report['subid'] = submissions.first().id
                 else:
                     question_report['attempted'] = False
-                for submission in submissions:
-                    if submission.Result == 'correct':
-                        question_report['correct'] = True
-                if question_report['correct'] == True:
-                    total_number_of_solved_question += 1
-                    assignment_report['no_of_solved_question'] += 1
                 all_questions_report.append(question_report)
             assignment_report['questions'] = all_questions_report
             all_assignments_reports.append(assignment_report)

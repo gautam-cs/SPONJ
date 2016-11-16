@@ -15,13 +15,13 @@ var main = function () {
     })
     $('.prof-tab').click(function () {
         var id = $(this).attr('id');
-        if(id=="student"){
+        if (id == "student") {
             $('.tab-card').hide();
             $('.students-tab').show();
-        }else if(id=="ta"){
+        } else if (id == "ta") {
             $('.tab-card').hide();
             $('.tas-tab').show();
-        }else if(id=="assignment"){
+        } else if (id == "assignment") {
             $('.tab-card').hide();
             $('.assignments-tab').show();
         }
