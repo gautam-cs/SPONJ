@@ -153,7 +153,7 @@ def createassignment_and_add_q(request, cid):
 
 def view_assignment(request, asid):
     assignment = AssignmentDetail.objects.get(pk=asid)
-    professor = ProfessorDetail.objects.get(pk=request.session['username'])
+    professor = ProfessorDetail.objects.get(pk=CourseDetail.objects.get(id=assignment.Courseid_id).PId_id)
     languages = Assignment_languages.objects.filter(AssignmentId=asid)
     questions = QuestionDetail.objects.filter(assignmentquestion__AId=asid)
     return render(request, 'professor/viewassignmentprof.html', context={'assignment': assignment,
@@ -518,29 +518,26 @@ def Assistant_login(request):
             username = assistantLoginForm.cleaned_data['username']
             request.session['username'] = username
             taid = AssistantDetail.objects.filter(TaId=username)
-            post = Courses_Ta.objects.get(TaId_id=taid)
-            coursepost = CourseDetail.objects.get(id=post.CourseId_id)
             if (taid[0].Password != assistantLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
+            else:
+                return HttpResponseRedirect('assistant_home')
     else:
         assistantLoginForm = AssistantLoginForm()
         return render(request, 'assistant/Assistant_login.html')
-    return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
+    # return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
 
 
-def assistant_home(request, taid):
+def assistant_home(request):
     if request.session.has_key('username'):
         taid = request.session['username']
         post = Courses_Ta.objects.get(TaId_id=taid)
         coursepost = CourseDetail.objects.get(id=post.CourseId_id)
-        course = CourseDetail.objects.filter(id=taid)
-        assistant = AssistantDetail.objects.filter(TaId=course[0].TaId)
+        assistant = AssistantDetail.objects.filter(courses_ta__CourseId=post.CourseId_id)
         assignmentlist = AssignmentDetail.objects.all()
-        studentlist = StudentDetail.objects.filter(course_student__CourseId=course[0].id)
-        talist = AssistantDetail.objects.filter(courses_ta__CourseId=course[0].id)
-
-    return render(request, 'assistant/Assistant_home.html',
-                  {'Course': coursepost, 'assignmentlist': assignmentlist,
-                   'talist': talist, 'assistant': assistant.Name, 'studentlist': studentlist})
-
+        studentlist = StudentDetail.objects.filter(course_student__CourseId=coursepost.id)
+        talist = AssistantDetail.objects.filter(courses_ta__CourseId=coursepost.id)
+        return render(request, 'assistant/Assistant_home.html',
+                      {'Course': coursepost, 'assignmentlist': assignmentlist,
+                       'talist': talist, 'assistant': assistant, 'studentlist': studentlist})
 ############################################################################################################################
