@@ -25,27 +25,21 @@
     <center>
         <table style="width:60%" class="table table-striped">
             <tr>
+                <th class="cell">T. Assitant Id</th>
+                <th class="cell">Name</th>
                 <th class="cell">Course Id</th>
-                <th class="cell">Ta Id</th>
-                <th class="cell">Username</th>
-                &nbsp
-                <th class="cell">First name</th>
-                &nbsp
-                <th class="cell">Last name</th>
-                &nbsp
                 <th class="cell">Email</th>
+                <th class="cell">Password</th>
                 <!-- <th class="cell">Password</th>-->
 
             </tr>
-            {% for c,d in list %}
+            {% for c in  assistantposts %}
                 <tr>
-                    <td class="cell">{{ c.CourseId }}</td>
                     <td class="cell">{{ c.TaId }}</td>
-                    <td class="cell">{{ d.username }}</td>
-                    <td class="cell">{{ d.first_name }}</td>
-                    <td class="cell">{{ d.last_name }}</td>
-                    <td class="cell">{{ d.email }}</td>
-                    <!--<td class="cell">{{d.password}}</td>-->
+                    <td class="cell">{{ c.Name }}</td>
+                    <td class="cell">{{ c.CourseId }}</td>
+                    <td class="cell">{{ c.Email }}</td>
+                    <td class="cell">{{ c.Password }}</td>
                 </tr>
             {% endfor %}
 

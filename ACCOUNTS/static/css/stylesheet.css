@@ -1,7 +1,35 @@
-.header {
-    text-align: center;
-    display: inline;
+.header,.b a
+{ text-align: center;
+    color: white;
+    padding-top: 5px;
+    background-color: #263238 ;
+    text-decoration: none;
 }
+
+
+.header,.container
+{   padding-top:3px;
+   text-align: right;
+}
+
+.logo
+{
+margin-left: 1%;
+margin-bottom: 3%;
+}
+
+
+.a,.logoutbtn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: -5%;
+    padding-left: 25px;
+    padding-right: 100px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
 
 body {
     /*padding-left: 15px;*/

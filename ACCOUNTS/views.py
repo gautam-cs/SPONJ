@@ -494,20 +494,18 @@ def studentlist(request):
 def assistant_register(request):
     context = RequestContext(request)
     if request.method == 'POST':
-        Af = AssistantForm(data=request.POST, prefix='student')
+        Af = AssistantForm(data=request.POST, prefix='assistant')
         if Af.is_valid():
             Af.save()
-            return redirect('Assistantlist')
+            return redirect('assistantlist')
     else:
         Af = AssistantForm(prefix='Assistant')
-    return render(request, 'assistant/Assistant_register.html', {'Af': Af}, context)
+    return render(request, 'assistant/assistant_register.html', {'Af': Af}, context)
 
 
 def assistantlist(request):
     assistantposts = AssistantDetail.objects.all()
-    asposts = User.objects.all()
-    list = zip(assistantposts, asposts)
-    return render(request, 'assistant/Assistantlist.html', {'list': list})
+    return render(request, 'assistant/assistantlist.html', {' assistantposts':  assistantposts})
 
 
 def Assistant_login(request):
@@ -524,8 +522,8 @@ def Assistant_login(request):
                 return HttpResponseRedirect('assistant_home')
     else:
         assistantLoginForm = AssistantLoginForm()
-        return render(request, 'assistant/Assistant_login.html')
-        # return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
+        return render(request, 'assistant/assistant_login.html')
+        # return render(request, 'assistant/assistant_home.html', {'Course': coursepost})
 
 
 def assistant_home(request):
@@ -537,7 +535,7 @@ def assistant_home(request):
         assignmentlist = AssignmentDetail.objects.all()
         studentlist = StudentDetail.objects.filter(course_student__CourseId=coursepost.id)
         talist = AssistantDetail.objects.filter(courses_ta__CourseId=coursepost.id)
-        return render(request, 'assistant/Assistant_home.html',
+        return render(request, 'assistant/assistant_home.html',
                       {'Course': coursepost, 'assignmentlist': assignmentlist,
                        'talist': talist, 'assistant': assistant, 'studentlist': studentlist})
 
