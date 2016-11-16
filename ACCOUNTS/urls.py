@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    url(r'^logout/', views.logout, name = 'logout'),
     ###############Student url####################################
     url(r'^connection$', views.StudentFormView, name ='loginform'),
     url(r'^$', views.Student_login, name='login'),

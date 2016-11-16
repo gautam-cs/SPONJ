@@ -473,9 +473,12 @@ def StudentFormView(request):
         return render(request, 'student/student_login.html', {})
 
 
-def Student_logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect('/')
+def logout(request):
+   try:
+      del request.session['username']
+   except:
+      pass
+   return redirect('/')
 
 
 def studentlist(request):
@@ -495,7 +498,7 @@ def assistant_register(request):
             Af.save()
             return redirect('assistantlist')
     else:
-        Af = AssistantForm(prefix='Assistant')
+        Af = AssistantForm(prefix='assistant')
     return render(request, 'assistant/assistant_register.html', {'Af': Af}, context)
 
 

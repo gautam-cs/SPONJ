@@ -2,14 +2,16 @@
 { text-align: center;
     color: white;
     padding-top: 5px;
+    padding-bottom: 5px;
     background-color: #263238 ;
     text-decoration: none;
 }
 
 
-.header,.container
-{   padding-top:3px;
-   text-align: right;
+.container-fluid
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .logo
