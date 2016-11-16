@@ -81,37 +81,39 @@ body {
     padding: 10px;
 }
 
-.box-card1{
+.box-card1 {
     position: relative;
-    width:100%;
+    width: 100%;
     color: #000000;
     margin-right: 10px;
     margin-top: 10px;
     padding: 10px;
 }
 
-.tab-card{
+.tab-card {
     position: relative;
-    width:100%;
+    width: 100%;
     background-color: #FFFFFF;
     color: #000000;
     margin-right: 10px;
     margin-top: 10px;
     padding: 10px;
 }
-.no_of_questions{
+
+.no_of_questions {
     float: right;
 }
 
-.active .assignment_report_title{
+.active .assignment_report_title {
     background-color: #2aabd2;
     border-bottom: 1px solid #237999;
 }
 
-.assignments_table{
+.assignments_table {
     width: 100%;
 }
-.overall_report_table{
+
+.overall_report_table {
     width: 75%;
 }
 
@@ -122,21 +124,22 @@ body {
     margin-right: auto
 }
 
-.row{
+.row {
     margin: auto;
 }
 
-.assignments-tab{
+.assignments-tab {
 }
 
-.students-tab{
-    display: none;
-}
-.tas-tab{
+.students-tab {
     display: none;
 }
 
-.datamining{
+.tas-tab {
+    display: none;
+}
+
+.datamining {
     width: 400px;
     padding: 10px;
     margin-top: 3%;
@@ -144,55 +147,62 @@ body {
     margin-left: 35%;
 }
 
-.subhead{
+.subhead {
     text-align: center;
 }
 
-.head_q{
+.head_q {
     background-color: #FFFFFF;
     padding: 10px;
 }
-.table{
-	width:100%;
+
+.table {
+    width: 100%;
 }
 
-.q_status{
+.q_status {
     background-color: #2aabd2;
     padding: 5px;
 }
-.q_correct{
+
+.q_correct {
     background-color: #2b542c;
 }
 
-.q_wrong{
+.q_wrong {
     background-color: #761c19;
 }
-.test_case_input{
+
+.test_case_input {
     background-color: #FFFFFF;
 
     padding: 5px;
     font-family: monospace;
 }
 
-.studentvsqmatrix{
+.studentvsqmatrix {
     border-spacing: 5px;
     width: 100%;
     border-collapse: separate;
 }
-.q_id{
+
+.q_id {
     text-align: center;
 }
 
-.space { margin-top: 230px; }
-.test_case_output{
-   background-color: #FFFFFF;
+.space {
+    margin-top: 230px;
+}
+
+.test_case_output {
+    background-color: #FFFFFF;
     padding: 5px;
     font-family: monospace;
 }
 
 #editor {
     margin: 0;
-    height:400px;
+    height: 400px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -201,7 +211,7 @@ body {
 }
 
 .boxed {
-  border: 1px solid #808080 ;
-  width: 690px;
-  height: 100px;
+    border: 1px solid #808080;
+    width: 690px;
+    height: 100px;
 }
