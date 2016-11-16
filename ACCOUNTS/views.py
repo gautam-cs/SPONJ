@@ -525,7 +525,7 @@ def Assistant_login(request):
     else:
         assistantLoginForm = AssistantLoginForm()
         return render(request, 'assistant/Assistant_login.html')
-    # return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
+        # return render(request, 'assistant/Assistant_home.html', {'Course': coursepost})
 
 
 def assistant_home(request):
@@ -540,4 +540,5 @@ def assistant_home(request):
         return render(request, 'assistant/Assistant_home.html',
                       {'Course': coursepost, 'assignmentlist': assignmentlist,
                        'talist': talist, 'assistant': assistant, 'studentlist': studentlist})
+
 ############################################################################################################################

@@ -9,28 +9,28 @@
     <title>Course Ta</title>
 </head>
 {% autoescape on %}
-<body>
+    <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/script.js' %}"></script>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="header col-lg-12">
-            <h1 class="title">Submissions Portal and ONline Judge</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="header col-lg-12">
+                <h1 class="title">Submissions Portal and ONline Judge</h1>
+            </div>
         </div>
     </div>
+
+    <div class="datamining">
+        <h2 class="subhead">Add Ta in course</h2></br>
+        <!--<form id="user_form" method="post" action="professor_list">-->
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ ctf.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
     </div>
 
-<div class="datamining">
-<h2 class="subhead">Add Ta in course</h2></br>
-    <!--<form id="user_form" method="post" action="professor_list">-->
-    <form method="POST"  class="post-form">
-        {% csrf_token %}
-                {{ ctf.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-    </div>
-
-</body>
+    </body>
 {% endautoescape %}
 </html>             

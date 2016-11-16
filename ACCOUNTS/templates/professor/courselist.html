@@ -9,8 +9,8 @@
     <title>Course List</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 
 <div class="container-fluid">
     <div class="row">
@@ -18,42 +18,42 @@
             <h1 class="title">Submissions Portal and ONline Judge</h1>
         </div>
     </div>
-    </div>
+</div>
 
 
 <div class="table-responsive">
-<div class="container">
-    <h2 class="subhead">Course list</h2></br>
-  <table class="table table-striped table-bordered table-hover table-condensed">
-    <thead>
-    <tr>
-    <td><h4>Course Name</h4></td>
-    <td><h4>Course Id</h4></td>
-    <td><h4>Description</h4></td>
-    <td><h4>PId</h4></td>
-    <td><h4>Start Date</h4></td>
-    <td><h4>End Date</h4></td>
-    <td><h4>Semester</h4></td>
-    <td><h4>Year</h4></td>
-    </tr>
-  </thead>
-  <tbody>
+    <div class="container">
+        <h2 class="subhead">Course list</h2></br>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+            <tr>
+                <td><h4>Course Name</h4></td>
+                <td><h4>Course Id</h4></td>
+                <td><h4>Description</h4></td>
+                <td><h4>PId</h4></td>
+                <td><h4>Start Date</h4></td>
+                <td><h4>End Date</h4></td>
+                <td><h4>Semester</h4></td>
+                <td><h4>Year</h4></td>
+            </tr>
+            </thead>
+            <tbody>
 
- {% for que in CoursePosts %}
-  <tr>
-      <td>{{que.CourseName}} </td>
-      <td>{{que.CourseId}} </td>
-      <td>{{que.Description}} </td>
-      <td>{{que.PId}} </td>
-      <td>{{que.StartDate}} </td>
-      <td>{{que.EndDate}} </td>
-      <td>{{que.Semester}} </td>
-      <td>{{que.Year}} </td>
-         </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-</div>
+            {% for que in CoursePosts %}
+                <tr>
+                    <td>{{ que.CourseName }} </td>
+                    <td>{{ que.CourseId }} </td>
+                    <td>{{ que.Description }} </td>
+                    <td>{{ que.PId }} </td>
+                    <td>{{ que.StartDate }} </td>
+                    <td>{{ que.EndDate }} </td>
+                    <td>{{ que.Semester }} </td>
+                    <td>{{ que.Year }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

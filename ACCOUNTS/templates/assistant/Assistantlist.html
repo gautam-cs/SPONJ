@@ -9,8 +9,8 @@
     <title>Assistant List</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 
 <div class="container-fluid">
     <div class="row">
@@ -18,35 +18,39 @@
             <h1 class="title">Submissions Portal and ONline Judge</h1>
         </div>
     </div>
-    </div>
+</div>
 
 {% block main %}<br><br><br>
-<center><h1>Assistant List</h1></center>
-<center>
-                <table style="width:60%" class="table table-striped">
-                <tr>
+    <center><h1>Assistant List</h1></center>
+    <center>
+        <table style="width:60%" class="table table-striped">
+            <tr>
                 <th class="cell">Course Id</th>
                 <th class="cell">Ta Id</th>
-                <th class="cell">Username</th> &nbsp
-                <th class="cell">First name</th> &nbsp
-                <th class="cell">Last name</th> &nbsp
+                <th class="cell">Username</th>
+                &nbsp
+                <th class="cell">First name</th>
+                &nbsp
+                <th class="cell">Last name</th>
+                &nbsp
                 <th class="cell">Email</th>
-               <!-- <th class="cell">Password</th>-->
+                <!-- <th class="cell">Password</th>-->
 
-                </tr>
-           {% for c,d in list %}
-            <tr>
-            <td class="cell">{{c.CourseId}}</td>
-            <td class="cell">{{c.TaId}}</td>
-            <td class="cell">{{d.username}}</td>
-            <td class="cell">{{d.first_name}}</td>
-            <td class="cell">{{d.last_name}}</td>
-            <td class="cell">{{d.email}}</td>
-            <!--<td class="cell">{{d.password}}</td>-->
+            </tr>
+            {% for c,d in list %}
+                <tr>
+                    <td class="cell">{{ c.CourseId }}</td>
+                    <td class="cell">{{ c.TaId }}</td>
+                    <td class="cell">{{ d.username }}</td>
+                    <td class="cell">{{ d.first_name }}</td>
+                    <td class="cell">{{ d.last_name }}</td>
+                    <td class="cell">{{ d.email }}</td>
+                    <!--<td class="cell">{{d.password}}</td>-->
                 </tr>
             {% endfor %}
 
-</table></center>
+        </table>
+    </center>
 {% endblock %}
 </body>
 </html>
