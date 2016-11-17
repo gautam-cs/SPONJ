@@ -22,7 +22,7 @@ def professor_register(request):
             pf = ProfessorForm(data=request.POST, prefix='professor')
             if pf.is_valid():
                 pf.save()
-                return redirect('professorlist')
+                return redirect('/')
         else:
             pf = ProfessorForm(prefix='professor')
         return render(request, 'professor/professor_register.html', {'pf': pf}, context)
@@ -444,7 +444,7 @@ def student_register(request):
         sf = StudentForm(data=request.POST, prefix='student')
         if sf.is_valid():
             sf.save()
-            return redirect('studentlist')
+            return redirect('/')
     else:
         sf = StudentForm(prefix='student')
     return render(request, 'student/student_register.html', {'sf': sf}, context)
@@ -526,17 +526,17 @@ def assistant_register(request):
         Af = AssistantForm(data=request.POST, prefix='assistant')
         if Af.is_valid():
             Af.save()
-            return redirect('assistantlist')
+            return redirect('/')
     else:
         Af = AssistantForm(prefix='assistant')
     return render(request, 'assistant/assistant_register.html', {'Af': Af}, context)
 
 
 def assistantlist(request):
-    if request.session.has_key('username'):
+
         assistantposts = AssistantDetail.objects.all()
         return render(request, 'assistant/assistantlist.html', {' assistantposts':  assistantposts})
-    return HttpResponse("Not Logged in")
+
 
 
 def Assistant_login(request):
