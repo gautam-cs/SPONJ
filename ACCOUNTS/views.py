@@ -185,6 +185,7 @@ def view_assignment(request, asid):
 
 def view_question(request, aid_qid):
     if request.session.has_key('username'):
+        sid=request
         aid = aid_qid.split("_")[0]
         qid = aid_qid.split("_")[1]
         question = QuestionDetail.objects.get(pk=qid)
@@ -279,6 +280,8 @@ def professor_login(request):
             username = professorLoginForm.cleaned_data['username']
             request.session['username'] = username
             s = ProfessorDetail.objects.filter(PId=username)
+            if s.count()==0:
+                return HttpResponse("Enter valid username & password")
             if (s[0].Password != professorLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
@@ -305,6 +308,7 @@ def ProfessorFormView(request):
 ##############################################STUDENT IMPLEMENTATION#######################################################
 def view_question_student(request, aid_qid):
     if request.session.has_key('username'):
+        sid=request.session['username']
         aid = aid_qid.split("_")[0]
         qid = aid_qid.split("_")[1]
         question = QuestionDetail.objects.get(pk=qid)
@@ -331,7 +335,8 @@ def view_question_student(request, aid_qid):
                                                                               'assignment': assignment,
                                                                               'inp1': inp1, 'inp2': inp2,
                                                                               'out1': out1, 'out2': out2,
-                                                                              'course': course, "professor": professor})
+                                                                              'course': course, "professor": professor,
+                                                                              "sid":sid})
     return HttpResponse("Not Logged in")
 
 def view_report_wise_student(request, aid):
@@ -460,6 +465,8 @@ def Student_login(request):
             username = studentLoginForm.cleaned_data['username']
             request.session['username'] = username
             s = StudentDetail.objects.filter(SId=username)
+            if s.count()==0:
+                return HttpResponse("Enter valid username & password")
             if (s[0].Password != studentLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
 
@@ -518,6 +525,19 @@ def studentlist(request):
         return render(request, 'student/studentlist.html', {'list': studentposts})
     return HttpResponse("Not Logged in")
 
+def run_code(request):
+    if request.method == "POST":
+        data=request.POST
+        print(str(data))
+        print(data.get('qid'))
+        print(data.get('asid'))
+        fo = open("temp-code.txt", "wb")
+        fo.write( bytes(data.get('source-code'),encoding="utf-8"))
+# Close opend file
+        fo.close()
+        from subprocess import call
+        # call(,shell=True)
+        return HttpResponse(data.get('source-code'))
 
 ##############################################ASSISTANT IMPLEMENTATION#######################################################
 def assistant_register(request):
@@ -547,6 +567,8 @@ def Assistant_login(request):
             username = assistantLoginForm.cleaned_data['username']
             request.session['username'] = username
             taid = AssistantDetail.objects.filter(TaId=username)
+            if taid.count()==0:
+                return HttpResponse("Enter valid username & password")
             if (taid[0].Password != assistantLoginForm.cleaned_data['password']):
                 return HttpResponse("Enter valid username & password")
             else:
