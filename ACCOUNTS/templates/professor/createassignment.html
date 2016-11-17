@@ -36,74 +36,74 @@
     });
 </script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-            </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
 
-            </div>
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <form method="POST"  action="/createassignment/{{course.id}}/" class="post-form">{% csrf_token %}
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <form method="POST" action="/createassignment/{{ course.id }}/" class="post-form">{% csrf_token %}
                 <h4>
                     <div align="center">{{ course.CourseId }} : {{ course.CourseName }}</div>
                 </h4>
@@ -118,11 +118,11 @@
                 </div>
                 <div class="form-group">
                     <label for="StartTime">Start Date</label>
-                    <input type="text" class="form-control"  name="StartTime">
+                    <input type="text" class="form-control" name="StartTime">
                 </div>
                 <div class="form-group">
                     <label for="EndTime">End Date</label>
-                    <input type="text" class="form-control"  name="EndTime">
+                    <input type="text" class="form-control" name="EndTime">
                 </div>
 
 
@@ -141,21 +141,22 @@
                     <label><input type="checkbox" value="">Python</label>
                 </div>
 				{% endcomment %}
-                    <button type="submit" class="save btn btn-default">Create</button>
+                <button type="submit" class="save btn btn-default">Create</button>
 
-                   <div class="form-group">
-                   <input  type="hidden" class="form-control" rows="5" id="ent_description" name="CreationDate" value="2016-11-13">
-                    <input  type="hidden" class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" rows="5" id="ent_description" name="CreationDate"
+                           value="2016-11-13">
+                    <input type="hidden" class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
                 </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
-            </div>
+            </form>
         </div>
     </div>
+    <div class="col-md-3 ">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

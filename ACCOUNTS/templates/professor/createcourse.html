@@ -9,40 +9,42 @@
     <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
     <title>Create Course</title>
 </head>
-        {% autoescape on %}
-<body>
+{% autoescape on %}
+    <body>
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/script.js' %}"></script>
     <script src="{% static '/js/monthly.js' %}"></script>
     <script type="text/javascript">
-    $(window).load( function() {
-        $('#mycalendar').monthly({mode:'event',
-            jsonUrl: "{% static '/json/events.json' %}",
-            dataType: 'json'});
+        $(window).load(function () {
+            $('#mycalendar').monthly({
+                mode: 'event',
+                jsonUrl: "{% static '/json/events.json' %}",
+                dataType: 'json'
+            });
 
-    });
+        });
     </script>
 
-<div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
+    <div class="header">
+
+        <div class="b">
+            <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+        <a href="logout">
+            <button class="logoutbtn">Logout</button>
+        </a>
     </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-            </div>
 
-         <div class="datamining">
-         <h2 class="subhead">create Course</h2></br>
-    <!--<form id="user_form" method="post" action="professor_list">-->
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        {{ courseform.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-        </div>
 
-</body>
+    <div class="datamining">
+        <h2 class="subhead">create Course</h2></br>
+        <!--<form id="user_form" method="post" action="professor_list">-->
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ courseform.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+
+    </body>
 {% endautoescape %}
 </html>

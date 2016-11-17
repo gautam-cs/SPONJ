@@ -9,44 +9,46 @@
     <title>Professor List</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
-
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
+
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
+
 
 {% block main %}<br><br><br>
-<center><h1>Professors List</h1></center>
-<center>
-                <table style="width:60%" class="table table-striped">
-                <tr>
+    <center><h1>Professors List</h1></center>
+    <center>
+        <table style="width:60%" class="table table-striped">
+            <tr>
                 <th class="cell">professor Id</th>
                 <th class="cell">Name</th>
-                <th class="cell">Qualification</th> &nbsp
-                <th class="cell">Interests</th> &nbsp
+                <th class="cell">Qualification</th>
+                &nbsp
+                <th class="cell">Interests</th>
+                &nbsp
                 <th class="cell">Email</th>
-               <th class="cell">Password</th>
+                <th class="cell">Password</th>
 
-                </tr>
-           {% for c in list %}
-            <tr>
-            <td class="cell">{{c.PId}}</td>
-            <td class="cell">{{c.Name}}</td>
-            <td class="cell">{{c.Qualification}}</td>
-            <td class="cell">{{c.Interests}}</td>
-            <td class="cell">{{c.Email}}</td>
-            <td class="cell">{{c.Password}}</td>
+            </tr>
+            {% for c in list %}
+                <tr>
+                    <td class="cell">{{ c.PId }}</td>
+                    <td class="cell">{{ c.Name }}</td>
+                    <td class="cell">{{ c.Qualification }}</td>
+                    <td class="cell">{{ c.Interests }}</td>
+                    <td class="cell">{{ c.Email }}</td>
+                    <td class="cell">{{ c.Password }}</td>
                 </tr>
             {% endfor %}
 
-</table></center>
+        </table>
+    </center>
 {% endblock %}
 </body>
 </html>

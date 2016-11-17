@@ -36,14 +36,14 @@
     });
 </script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-            </div>
+
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
+
 
 </div>
 <div class="row">
@@ -151,38 +151,40 @@
                     </thead>
                     {% for assignment in assignmentlist %}
 
-                            <tr>
-                                <td> <a href="/viewassignment/{{ assignment.id }}">{{ assignment.AssignmentName }}</a></td>
-                                <td>{{ assignment.Description }}</td>
-                                <td>{{ assignment.StartTime }}</td>
-                                <td>{{ assignment.EndTime }}</td>
-                            </tr>
+                        <tr>
+                            <td><a href="/viewassignment/{{ assignment.id }}">{{ assignment.AssignmentName }}</a></td>
+                            <td>{{ assignment.Description }}</td>
+                            <td>{{ assignment.StartTime }}</td>
+                            <td>{{ assignment.EndTime }}</td>
+                        </tr>
                     {% endfor %}
 
 
-                        </table>
-                        <div align="left"><a href="/createassignment/{{ course.id }}" class="btn btn-default add assignment-btn">Add Assignment</a></div>
-                    </div>
-                    <div class="tab-card row students-tab">
-                        <h4>List of Students:</h4>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>StudentID</th>
-                                <th>Year</th>
-                            </tr>
-                            </thead>
-                            {% for student in studentlist %}
-                            <tr>
-                                <td>{{ student.Name }}</td>
-                                <td>{{ student.SId }}</td>
-                                <td>{{ student.Batch }}</td>
-                            </tr>
-                            {% endfor %}
+                </table>
+                <div align="left"><a href="/createassignment/{{ course.id }}"
+                                     class="btn btn-default add assignment-btn">Add Assignment</a></div>
+            </div>
+            <div class="tab-card row students-tab">
+                <h4>List of Students:</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>StudentID</th>
+                        <th>Year</th>
+                    </tr>
+                    </thead>
+                    {% for student in studentlist %}
+                        <tr>
+                            <td>{{ student.Name }}</td>
+                            <td>{{ student.SId }}</td>
+                            <td>{{ student.Batch }}</td>
+                        </tr>
+                    {% endfor %}
 
                 </table>
-                <div align="left"><a href="/coursestudent/{{ course.id }}" class="btn btn-default add student-btn">Add Student</a></div>
+                <div align="left"><a href="/coursestudent/{{ course.id }}" class="btn btn-default add student-btn">Add
+                    Student</a></div>
                 </br>
             </div>
             <div class="tab-card row tas-tab">
@@ -204,7 +206,8 @@
                         </tr>
                     {% endfor %}
                 </table>
-                <div align="left"><a href="/courseta/{{ course.id }}" class="btn btn-default add a teaching assistant-btn">Add a
+                <div align="left"><a href="/courseta/{{ course.id }}"
+                                     class="btn btn-default add a teaching assistant-btn">Add a
                     Teaching Assistant</a></div>
                 </br>
             </div>

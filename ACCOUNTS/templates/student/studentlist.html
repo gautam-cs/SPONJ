@@ -9,42 +9,48 @@
     <title>Student List</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 
 <div class="header">
 
- <div class="b">
-     <a href ="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="logout" ><button class="logoutbtn">Logout</button></a>
-            </div>
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
 
 {% block main %}<br><br><br>
-<center><h1>Student List</h1></center>
-<center>
-                <table style="width:60%" class="table table-striped">
-                <tr>
+    <center><h1>Student List</h1></center>
+    <center>
+        <table style="width:60%" class="table table-striped">
+            <tr>
                 <th class="cell">Student Id</th>
                 <th class="cell">Batch</th>
-                <th class="cell">Brach</th> &nbsp
-                <th class="cell">Programmme</th> &nbsp
-                <th class="cell">Name</th> &nbsp
+                <th class="cell">Brach</th>
+                &nbsp
+                <th class="cell">Programmme</th>
+                &nbsp
+                <th class="cell">Name</th>
+                &nbsp
                 <th class="cell">Email</th>
-               <!-- <th class="cell">Password</th>-->
+                <!-- <th class="cell">Password</th>-->
 
-                </tr>
-           {% for c in list %}
-            <tr>
-            <td class="cell">{{c.SId}}</td>
-            <td class="cell">{{c.Batch}}</td>
-            <td class="cell">{{c.Branch}}</td>
-            <td class="cell">{{c.Programme}}</td>
-            <td class="cell">{{c.Name}}</td>
-            <td class="cell">{{c.Email}}</td>
+            </tr>
+            {% for c in list %}
+                <tr>
+                <td class="cell">{{ c.SId }}</td>
+                <td class="cell">{{ c.Batch }}</td>
+                <td class="cell">{{ c.Branch }}</td>
+                <td class="cell">{{ c.Programme }}</td>
+                <td class="cell">{{ c.Name }}</td>
+                <td class="cell">{{ c.Email }}</td>
             {% endfor %}
 
-</table></center>
+        </table>
+    </center>
 {% endblock %}
 </body>
 </html>

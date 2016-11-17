@@ -9,57 +9,55 @@
     <title>Question Bank</title>
 </head>
 <body>
-    <script src="{% static '/js/jquery.min.js' %}"></script>
-    <script src="{% static '/js/script.js' %}"></script>
-
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
+
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
 <h2 class="subhead">Question Bank</h2></br>
 <div class="table-responsive">
-<div class="container">
-  <table class="table table-striped table-bordered table-hover table-condensed">
-    <thead>
-    <tr>
-    <td><h4>id</h4></td>
-    <td><h4>QName</h4></td>
-    <td><h4>QAuthor</h4></td>
-    <td><h4>QDescription</h4></td>
-    <td><h4>TestCaseInputFile1</h4></td>
-    <td><h4>Image</h4></td>
-    <td><h4>TestCaseInput2</h4></td>
-    <td><h4>Output1</h4></td>
-    <td><h4>Output2</h4></td>
-    <td><h4>Image</h4></td>
+    <div class="container">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+            <tr>
+                <td><h4>id</h4></td>
+                <td><h4>QName</h4></td>
+                <td><h4>QAuthor</h4></td>
+                <td><h4>QDescription</h4></td>
+                <td><h4>TestCaseInputFile1</h4></td>
+                <td><h4>Image</h4></td>
+                <td><h4>TestCaseInput2</h4></td>
+                <td><h4>Output1</h4></td>
+                <td><h4>Output2</h4></td>
+                <td><h4>Image</h4></td>
 
-    </tr>
-  </thead>
-  <tbody>
+            </tr>
+            </thead>
+            <tbody>
 
- {% for que in QuestionPost %}
-  <tr>
-      <td>{{que.id}} </td>
-      <td>{{que.QName}} </td>
-      <td>{{que.QAuthor}} </td>
-      <td>{{que.QDescription}} </td>
-      <td>{{que.Image}} </td>
-      <td>{{que.TestCaseInputFile1}} </td>
-      <td>{{que.TestCaseInputFile2}} </td>
-      <td>{{que.OutputFile1}} </td>
-      <td>{{que.OutputFile2}} </td>
-      <td>{{que.Image}} </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-</div>
+            {% for que in QuestionPost %}
+                <tr>
+                    <td>{{ que.id }} </td>
+                    <td>{{ que.QName }} </td>
+                    <td>{{ que.QAuthor }} </td>
+                    <td>{{ que.QDescription }} </td>
+                    <td>{{ que.Image }} </td>
+                    <td>{{ que.TestCaseInputFile1 }} </td>
+                    <td>{{ que.TestCaseInputFile2 }} </td>
+                    <td>{{ que.OutputFile1 }} </td>
+                    <td>{{ que.OutputFile2 }} </td>
+                    <td>{{ que.Image }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>

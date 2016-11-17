@@ -13,182 +13,186 @@
 <script src="../js/script.js"></script>
 
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
 
-            </div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <h4>Assignments:</h4>
-                <div class="assignments">
-                    <div class="assignment_report">
-                        <div class="assignment_report_title current row">
-                            <h5>Overall Report</h5>
-                        </div>
-                        <div class="assignment_report_description row overall_description">
-                            <table class="overall_report_table">
-                                <tr>
-                                    <th>Total Number of Assignments</th>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Number of Questions</th>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Number of Attempted Questions</th>
-                                    <td>15</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Number of Questions Solved</th>
-                                    <td>10</td>
-                                </tr>
-                            </table>
-                            <table class="assignments_table">
-                                <tr>
-                                    <th>Assignment Name</th>
-                                    <th>No. of Questions</th>
-                                    <th>No. of Questions Attempted</th>
-                                    <th>No. of Questions Solved</th>
-                                </tr>
-                                <tr>
-                                    <td>Assignment1</td>
-                                    <td>5</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                </tr>
-                            </table>
-                        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <h4>Assignments:</h4>
+            <div class="assignments">
+                <div class="assignment_report">
+                    <div class="assignment_report_title current row">
+                        <h5>Overall Report</h5>
                     </div>
-                    <div class="assignment_report">
-                        <div class="assignment_report_title current row">
-                            <h5>Assignment 1</h5>
-                        </div>
-                        <div class="assignment_report_description row ">
-                            <h5 class="assignment_name">
-                                Assignment Name
-                                <span class="no_of_questions" >Total Number of Questions: 5
-                                </span>
-                            </h5>
-                            <table class="questions_table">
-                                <tr>
-                                    <th>Q. No.</th>
-                                    <th>Name</th>
-                                    <th>ID</th>
-                                    <th>No. of Submissions</th>
-                                    <th>Correct</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Finnding berry</td>
-                                    <td>1023</td>
-                                    <td>5</td>
-                                    <td>Yes</td>
-                                    <td><button>View Submissions</button></td>
-                                </tr>
-                            </table>
-                        </div>
+                    <div class="assignment_report_description row overall_description">
+                        <table class="overall_report_table">
+                            <tr>
+                                <th>Total Number of Assignments</th>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <th>Total Number of Questions</th>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <th>Total Number of Attempted Questions</th>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <th>Total Number of Questions Solved</th>
+                                <td>10</td>
+                            </tr>
+                        </table>
+                        <table class="assignments_table">
+                            <tr>
+                                <th>Assignment Name</th>
+                                <th>No. of Questions</th>
+                                <th>No. of Questions Attempted</th>
+                                <th>No. of Questions Solved</th>
+                            </tr>
+                            <tr>
+                                <td>Assignment1</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>3</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="assignment_report ">
-                        <div class="assignment_report_title current row">
-                            <h5>Assignment 2</h5>
-                        </div>
-                        <div class="assignment_report_description row">
-                            <h5 class="assignment_name">
-                                Assignment Name
-                                <span class="no_of_questions" >Total Number of Questions: 5
+                </div>
+                <div class="assignment_report">
+                    <div class="assignment_report_title current row">
+                        <h5>Assignment 1</h5>
+                    </div>
+                    <div class="assignment_report_description row ">
+                        <h5 class="assignment_name">
+                            Assignment Name
+                                <span class="no_of_questions">Total Number of Questions: 5
                                 </span>
-                            </h5>
-                            <table class="questions_table">
-                                <tr>
-                                    <th>Q. No.</th>
-                                    <th>Name</th>
-                                    <th>ID</th>
-                                    <th>No. of Submissions</th>
-                                    <th>Correct</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Finnding faini</td>
-                                    <td>2023</td>
-                                    <td>2</td>
-                                    <td>Yes</td>
-                                    <td><button>View Submissions</button></td>
-                                </tr>
-                            </table>
-                        </div>
+                        </h5>
+                        <table class="questions_table">
+                            <tr>
+                                <th>Q. No.</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>No. of Submissions</th>
+                                <th>Correct</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Finnding berry</td>
+                                <td>1023</td>
+                                <td>5</td>
+                                <td>Yes</td>
+                                <td>
+                                    <button>View Submissions</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="assignment_report ">
+                    <div class="assignment_report_title current row">
+                        <h5>Assignment 2</h5>
+                    </div>
+                    <div class="assignment_report_description row">
+                        <h5 class="assignment_name">
+                            Assignment Name
+                                <span class="no_of_questions">Total Number of Questions: 5
+                                </span>
+                        </h5>
+                        <table class="questions_table">
+                            <tr>
+                                <th>Q. No.</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>No. of Submissions</th>
+                                <th>Correct</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Finnding faini</td>
+                                <td>2023</td>
+                                <td>2</td>
+                                <td>Yes</td>
+                                <td>
+                                    <button>View Submissions</button>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 ">
-            <div class="calender well">
-            </div>
+    </div>
+    <div class="col-md-3 ">
+        <div class="calender well">
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

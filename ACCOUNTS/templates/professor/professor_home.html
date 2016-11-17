@@ -2,124 +2,127 @@
 <html>
 <html lang="en">
 <meta charset="UTF-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-    <title>Professor Home</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="{% static 'css/monthly.css' %}">
+<title>Professor Home</title>
 </head>
 <body>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/script.js"></script>
-    <script src="static/js/monthly.js"></script>
-    <script type="text/javascript">
-    $(window).load( function() {
-        $('#mycalendar').monthly({mode:'event',
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/script.js"></script>
+<script src="static/js/monthly.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#mycalendar').monthly({
+            mode: 'event',
             jsonUrl: "static/json/events.json",
-            dataType: 'json'});
+            dataType: 'json'
+        });
 
     });
-    </script>
-    <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
+</script>
+<div class="header">
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
 
-            </div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <h2>List of courses</h2>
-                <div class="row">
-                    <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
-                        {% for course in Coursepost %}
-                            <a href="professorcourse/{{ course.id }}">
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <h2>List of courses</h2>
+            <div class="row">
+                <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
+                {% for course in Coursepost %}
+                    <a href="professorcourse/{{ course.id }}">
                         <div class="course box-card col-lg-2">
                             <h4>{{ course.CourseId }}</h4>
-                        <div class="course-name"> {{course.CourseName}}</div>
-                        <div class="prof-name">{{course.PId}}</div>
-                        <div class="course-year-sem">{{course.Semester}} - {{course.Year}}</div>
+                            <div class="course-name"> {{ course.CourseName }}</div>
+                            <div class="prof-name">{{ course.PId }}</div>
+                            <div class="course-year-sem">{{ course.Semester }} - {{ course.Year }}</div>
 
-                            </div></a>
-                        {% endfor %}
-                    <div class="box-card col-lg-10">
-                        <h5>Create New Course</h5>
-                          <a href="createcourse">
-          <span class="glyphicon glyphicon-plus"></span><br/>
-                              <br/><br/>
-        </a>
-      </p>
-                    </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                <div class="box-card col-lg-10">
+                    <h5>Create New Course</h5>
+                    <a href="createcourse">
+                        <span class="glyphicon glyphicon-plus"></span><br/>
+                        <br/><br/>
+                    </a>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
-            </div>
+    </div>
+    <div class="col-md-3">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
