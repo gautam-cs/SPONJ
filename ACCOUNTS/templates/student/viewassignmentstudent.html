@@ -24,138 +24,138 @@
 </script>
 
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
-            </div>
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="col-md-7">
-            <div class="content well">
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
 
 
-                <h4> {{ assignment.AssignmentName }}</h4>
-                <div align="right">By : Prof {{ professor.Name }}</div>
-                <br/>
-                <div style="float: left">Assignment Starts On {{ assignment.StartTime|date }}</div>
+            <h4> {{ assignment.AssignmentName }}</h4>
+            <div align="right">By : Prof {{ professor.Name }}</div>
+            <br/>
+            <div style="float: left">Assignment Starts On {{ assignment.StartTime|date }}</div>
 
-                <div style="float: right">Assignment Ends On {{ assignment.EndTime|date }}</div>
-                </br></br>
+            <div style="float: right">Assignment Ends On {{ assignment.EndTime|date }}</div>
+            </br></br>
 
-                <div align="left"><h5>Languages:{% for language in languages %}
-                    {{ language.Programming_Language }}
-                {% endfor %}
-                </h5></div>
+            <div align="left"><h5>Languages:{% for language in languages %}
+                {{ language.Programming_Language }}
+            {% endfor %}
+            </h5></div>
 
-                <a href="/viewassignmentwisereport_student/{{ assignment.id }}/">
-                    <div align="right" class="btn btn-default" style="float: right">View Report For This Assignment
-                    </div>
-                </a>
-
-                <br>
-                <div class="row">
-                    <h4>Assignment Description:</h4>
-                    <div class="course-name">
-                        {{ assignment.Description }}
-                    </div>
+            <a href="/viewassignmentwisereport_student/{{ assignment.id }}/">
+                <div align="right" class="btn btn-default" style="float: right">View Report For This Assignment
                 </div>
-                </br>
-                </br>
+            </a>
 
-                <div class="row">
-                    <h4>Course Assignments:</h4>
-                    <table class="table table-bordered">
-                        <thead>
+            <br>
+            <div class="row">
+                <h4>Assignment Description:</h4>
+                <div class="course-name">
+                    {{ assignment.Description }}
+                </div>
+            </div>
+            </br>
+            </br>
+
+            <div class="row">
+                <h4>Course Assignments:</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Question ID</th>
+                        <th>Question Name</th>
+                        <th>Author</th>
+
+                    </tr>
+                    </thead>
+                    {% for question in questions %}
                         <tr>
-                            <th>Question ID</th>
-                            <th>Question Name</th>
-                            <th>Author</th>
-
+                            <td>
+                                <a href="/viewquestion_student/{{ assignment.id }}_{{ question.id }}"> {{ question.id }}</a>
+                            </td>
+                            <td>{{ question.QName }}</td>
+                            <td>{{ question.QAuthor }}</td>
                         </tr>
-                        </thead>
-                        {% for question in questions %}
-                            <tr>
-                                <td>
-                                    <a href="/viewquestion_student/{{ assignment.id }}_{{ question.id }}"> {{ question.id }}</a>
-                                </td>
-                                <td>{{ question.QName }}</td>
-                                <td>{{ question.QAuthor }}</td>
-                            </tr>
-                        {% endfor %}
+                    {% endfor %}
 
-                    </table>
+                </table>
 
-                </div>
-                </br>
             </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
-            </div>
+            </br>
         </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

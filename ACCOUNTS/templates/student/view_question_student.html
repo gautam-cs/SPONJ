@@ -27,123 +27,122 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <div class="head_q">
+                <h4>{{ course.CourseId }}: {{ course.CourseName }}</h4>
+                <h4>Assignment Name: {{ assignment.AssignmentName }} </h4>
+                <div align="right">By : Prof {{ professor.Name }}</div>
+            </div>
+            <div class="question">
+                <h4> ID: {{ question.id }} Name: {{ question.QName }} </h4>
+                <h4 align="center">Description</h4>
+                <p>
+                    {{ question.QDescription }}
+                </p>
+                <div class="tests row">
+                    <div class="test_input col-lg-3">
+                        Test Input 1 <br>
+                        <pre class="test_case_input">{{ inp1 }}</pre>
+                    </div>
+                    <div class="test_output col-lg-3">
+                        Test Output 1<br>
+                        <pre class="test_case_output">{{ out1 }}</pre>
+                    </div>
+
+                    <div class="test_input col-lg-3">
+                        Test Input 2<br>
+                        <pre class="test_case_input">{{ inp2 }}</pre>
+                    </div>
+                    <div class="test_output col-lg-3">
+                        Test Output 2<br>
+                        <pre class="test_case_output">{{ out2 }}</pre>
+                    </div>
+                </div>
+                <br>
+                <div align="center"><img
+                        src="{{ question.Image.url }}"
+                        width="50%" alt="An image icon"></div>
+                <br>
 
             </div>
-        </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <div class="head_q">
-                    <h4>{{ course.CourseId }}: {{ course.CourseName }}</h4>
-                    <h4>Assignment Name: {{ assignment.AssignmentName }} </h4>
-                    <div align="right">By : Prof {{ professor.Name }}</div>
-                </div>
-                <div class="question">
-                    <h4> ID: {{ question.id }} Name: {{ question.QName }} </h4>
-                    <h4 align="center">Description</h4>
-                    <p>
-                        {{ question.QDescription }}
-                    </p>
-                    <div class="tests row">
-                        <div class="test_input col-lg-3">
-                            Test Input 1 <br>
-                            <pre class="test_case_input">{{ inp1 }}</pre>
-                        </div>
-                        <div class="test_output col-lg-3">
-                            Test Output 1<br>
-                            <pre class="test_case_output">{{ out1 }}</pre>
-                        </div>
-
-                        <div class="test_input col-lg-3">
-                            Test Input 2<br>
-                            <pre class="test_case_input">{{ inp2 }}</pre>
-                        </div>
-                        <div class="test_output col-lg-3">
-                            Test Output 2<br>
-                            <pre class="test_case_output">{{ out2 }}</pre>
-                        </div>
-                    </div>
-                    <br>
-                    <div align="center"><img
-                            src="{{ question.Image.url }}"
-                            width="50%" alt="An image icon"></div>
-                    <br>
-
-                </div>
-                Select Programming Language:
-                <div class="form-group" style="width: 50%" id="language_select">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option id="c">C</option>
-                        <option id="c++">C++</option>
-                        <option id="java">Java</option>
-                        <option id="python3">python3</option>
-                    </select>
-                </div>
+            Select Programming Language:
+            <div class="form-group" style="width: 50%" id="language_select">
+                <label for="sel1">Select list:</label>
+                <select class="form-control" id="sel1">
+                    <option id="c">C</option>
+                    <option id="c++">C++</option>
+                    <option id="java">Java</option>
+                    <option id="python3">python3</option>
+                </select>
+            </div>
 
                 <pre id="editor">
                 function foo(items) {
@@ -153,64 +152,75 @@
                     }
                 }
             </pre>
-                <script src="{% static 'js/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
-                <script>
-                    var editor = ace.edit("editor");
-                    editor.setTheme("ace/theme/twilight");
-                    editor.session.setMode("ace/mode/javascript");
-                    console.log('afs');
+            <form method="POST" action="/runcode" class="post-form">{% csrf_token %}
+                <input type="hidden" id="code" name="source-code">
+                <input type="hidden" name="sid" value="{{ sid }}">
+                <input type="hidden" name="qid" value="{{ question.id }}">
+                <input type="hidden" name="asid" value="{{ assignment.id }}">
+                <button type="submit" class="save btn btn-default">Run Code</button>
+            </form>
+            <script src="{% static 'js/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+            <script>
+                var inputarea = $('#code');
+                var editor = ace.edit("editor");
+                editor.setTheme("ace/theme/twilight");
+                editor.session.setMode("ace/mode/javascript");
+                editor.getSession().on('change', function () {
+                    inputarea.val(editor.getSession().getValue());
+                });
 
-                    $('body').on('change','#sel1',function () {
-                        console.log("changed"+$(this). val());
-                        if($(this). val()=='c'){
-                            editor.session.setMode("ace/mode/c_cpp");
-                        }else if ($(this). val()=='c++'){
-                            editor.session.setMode("ace/mode/c_cpp");
-                        }else if($(this). val()=='java'){
-                            editor.session.setMode("ace/mode/java");
-                        }else if($(this). val()=='python3'){
-                            editor.session.setMode("ace/mode/python");
-                        }
+                inputarea.val(editor.getSession().getValue());
+
+                $('body').on('change', '#sel1', function () {
+                    console.log("changed" + $(this).val());
+                    if ($(this).val() == 'c') {
+                        editor.session.setMode("ace/mode/c_cpp");
+                    } else if ($(this).val() == 'c++') {
+                        editor.session.setMode("ace/mode/c_cpp");
+                    } else if ($(this).val() == 'java') {
+                        editor.session.setMode("ace/mode/java");
+                    } else if ($(this).val() == 'python3') {
+                        editor.session.setMode("ace/mode/python");
+                    }
 //                       editor.session.setMode("ace/mode/"+$(this). val());
 //                       editor.setValue("sdkusdkgbskdbgbikadfsg sadkbfasidugfbasdi fasiudgfiasudbvasd vasiugfasidugvbak xviasdgfiuasbvilasdgvn sdfguasdfkbasdkfv")
-                    })
-                </script>
-                </br>
-                <div class="form-group col-lg-12">
-                    <label for="code_upld">Upload your code</label>
-                    <input type="file" class="form-control" id="code_upld">
-                </div>
-                <div class="btn btn-default">Run Code</div>
-                <div class="btn btn-default">Submit Code</div>
-                <div class="code_result">
-                    <h4>Result:</h4> <h5 id="result">Pass</h5>
-                    <div class="test_input">
-                        Test Input 1 <br>
-                        <div class="test_case_input">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Output Expected <br>
-                        <div class="test_case_output">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Your Output <br>
-                        <div class="test_case_output">1 2<br>3 4</div>
-                    </div>
-                    <div class="test_output">
-                        Compiler Message <br>
-                        <div class="test_case_output">Succesfull</div>
-                    </div>
-                </div>
-
-
+                })
+            </script>
+            </br>
+            <div class="form-group col-lg-12">
+                <label for="code_upld">Upload your code</label>
+                <input type="file" class="form-control" id="code_upld">
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
+            <div class="btn btn-default">Run Code</div>
+            <div class="btn btn-default">Submit Code</div>
+            <div class="code_result">
+                <h4>Result:</h4> <h5 id="result">Pass</h5>
+                <div class="test_input">
+                    Test Input 1 <br>
+                    <div class="test_case_input">1 2<br>3 4</div>
+                </div>
+                <div class="test_output">
+                    Output Expected <br>
+                    <div class="test_case_output">1 2<br>3 4</div>
+                </div>
+                <div class="test_output">
+                    Your Output <br>
+                    <div class="test_case_output">1 2<br>3 4</div>
+                </div>
+                <div class="test_output">
+                    Compiler Message <br>
+                    <div class="test_case_output">Succesfull</div>
+                </div>
             </div>
+
         </div>
     </div>
+    <div class="col-md-3">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

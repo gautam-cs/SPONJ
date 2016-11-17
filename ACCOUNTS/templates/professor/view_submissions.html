@@ -36,122 +36,122 @@
     });
 </script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
+
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
 
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
 
-            </div>
-        </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <div class="row">
-							<div class="center">
-							</br>
-								<h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
-								<h4>Assignment Name: {{ assignment.AssignmentName }}</h4>
-								<h4>Student Id: {{ student.SId }} Student Name: {{ student.Name }}</h4>
-							</div>
-				</div>
-
-				
-				<h4>Question ID: {{ question.id }}</h4><h4> Question Name: {{ question.QName }}</h4>
-								<div class="center">
-									Description</br>
-									{{ question.Qdescription }}
-								</div></br>
-							</br>
-				<h4>Submissions</h4>			
-				<div class="box-card1">
-				{% for submission in submissions %}
-				<div class="row">			
-					<div class="box-card1">
-						<h4>Submission No: {{ forloop.counter }}, Submission_ID: {{ submission.id }}</h4>
-							Submission on : {{ submission.SubmissionTime }}<br>
-							Acceptance : {{ submission.Result }}<br>
-							Result : <br>
-                        Console Output:{{ submission.StdOutError }}.
-					</div></br>
-					<div class="boxed">
-						CODE HERE.
-					</div>
-					</br>
-				</div>
-                    {% endfor %}
-				</div>
-				</br>
-				
-
-				
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
-            </div>
         </div>
     </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <div class="row">
+                <div class="center">
+                    </br>
+                    <h3>{{ course.CourseId }} : {{ course.CourseName }}</h3>
+                    <h4>Assignment Name: {{ assignment.AssignmentName }}</h4>
+                    <h4>Student Id: {{ student.SId }} Student Name: {{ student.Name }}</h4>
+                </div>
+            </div>
+
+
+            <h4>Question ID: {{ question.id }}</h4><h4> Question Name: {{ question.QName }}</h4>
+            <div class="center">
+                Description</br>
+                {{ question.Qdescription }}
+            </div>
+            </br>
+            </br>
+            <h4>Submissions</h4>
+            <div class="box-card1">
+                {% for submission in submissions %}
+                    <div class="row">
+                        <div class="box-card1">
+                            <h4>Submission No: {{ forloop.counter }}, Submission_ID: {{ submission.id }}</h4>
+                            Submission on : {{ submission.SubmissionTime }}<br>
+                            Acceptance : {{ submission.Result }}<br>
+                            Result : <br>
+                            Console Output:{{ submission.StdOutError }}.
+                        </div>
+                        </br>
+                        <div class="boxed">
+                            CODE HERE.
+                        </div>
+                        </br>
+                    </div>
+                {% endfor %}
+            </div>
+            </br>
+
+
+        </div>
+    </div>
+    <div class="col-md-3 ">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

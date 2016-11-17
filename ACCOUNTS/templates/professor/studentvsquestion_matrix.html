@@ -10,123 +10,129 @@
 </head>
 <body>
 <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/script.js"></script>
-    <script src="/static/js/monthly.js"></script>
-    <script type="/text/javascript">
+<script src="/static/js/script.js"></script>
+<script src="/static/js/monthly.js"></script>
+<script type="/text/javascript">
     $(window).load( function() {
         $('#mycalendar').monthly({mode:'event',
             jsonUrl: "static/json/events.json",
             dataType: 'json'});
 
     });
-    </script>
 
+</script>
 <div class="header">
-    <div class="logo">
-         <p><img src="{% static 'media/../../static/media/q.jpg' %}" width="80"
-                 height="80" align="left" />
-    </div>
- <div class="b">
-     <a href ="/"><h1>Submissions Portal and ONline Judge</h1></a> </div>
-           <a href="/logout" ><button class="logoutbtn">Logout</button></a>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="navigation-tree well">
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <a href="logout">
+        <button class="logoutbtn">Logout</button>
+    </a>
+</div>
 
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">Header 1</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 1.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Header 2</label>
-                        <ul class="nav nav-list tree">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="tree-toggler nav-header">Header 2.1</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><label class="tree-toggler nav-header">Header 2.2</label>
-                                <ul class="nav nav-list tree">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                        <ul class="nav nav-list tree">
-                                            <li><a href="#">Link</a></li>
-                                            <li><a href="#">Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
 
-            </div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="navigation-tree well">
+
+            <ul class="nav nav-list">
+                <li><label class="tree-toggler nav-header">Header 1</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Header 2</label>
+                    <ul class="nav nav-list tree">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><label class="tree-toggler nav-header">Header 2.1</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><label class="tree-toggler nav-header">Header 2.2</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="col-md-7">
-            <div class="content well">
-                <h2>{{ course.CourseId }}: {{ course.CourseName }}</h2>
-                <h3>{{ assignment.AssignmentName }}</h3>
-                <table class="studentvsqmatrix">
-                    <tr class="studentvsqmatrix_heading">
-                        <th>ID</th>
-                        <th>Name</th>
-                        {% for question in questions%}
+    </div>
+    <div class="col-md-7">
+        <div class="content well">
+            <h2>{{ course.CourseId }}: {{ course.CourseName }}</h2>
+            <h3>{{ assignment.AssignmentName }}</h3>
+            <table class="studentvsqmatrix">
+                <tr class="studentvsqmatrix_heading">
+                    <th>ID</th>
+                    <th>Name</th>
+                    {% for question in questions %}
                         <th class="q_id">{{ question.id }}</th>
-                        {% endfor %}
-                    </tr>
-                    {% for studentsubmissiondetail in submissionlist %}
-                        <tr class="student_row">
+                    {% endfor %}
+                </tr>
+                {% for studentsubmissiondetail in submissionlist %}
+                    <tr class="student_row">
                         <td class="student_id">{{ studentsubmissiondetail.id }}</td>
                         <td class="student_name">{{ studentsubmissiondetail.name }}</td>
-                            {% for submission in studentsubmissiondetail.submissions %}
-                                {% if submission == None%}
-                                    <td><div class="q_status"></div></td>
-                                {% elif submission.Result == 'correct'%}
-                                    <td><a href="/viewsubmission/{{ submission.id }}/" ><div class="q_status q_correct"></div></a></td>
+                        {% for submission in studentsubmissiondetail.submissions %}
+                            {% if submission == None %}
+                                <td>
+                                    <div class="q_status"></div>
+                                </td>
+                            {% elif submission.Result == 'correct' %}
+                                <td><a href="/viewsubmission/{{ submission.id }}/">
+                                    <div class="q_status q_correct"></div>
+                                </a></td>
 
-                                {% elif submission.Result == 'wrong'%}
-                                    <td><a href="/viewsubmission/{{ submission.id }}/" ><div class="q_status q_wrong"></div></a></td>
-                                {% endif %}
-                            {% endfor %}
+                            {% elif submission.Result == 'wrong' %}
+                                <td><a href="/viewsubmission/{{ submission.id }}/">
+                                    <div class="q_status q_wrong"></div>
+                                </a></td>
+                            {% endif %}
+                        {% endfor %}
                     </tr>
-                    {% endfor %}
+                {% endfor %}
 
-                </table>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="calender well">
-                <div class="monthly" id="mycalendar"></div>
-            </div>
+            </table>
         </div>
     </div>
+    <div class="col-md-3 ">
+        <div class="calender well">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>
