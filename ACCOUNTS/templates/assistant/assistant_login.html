@@ -3,25 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-    <title>Assistant login</title>
+    <title>Professor Login</title>
 </head>
 <body>
 <script src="{% static '/js/jquery.min.js' %}"></script>
-<script src="{% static '//js/script.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
 
 <div class="header">
-
     <div class="b">
         <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
-    <a href="logout">
-        <button class="logoutbtn">Logout</button>
-    </a>
+    {% comment %}<a href="logout">
+        <button class="logoutbtn">/Logout</button>
+    </a>{% endcomment %}
 </div>
 
 </br>
@@ -74,7 +70,7 @@
         </fieldset>
 
     </form>
-    Not Registered? <a href="assistant_register"> Register Here</a>
+    {% comment %}Not Registered? <a href="assistant_register"> Register Here</a>{% endcomment %}
 </div>
 
 </body>
