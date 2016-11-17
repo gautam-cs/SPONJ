@@ -116,10 +116,6 @@
                     <label for="Description">Assignment Description</label>
                     <textarea class="form-control" rows="5" id="assignment_description" name="Description"></textarea>
                 </div>
-                   <div class="form-group">
-                   <input class="form-control" rows="5" id="ent_description" name="CreationDate" value="2016-11-13">
-                    <input class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
-                </div>
                 <div class="form-group">
                     <label for="StartTime">Start Date</label>
                     <input type="text" class="form-control"  name="StartTime">
@@ -146,7 +142,12 @@
                 </div>
 				{% endcomment %}
                     <button type="submit" class="save btn btn-default">Create</button>
-                    </form>
+
+                   <div class="form-group">
+                   <input  type="hidden" class="form-control" rows="5" id="ent_description" name="CreationDate" value="2016-11-13">
+                    <input  type="hidden" class="form-control" rows="5" id="ent_description" name="Courseid" value="1">
+                </div>
+                </form>
             </div>
         </div>
         <div class="col-md-3 ">
