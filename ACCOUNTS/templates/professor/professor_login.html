@@ -13,7 +13,6 @@
 <script src="{% static '/js/script.js' %}"></script>
 
 <div class="header">
-
     <div class="b">
         <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
     <a href="logout">
@@ -21,6 +20,10 @@
     </a>
 </div>
 
+
+</br>
+<div class="lg col-sm-2">
+</div>
 <div class="lg col-sm-3">
     <div align="center">
         <h3>ABOUT</h3>
@@ -37,6 +40,8 @@
         that progress can be tracked.
     </div>
 </div>
+
+
 <div class="login col-sm-6">
     <div class="form-group">
         <legend>Login</legend>
@@ -68,7 +73,7 @@
             <button class="btn btn-default login-btn" type="submit">Login</button>
         </fieldset>
     </form>
-    Not Registered? <a href="professor_register"> Register Here</a>
+    {% comment %}Not Registered? <a href="professor_register"> Register Here</a>{% endcomment %}
 </div>
 
 </body>
