@@ -47,7 +47,7 @@ urlpatterns = [
 
     ################Assistant Url################################
     url(r'^assistant_login$', views.Assistant_login, name='Assistant_login'),
-    url(r'^assistant_register$',views.assistant_register, name='assistant_register'),
+    url(r'^assistant_register/(?P<cid>([A-Za-z0-9_]+))/$',views.assistant_register, name='assistant_register'),
     url(r'^assistantlist$', views.assistantlist, name='assistantlist'),
     url(r'^assistant_home$', views.assistant_home, name='assistant_home'),
     ############################################################
