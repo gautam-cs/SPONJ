@@ -1,28 +1,35 @@
 .header,.b a
-{ text-align: center;
+{
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #263238 ;
     text-decoration: none;
-}
+    margin-bottom: 10px;
+    padding: 5px;
 
-.logo
-{
-margin-left: 1%;
-margin-bottom: 3%;
 }
+.title{
+    font-family: OCR;
+    text-align: center;
+}
+/*.logo*/
+/*{*/
+    /*font-family: "OCR";*/
+    /*float: left;*/
+    /*font-size: x-large;*/
+    /*margin-right: 5px;*/
+/*}*/
 
 
 .a,.logoutbtn {
     background-color: #4CAF50;
     color: white;
-    margin-right: -84%;
-    padding-left: 25px;
-    padding-right: 25px;
+    float: right;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    margin-top: -25px ;
 }
 
 
@@ -84,6 +91,10 @@ body {
 .calender {
     float: right;
     /*width: 25%;*/
+}
+
+.container-fluid{
+    padding: 10px;
 }
 
 .content {
@@ -237,4 +248,10 @@ body {
     border: 1px solid #808080;
     width: 690px;
     height: 100px;
+}
+
+@font-face {
+  font-family: "OCR";
+  src: url('../fonts/OCRAEXT.TTF');
+  format("truetype");
 }
