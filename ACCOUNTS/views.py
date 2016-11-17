@@ -131,6 +131,17 @@ def professor_course(request, cid):
                        'professor_name': professor[0].Name, 'studentlist': studentlist})
     return HttpResponse("Not Logged in")
 
+def assistant_register(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        Af = AssistantForm(data=request.POST, prefix='assistant')
+        if Af.is_valid():
+            Af.save()
+            return redirect('/professor_course/')
+    else:
+        Af = AssistantForm(prefix='assistant')
+    return render(request, 'assistant/assistant_register.html', {'Af': Af}, context)
+
 
 def createassignment(request, cid):
     if request.session.has_key('username'):
@@ -520,16 +531,7 @@ def studentlist(request):
 
 
 ##############################################ASSISTANT IMPLEMENTATION#######################################################
-def assistant_register(request):
-    context = RequestContext(request)
-    if request.method == 'POST':
-        Af = AssistantForm(data=request.POST, prefix='assistant')
-        if Af.is_valid():
-            Af.save()
-            return redirect('/')
-    else:
-        Af = AssistantForm(prefix='assistant')
-    return render(request, 'assistant/assistant_register.html', {'Af': Af}, context)
+
 
 
 def assistantlist(request):
