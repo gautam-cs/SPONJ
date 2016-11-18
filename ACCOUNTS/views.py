@@ -11,6 +11,7 @@ from django.template import RequestContext
 from datetime import date
 from django.contrib.auth.models import User
 import os
+from subprocess import call
 
 
 def index(request):
@@ -610,7 +611,28 @@ def ProfessorFormView(request):
 ##############################################STUDENT IMPLEMENTATION#######################################################
 def view_question_student(request, aid_qid):
     if request.session.has_key('username'):
-        sid=request.session['username']
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
+            for assignment in assignments:
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
+                for question in questions:
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
         aid = aid_qid.split("_")[0]
         qid = aid_qid.split("_")[1]
         question = QuestionDetail.objects.get(pk=qid)
@@ -638,110 +660,177 @@ def view_question_student(request, aid_qid):
                                                                               'inp1': inp1, 'inp2': inp2,
                                                                               'out1': out1, 'out2': out2,
                                                                               'course': course, "professor": professor,
-                                                                              "sid":sid})
+                                                                              "sid":sid,
+                                                                               'data':data})
     return HttpResponse("Not Logged in")
 
 def view_report_wise_student(request, aid):
     if request.session.has_key('username'):
-        if request.session.has_key('username'):
-            username = request.session['username']
-            all_assignments_reports = []
-            total_number_of_question = 0
-            total_number_of_attempted_question = 0
-            total_number_of_solved_question = 0
-            assignments = AssignmentDetail.objects.filter(Courseid_id=AssignmentDetail.objects.get(id=aid).Courseid_id)
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
             for assignment in assignments:
-                assignment_report = {}
-                assignment_report['assignment'] = assignment
-                assignment_report['no_of_attempted_question'] = 0
-                assignment_report['no_of_solved_question'] = 0
-                questions = QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
-                all_questions_report = []
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
                 for question in questions:
-                    question_report = {}
-                    question_report['correct'] = False
-                    total_number_of_question += 1
-                    question_report['question'] = question
-                    submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username).order_by('-SubmissionTime')
-                    question_report['no_of_submissions'] = submissions.count()
-                    if submissions.count() is not 0:
-                        question_report['attempted'] = True
-                        total_number_of_attempted_question += 1
-                        assignment_report['no_of_attempted_question'] += 1
-                        if submissions.first().Result == 'correct':
-                            question_report['correct'] = True
-                            total_number_of_solved_question += 1
-                            assignment_report['no_of_solved_question'] += 1
-                        question_report['subid'] = submissions.first().id
-                    else:
-                        question_report['attempted'] = False
-                    all_questions_report.append(question_report)
-                assignment_report['questions'] = all_questions_report
-                all_assignments_reports.append(assignment_report)
-            print(aid)
-            return render(request, 'student/report_assignmentwise.html',
-                          context={'all_assignments_report': all_assignments_reports,
-                                   'total_number_of_question': total_number_of_question,
-                                   'total_number_of_solved_question': total_number_of_solved_question,
-                                   'total_number_of_attempted_question': total_number_of_attempted_question,
-                                   'selected': aid})
-        return HttpResponse("Not Logged in")
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
+        username = request.session['username']
+        all_assignments_reports = []
+        total_number_of_question = 0
+        total_number_of_attempted_question = 0
+        total_number_of_solved_question = 0
+        assignments = AssignmentDetail.objects.filter(Courseid_id=AssignmentDetail.objects.get(id=aid).Courseid_id)
+        for assignment in assignments:
+            assignment_report = {}
+            assignment_report['assignment'] = assignment
+            assignment_report['no_of_attempted_question'] = 0
+            assignment_report['no_of_solved_question'] = 0
+            questions = QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+            all_questions_report = []
+            for question in questions:
+                question_report = {}
+                question_report['correct'] = False
+                total_number_of_question += 1
+                question_report['question'] = question
+                submissions = Submission.objects.filter(QuestionId_id=question.id, StudentId_id=username).order_by('-SubmissionTime')
+                question_report['no_of_submissions'] = submissions.count()
+                if submissions.count() is not 0:
+                    question_report['attempted'] = True
+                    total_number_of_attempted_question += 1
+                    assignment_report['no_of_attempted_question'] += 1
+                    if submissions.first().Result == 'correct':
+                        question_report['correct'] = True
+                        total_number_of_solved_question += 1
+                        assignment_report['no_of_solved_question'] += 1
+                    question_report['subid'] = submissions.first().id
+                else:
+                    question_report['attempted'] = False
+                all_questions_report.append(question_report)
+            assignment_report['questions'] = all_questions_report
+            all_assignments_reports.append(assignment_report)
+        print(aid)
+        return render(request, 'student/report_assignmentwise.html',
+                      context={'all_assignments_report': all_assignments_reports,
+                               'total_number_of_question': total_number_of_question,
+                               'total_number_of_solved_question': total_number_of_solved_question,
+                               'total_number_of_attempted_question': total_number_of_attempted_question,
+                               'selected': aid,'data':data})
+    return HttpResponse("Not Logged in")
 
 
 def view_report_student(request, cid):
     if request.session.has_key('username'):
-        if request.session.has_key('username'):
-            username = request.session['username']
-            all_assignments_reports = []
-            total_number_of_question = 0
-            total_number_of_attempted_question = 0
-            total_number_of_solved_question = 0
-            assignments = AssignmentDetail.objects.filter(Courseid_id=cid)
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
             for assignment in assignments:
-                assignment_report = {}
-                assignment_report['assignment'] = assignment
-                assignment_report['no_of_attempted_question'] = 0
-                assignment_report['no_of_solved_question'] = 0
-                questions = QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
-                all_questions_report = []
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
                 for question in questions:
-                    question_report = {}
-                    question_report['correct'] = False
-                    total_number_of_question += 1
-                    question_report['question'] = question
-                    submissions = Submission.objects.filter(QuestionId_id=question.id,
-                                                            StudentId_id=username).order_by('-SubmissionTime')
-                    question_report['no_of_submissions'] = submissions.count()
-                    if submissions.count() is not 0:
-                        question_report['attempted'] = True
-                        total_number_of_attempted_question += 1
-                        assignment_report['no_of_attempted_question'] += 1
-                        if submissions.first().Result == 'correct':
-                            question_report['correct'] = True
-                            total_number_of_solved_question += 1
-                            assignment_report['no_of_solved_question'] += 1
-                        question_report['subid'] = submissions.first().id
-                    else:
-                        question_report['attempted'] = False
-                    all_questions_report.append(question_report)
-                assignment_report['questions'] = all_questions_report
-                all_assignments_reports.append(assignment_report)
-            return render(request, 'student/report_assignmentwise.html',
-                          context={'all_assignments_report': all_assignments_reports,
-                                   'total_number_of_question': total_number_of_question,
-                                   'total_number_of_solved_question': total_number_of_solved_question,
-                                   'total_number_of_attempted_question': total_number_of_attempted_question,
-                                   })
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
+        username = request.session['username']
+        all_assignments_reports = []
+        total_number_of_question = 0
+        total_number_of_attempted_question = 0
+        total_number_of_solved_question = 0
+        assignments = AssignmentDetail.objects.filter(Courseid_id=cid)
+        for assignment in assignments:
+            assignment_report = {}
+            assignment_report['assignment'] = assignment
+            assignment_report['no_of_attempted_question'] = 0
+            assignment_report['no_of_solved_question'] = 0
+            questions = QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+            all_questions_report = []
+            for question in questions:
+                question_report = {}
+                question_report['correct'] = False
+                total_number_of_question += 1
+                question_report['question'] = question
+                submissions = Submission.objects.filter(QuestionId_id=question.id,
+                                                        StudentId_id=username).order_by('-SubmissionTime')
+                question_report['no_of_submissions'] = submissions.count()
+                if submissions.count() is not 0:
+                    question_report['attempted'] = True
+                    total_number_of_attempted_question += 1
+                    assignment_report['no_of_attempted_question'] += 1
+                    if submissions.first().Result == 'correct':
+                        question_report['correct'] = True
+                        total_number_of_solved_question += 1
+                        assignment_report['no_of_solved_question'] += 1
+                    question_report['subid'] = submissions.first().id
+                else:
+                    question_report['attempted'] = False
+                all_questions_report.append(question_report)
+            assignment_report['questions'] = all_questions_report
+            all_assignments_reports.append(assignment_report)
+        return render(request, 'student/report_assignmentwise.html',
+                      context={'all_assignments_report': all_assignments_reports,
+                               'total_number_of_question': total_number_of_question,
+                               'total_number_of_solved_question': total_number_of_solved_question,
+                               'total_number_of_attempted_question': total_number_of_attempted_question,
+                               'data':data})
         return HttpResponse("Not Logged in")
 
 
 def student_course(request, cid):
     if request.session.has_key('username'):
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
+            for assignment in assignments:
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
+                for question in questions:
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
         course = CourseDetail.objects.filter(id=cid)
         professor = ProfessorDetail.objects.filter(PId=course[0].PId)
         assignmentlist = AssignmentDetail.objects.filter(Courseid=course[0].id)
         return render(request, 'student/student_course.html',
-                      {'course': course[0], 'assignmentlist': assignmentlist, 'professor_name': professor[0].Name, })
+                      {'course': course[0], 'assignmentlist': assignmentlist,
+                       'data':data,
+                       'professor_name': professor[0].Name, })
     return HttpResponse("Not Logged in")
 
 
@@ -781,17 +870,60 @@ def Student_login(request):
 
 def student_home(request):
     if request.session.has_key('username'):
-        if request.session.has_key('username'):
-            sid = request.session['username']
-            courses = CourseDetail.objects.filter(course_student__SId_id=sid)
-            Studentpost = StudentDetail.objects.filter(SId=sid)
-            return render(request, 'student/student_home.html', context={'Studentpost': Studentpost,
-                                                                         'courses': courses})
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
+            for assignment in assignments:
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
+                for question in questions:
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
+        sid = request.session['username']
+        courses = CourseDetail.objects.filter(course_student__SId_id=sid)
+        Studentpost = StudentDetail.objects.filter(SId=sid)
+        return render(request, 'student/student_home.html', context={'Studentpost': Studentpost,
+                                                                     'courses': courses,'data':data})
         return HttpResponse("Not Logged in")
 
 
 def view_assignment_student(request, asid):
     if request.session.has_key('username'):
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
+            for assignment in assignments:
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
+                for question in questions:
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
         assignment = AssignmentDetail.objects.get(pk=asid)
         professor = ProfessorDetail.objects.get(pk=CourseDetail.objects.get(pk=assignment.Courseid_id).PId_id)
         languages = Assignment_languages.objects.filter(AssignmentId=asid)
@@ -799,7 +931,7 @@ def view_assignment_student(request, asid):
         return render(request, 'student/viewassignmentstudent.html', context={'assignment': assignment,
                                                                               'professor': professor,
                                                                               'languages': languages,
-                                                                              'questions': questions})
+                                                                              'questions': questions,'data':data})
     return HttpResponse("Not Logged in")
 
 
@@ -828,18 +960,78 @@ def studentlist(request):
     return HttpResponse("Not Logged in")
 
 def run_code(request):
-    if request.method == "POST":
+    if request.session.has_key('username'):
+        sid = request.session['username']
+        Coursepost = CourseDetail.objects.filter(course_student__SId=sid)
+        data=[]
+        for course in Coursepost:
+            course_dict={}
+            course_dict['name']=course.CourseName
+            course_dict['id']=course.id
+            assignments=AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments']=[]
+            for assignment in assignments:
+                assignment_dict={}
+                assignment_dict['name']=assignment.AssignmentName
+                assignment_dict['id']=assignment.id
+                questions=QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions']=[]
+                for question in questions:
+                    question_dict={}
+                    question_dict['name']=question.QName
+                    question_dict['id']=question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
         data=request.POST
         print(str(data))
-        print(data.get('qid'))
-        print(data.get('asid'))
-        fo = open("temp-code.txt", "wb")
-        fo.write( bytes(data.get('source-code'),encoding="utf-8"))
+        aid = data.get('asid')
+        qid = data.get('qid')
+        question = QuestionDetail.objects.get(pk=qid)
+        assignment = AssignmentDetail.objects.get(pk=aid)
+        course = CourseDetail.objects.get(id=1)
+        professor = ProfessorDetail.objects.get(pk=course.PId_id)
+        inpf1 = question.TestCaseInputFile1
+        inpf1.open(mode='rb')
+        inp1 = inpf1.read()
+        inpf1.close()
+        inpf2 = question.TestCaseInputFile2
+        inpf2.open(mode='rb')
+        inp2 = inpf2.read()
+        inpf2.close()
+        outf2 = question.OutputFile2
+        outf2.open(mode='rb')
+        out2 = outf2.read()
+        outf2.close()
+        outf1 = question.OutputFile1
+        outf1.open(mode='rb')
+        out1 = outf1.read()
+        outf1.close()
+        return render(request, 'student/view_question_student_result.html', context={'question': question,
+                                                                              'assignment': assignment,
+                                                                              'inp1': inp1, 'inp2': inp2,
+                                                                              'out1': out1, 'out2': out2,
+                                                                              'course': course, "professor": professor,
+                                                                              "sid":sid,'data':data})
+    # if request.method == "POST":
+    #     data=request.POST
+    #     print(str(data))
+    #     print(data.get('qid'))
+    #     print(data.get('asid'))
+    #     if data.get('lang')=='C':
+    #         fo = open("media/code/temp-code.c", "wb")
+    #         fo.write( bytes(data.get('source-code'),encoding="utf-8"))
+    #         fo.close()
+    #     elif data.get('lang')=='C++':
+    #         fo = open("media/code/temp-code.cpp", "wb")
+    #         fo.write( bytes(data.get('source-code'),encoding="utf-8"))
+    #         fo.close()
+
 # Close opend file
-        fo.close()
+
         from subprocess import call
         # call(,shell=True)
-        return HttpResponse(data.get('source-code'))
+        return render(request,'student/view_question_student_result.html')
 
 ##############################################ASSISTANT IMPLEMENTATION#######################################################
 
