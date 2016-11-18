@@ -50,59 +50,42 @@
     <div class="col-md-2">
         <div class="navigation-tree well">
 
-            <ul class="nav nav-list">
-                <li><label class="tree-toggler nav-header">Header 1</label>
-                    <ul class="nav nav-list tree">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><label class="tree-toggler nav-header">Header 1.1</label>
+                <ul class="nav nav-list">
+                    <li><label class="tree-toggler nav-header">Courses</label>
+                        <ul class="nav nav-list tree">
+                            {% for course in data %}
+                            <li><label class="tree-toggler nav-header"><a href="/professorcourse/{{ course.id }}/">{{ course.name }}</a></label></li>
                             <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                {% for assignment in course.assignments %}
+                            <li><label class="tree-toggler nav-header">{{ assignment.name }}</label>
                                     <ul class="nav nav-list tree">
-                                        <li><a href="#">Link</a></li>
-                                        <li><a href="#">Link</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="divider"></li>
-                <li><label class="tree-toggler nav-header">Header 2</label>
-                    <ul class="nav nav-list tree">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><label class="tree-toggler nav-header">Header 2.1</label>
-                            <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><label class="tree-toggler nav-header">Header 2.1.1</label>
-                                    <ul class="nav nav-list tree">
-                                        <li><a href="#">Link</a></li>
-                                        <li><a href="#">Link</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><label class="tree-toggler nav-header">Header 2.2</label>
-                            <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><label class="tree-toggler nav-header">Header 2.2.1</label>
-                                    <ul class="nav nav-list tree">
-                                        <li><a href="#">Link</a></li>
-                                        <li><a href="#">Link</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                                {% for question in assignment.questions %}
+                                    <li><a href="/viewquestion/{{ assignment.id }}_{{ question.id }}">{{ question.name }}</a></li>
 
-        </div>
+                                 {% endfor %}
+                                </ul>
+                            </li>
+                                    {% endfor %}
+                                </ul>
+                            <li class="divider"></li>
+                            {% endfor %}
+{#                            <li><label class="tree-toggler nav-header"><a href="#">Course 2</a></label></li>#}
+{#                            <ul class="nav nav-list tree">#}
+{#                            <li><label class="tree-toggler nav-header">Assignment 1</label>#}
+{#                                <ul class="nav nav-list tree">#}
+{#                                    <li><a href="#">Question 1</a></li>#}
+{#                                    <li><a href="#">Question 2</a></li>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </li>#}
+{#                                </ul>#}
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+
+                </ul>
+
+            </div>
     </div>
 
     <div class="col-md-7">

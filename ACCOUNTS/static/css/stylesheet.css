@@ -60,7 +60,9 @@ body {
     width: 100%;
     margin: auto;
 }
-
+.well{
+    border-radius: 0px ;
+}
 .assignment_report_title {
     /*width: 100%;*/
     cursor: pointer;
@@ -103,6 +105,7 @@ body {
     /*padding: 10px;*/
     /*background-color: #dedede;*/
     position: relative;
+    min-height: 70%;
 }
 
 .box-card {
@@ -255,3 +258,5 @@ body {
   src: url('../fonts/OCRAEXT.TTF');
   format("truetype");
 }
+
+
