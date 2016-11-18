@@ -1079,13 +1079,34 @@ def assistant_home(request):
         taid = request.session['username']
         post = Courses_Ta.objects.get(TaId_id=taid)
         coursepost = CourseDetail.objects.get(id=post.CourseId_id)
+        data = []
+        for course in coursepost:
+            course_dict = {}
+            course_dict['name'] = course.CourseName
+            course_dict['id'] = course.id
+            assignments = AssignmentDetail.objects.filter(Courseid_id=course.id)
+            course_dict['assignments'] = []
+            for assignment in assignments:
+                assignment_dict = {}
+                assignment_dict['name'] = assignment.AssignmentName
+                assignment_dict['id'] = assignment.id
+                questions = QuestionDetail.objects.filter(assignmentquestion__AId=assignment.id)
+                assignment_dict['questions'] = []
+                for question in questions:
+                    question_dict = {}
+                    question_dict['name'] = question.QName
+                    question_dict['id'] = question.id
+                    assignment_dict['questions'].append(question_dict)
+                course_dict['assignments'].append(assignment_dict)
+            data.append(course_dict)
+
         assistant = AssistantDetail.objects.filter(courses_ta__CourseId=post.CourseId_id)
         assignmentlist = AssignmentDetail.objects.all()
         studentlist = StudentDetail.objects.filter(course_student__CourseId=coursepost.id)
         talist = AssistantDetail.objects.filter(courses_ta__CourseId=coursepost.id)
         return render(request, 'assistant/assistant_home.html',
                       {'Course': coursepost, 'assignmentlist': assignmentlist,
-                       'talist': talist, 'assistant': assistant, 'studentlist': studentlist})
+                       'talist': talist, 'assistant': assistant, 'studentlist': studentlist,'data':data})
     return HttpResponse("Not Logged in")
 
 ############################################################################################################################
