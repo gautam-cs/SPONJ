@@ -312,12 +312,11 @@ def createassignment(request, cid):
             data.append(course_dict)
         if request.method == "POST":
             assignmentform = AssignmentForm(request.POST)
-            assignmentform.save()
             if assignmentform.is_valid():
                 a = assignmentform.save()
                 return redirect('/question/' + str(a.id) + '/')
             else:
-                print(assignmentform.errors)
+                return HttpResponse("Not a valid form")
 
         else:
             assignmentform = AssignmentForm()
@@ -353,7 +352,6 @@ def createassignment_and_add_q(request, cid):
         if request.method == "POST":
             assignmentform = AssignmentForm(request.POST)
             assignmentform.CreationDate = date.today()
-            assignmentform.save()
             if assignmentform.is_valid():
                 a = assignmentform.save()
                 return redirect('question/' + a.id)
