@@ -5,7 +5,6 @@ from ACCOUNTS.forms import *
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from datetime import date
@@ -15,7 +14,7 @@ from subprocess import call
 
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "base.html")
 ############################################PROFESSOR IMPLEMENTATION#######################################################
 def professor_register(request):
         context = RequestContext(request)
@@ -216,6 +215,8 @@ def createcourse(request):
         if request.method == "POST":
             courseform = CourseForm(request.POST)
             if courseform.is_valid():
+                print(courseform.EndDate_year)
+                #if(courseform.EndDate>courseform.StartDate):
                 courseform.save()
                 return redirect('professor_home')
         else:

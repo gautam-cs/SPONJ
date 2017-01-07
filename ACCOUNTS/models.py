@@ -1,15 +1,37 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.utils import timezone
+
 
 class StudentDetail(models.Model):
+    prog=(
+        ('select', 'select'),
+        ('B-tech','B-tech'),
+        ('M-tech','M-tech'),
+    )
+
+    branch=(
+        ('select', 'select'),
+        ('CS','Computer Science'),
+        ('IT','Information Techonology'),
+    )
+
+    batch=(
+        ('select', 'select'),
+        ('2013-17','2013-17'),
+        ('2014-18','2014-18'),
+        ('2015-19','2015-19'),
+        ('2016-20','2016-20'),
+    )
+
     SId = models.CharField(primary_key=True,max_length=20,null=False)
-    Batch=models.CharField(max_length=20,null=False)
-    Branch=models.CharField(max_length=20,null=False)
+    Batch=models.CharField(max_length=20,choices=batch,default='select')
+    Branch=models.CharField(max_length=20,choices=branch,default='select')
     Name=models.CharField(max_length=30,null=False)
     Email = models.EmailField()
     Password=models.CharField(max_length=20,null=False)
-    Programme=models.CharField(max_length=20,null=False)
+    Programme=models.CharField(max_length=20,choices=prog,default='select')
 
     def __str__(self):
         return str(self.SId)
@@ -26,14 +48,25 @@ class ProfessorDetail(models.Model):
         return str(self.PId)
 
 class CourseDetail(models.Model):
+    sem=(
+        ('select', 'select'),
+        ('Autumn','Autumn'),
+        ('Winter','Winter')
+    )
+
+    year=(
+        ('datetime.now().year','datetime.now().year'),
+        ('select','select'),
+    )
+
     CourseId = models.CharField(max_length=20, null=False)
-    Year = models.CharField(max_length=4,null=False)
+    Year = models.CharField(max_length=20,choices=year,default='select')
     CourseName=models.CharField(max_length=20,null=False)
     Description=models.TextField(max_length=200,null=False)
     PId=models.ForeignKey(ProfessorDetail,max_length=20,null=False)
-    StartDate= models.DateField(null=False)
-    EndDate= models.DateField(null=False)
-    Semester=models.CharField(max_length=10,null=False)
+    StartDate= models.DateField(default=timezone.now)
+    EndDate= models.DateField(default=timezone.now)
+    Semester=models.CharField(max_length=20,choices=sem,default='select')
 
     class Meta:
         unique_together=('CourseId','Year')

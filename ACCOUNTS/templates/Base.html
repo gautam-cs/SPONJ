@@ -1,0 +1,28 @@
+
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>Student Login</title>
+</head>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
+
+<div class="header">
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+{% comment %}
+    <a href="/logout"><button class="logoutbtn">Logout</button></a>
+{% endcomment %}
+</div>
+<body>
+    <div class="content container">
+            {% block content %}
+            {% endblock %}
+            </div>
+    </div>
+</body>
+</html>                                        
