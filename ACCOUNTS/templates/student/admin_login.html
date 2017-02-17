@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>Student Login</title>
+</head>
+<body>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
+
+<div class="header">
+
+    <div class="b">
+        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
+    <div class="admin_slot">
+        <a href="Base.html"><h4 class="">Admin Login</h4></a>
+    </div>
+</div>
+
+</br>
+<div class="lg col-sm-2">
+</div>
+<div class="lg col-sm-3">
+    <div align="center">
+        <h3>ABOUT</h3>
+        SPONJ is an online compiler and debugging tool which allows a Student user to run and comiple their codes in 4
+        different languages.
+        It is a project that is being developed by some IIIT Vadodara students of Computer Science Department.
+    </div>
+    </br>
+    </br>
+    <div align="center">
+        <h3>SPONJ ACADEMIC</h3>
+        SPONJ is a platform for Professors, Teaching Assistants and Students. Here assignments can be created and
+        checked online so
+        that progress can be tracked.
+    </div>
+</div>
+<div class="login col-sm-6">
+    <div class="form-group">
+        <legend>Administration Login</legend>
+        <ul class="nav nav-tabs" id="selector">
+            <li class="user active"><a href="/">Admin</a></li>
+        </ul>
+    </div>
+    {% comment %}<form class="form-horizontal" method="POST" action="student_login">{% endcomment %}
+    <form name="form" action="{% url "ACCOUNTS.views.Student_login" %}"
+          method="POST">
+        <fieldset>
+        {% csrf_token %}
+            <div class="form-group">
+                <label for="username" class="col-lg-2 control-label">username</label>
+                <div class="col-lg-10"><input type="text" id="username" name="username" class="form-control"
+                                              value="User Name"
+                                              onfocus="if(this.value  == 'User Name'){ this.value = ''; } " onblur="if(this.value == '')
+        { this.value = 'User Name'; } " required><br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-lg-2 control-label">password</label>
+                <div class="col-lg-10"><input type="password" id="password" class="form-control" name="password"
+                                              required><br>
+                </div>
+            </div>
+            <button class="btn btn-default login-btn" type="submit">Login</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
+
+                            

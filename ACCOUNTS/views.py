@@ -2,19 +2,20 @@ __author__ = 'Gautam'
 
 from ACCOUNTS.models import *
 from ACCOUNTS.forms import *
+import binascii
+from pyflakes import messages
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
-from datetime import date
+from ACCOUNTS.helper.helper import *
+from django.contrib.auth.models import UserManager
 from django.contrib.auth.models import User
-import os
-from subprocess import call
 
 
-def index(request):
-    return render(request, "base.html")
+def admin_login(request):
+    return render(request, "student/admin_login.html")
 ############################################PROFESSOR IMPLEMENTATION#######################################################
 def professor_register(request):
         context = RequestContext(request)
@@ -836,24 +837,82 @@ def student_course(request, cid):
 
 
 def student_register(request):
+    # form to sign up is valid
     context = RequestContext(request)
     if request.method == 'POST':
-        sf = StudentForm(data=request.POST, prefix='student')
-        if sf.is_valid():
-            sf.save()
-            return redirect('/')
+        user = StudentForm(data=request.POST, prefix='student')
+        if user.is_valid():
+            user.is_active = False
+            a=user.save()
+            email=a.Email
+            username=a.SId
+            password=a.Password
+            activation_key = encrypt(secret_key, email)
+            message = "Your Email address is " + email + ". activation key is " + activation_key.decode("utf-8")
+            send_verification_mail(email, activation_key, message)
+            user_exists_or_not, message = validate_username_email(username, email)
+
+            # creating user
+            user_exists_or_not, message = validate_username_email(username, email)
+            if not user_exists_or_not:
+                user = User.objects.create_user(username, email, password)
+                user = StudentDetail.objects.create(user=user)
+                # custom save for creating non active user
+                custom_save(user)
+                activation_key = encrypt(secret_key, email)
+                #sending account verification mail
+                message = "Your Email address is" + email + "activation key is " + activation_key.decode("utf-8")
+                send_verification_mail(email, activation_key, message)
+                return HttpResponse('message sent')
+            else:
+                return redirect('activation_page')
+
     else:
-        sf = StudentForm(prefix='student')
-    return render(request, 'student/student_register.html', {'sf': sf}, context)
+        user = StudentForm(prefix='student')
+        return render(request, 'student/student_register.html', {'user' :user}, context)
+
+
+def activation_page(request):
+    """
+    handle for user account activation
+    :param request:
+    :return: httpresponseredirect or rendered html
+    """
+    if request.method == "POST":
+        email = request.POST.get("Email")
+        activation_key = request.POST.get("activation_key")
+        # verifying thw activation key
+        try:
+            decoded = decrypt(secret_key, activation_key)
+            decoded = decoded.decode("utf-8")
+        except binascii.Error:
+            decoded = None
+        if email == decoded:
+            user = StudentDetail.objects.filter(Email=email)
+            if user[0] is None:
+                messages.error(request, "This email id is not valid")
+                return render(request, 'Student/activation_form.html')
+            # activating the user
+            else:
+                user[0].is_active = True
+                user[0].save()
+                #messages.success(request, "account activated successfully please Login Now")
+                return redirect('Student_login')
+        else:
+            messages.error(request, "wrong activation key")
+            return HttpResponse('not done')
+    else:
+        return render(request, "student/activation_form.html")
+
 
 
 def Student_login(request):
     username = "not logged in"
 
-    if request.method == "POST":
+    if request.method == "POST" :
         studentLoginForm = StudentLoginForm(request.POST)
 
-        if studentLoginForm.is_valid():
+        if studentLoginForm.is_valid() :
             username = studentLoginForm.cleaned_data['username']
             request.session['username'] = username
             s = StudentDetail.objects.filter(SId=username)

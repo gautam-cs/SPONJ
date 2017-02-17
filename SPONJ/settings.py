@@ -31,7 +31,7 @@ SECRET_KEY = 'tkv!7qt%ho6)#137uqb*ir0x+9a)_xq(o47qw)m=&kogq$#66*'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
+    'django.contrib.humanize',
+    'django.contrib.sites',
     'ACCOUNTS',
-]
+    ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

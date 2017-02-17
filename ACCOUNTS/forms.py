@@ -3,8 +3,8 @@ from django import forms
 from ACCOUNTS.models import *
 from django.contrib.auth.models import User
 import datetime
-
-
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
 
 ######################################################Professor FOrms#############################################
 class QuestionForm(forms.ModelForm):
@@ -76,6 +76,7 @@ class StudentForm(forms.ModelForm):
         fields = ('SId', 'Name', 'Email', 'Password', 'Batch', 'Branch', 'Programme')
 
 
+
 class StudentLoginForm(forms.Form):
     username = forms.CharField(max_length=20)
     password = forms.CharField(widget=forms.PasswordInput())
@@ -87,7 +88,6 @@ class StudentLoginForm(forms.Form):
         if not dbuser:
             raise forms.ValidationError("User does not exist in our db!")
         return username
-
 
 #################################################Assistant FOrms######################################################
 class AssistantForm(forms.ModelForm):

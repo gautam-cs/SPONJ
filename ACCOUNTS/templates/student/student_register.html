@@ -9,8 +9,8 @@
     <title>Student Register</title>
 </head>
 <body>
-<script src="{% static '/js/jquery.min.js' %}"></script>
-<script src="{% static '/js/script.js' %}"></script>
+<script src="{% static "/js/jquery.min.js" %}></script>
+<script src="{% static "/js/script.js" %}></script>
 
 <div class="header">
 
@@ -27,8 +27,13 @@
     <!--<form id="user_form" method="post" action="professor_list">-->
     <form method="POST" class="post-form">
         {% csrf_token %}
-        {{ sf.as_p }}
-        {{ spf.as_p }}
+        <div class="sid">Student Id {{ user.SId }}</div><br>
+        <div class="stname">Name {{ user.Name }}</div><br>
+        <div class="email">Email{{ user.Email }}</div><br>
+        <div class="batch">Batch  {{ user.Batch }}</div><br>
+        <div class="Password">password {{ user.Password }}</div><br>
+        <div class="branch">Branch{{ user.Branch }}</div><br>
+        <div class="programme">programme {{ user.Programme }}</div><br>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 </div>

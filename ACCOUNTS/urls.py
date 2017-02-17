@@ -24,6 +24,8 @@ urlpatterns = [
                       name='view_assignmentwise_report'),
                   url(r'^viewassignmentfullreport_student/(?P<cid>([A-Za-z0-9]+))/$', views.view_report_student,
                       name='view_assignment_report'),
+                  url(r'^admin_login$', views.admin_login, name='admin_login'),
+                  url(r'^activation_form$', views.activation_page, name='activation_form'),
 
                   ###################Professor URL#############################
                   url(r'^professor_login$', views.professor_login, name='professor_login'),
