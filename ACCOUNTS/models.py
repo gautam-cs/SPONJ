@@ -32,6 +32,7 @@ class StudentDetail(models.Model):
     Email = models.EmailField()
     Password=models.CharField(max_length=20,null=False)
     Programme=models.CharField(max_length=20,choices=prog,default='select')
+    is_active=models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.SId)

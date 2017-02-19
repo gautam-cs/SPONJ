@@ -89,6 +89,7 @@ class StudentLoginForm(forms.Form):
             raise forms.ValidationError("User does not exist in our db!")
         return username
 
+
 #################################################Assistant FOrms######################################################
 class AssistantForm(forms.ModelForm):
     Password = forms.CharField(widget=forms.PasswordInput)

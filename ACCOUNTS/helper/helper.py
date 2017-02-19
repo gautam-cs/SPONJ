@@ -35,6 +35,7 @@ def send_verification_mail(email, activation_key, msg):
 def validate_username_email(username, email):
 	try:
 		user_name = StudentDetail.objects.get(SId=username)
+		print(user_name)
 	except StudentDetail.DoesNotExist:
 		user_name = None
 
@@ -44,18 +45,18 @@ def validate_username_email(username, email):
 		e_mail = None
 
 	if user_name is None and e_mail is None:
-		user_exists_or_not = False
+		user_exists = False
 		message = ""
 	else:
 		if user_name is None and e_mail is not None:
-			user_exists_or_not = True
+			user_exists = True
 			message = "user is already regsitered with this email address"
 		else:
 			if user_name is not None and e_mail is None:
-				user_exists_or_not = True
+				user_exists = True
 				message = "username already exists"
 			else:
-				user_exists_or_not = True
+				user_exists = True
 				message = "username and email already exists"
 
-	return user_exists_or_not, message
+	return user_exists, message

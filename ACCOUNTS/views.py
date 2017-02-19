@@ -1,16 +1,16 @@
 __author__ = 'Gautam'
 
-from ACCOUNTS.models import *
 from ACCOUNTS.forms import *
 import binascii
 from pyflakes import messages
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from ACCOUNTS.helper.helper import *
-from django.contrib.auth.models import UserManager
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 
@@ -843,29 +843,30 @@ def student_register(request):
         user = StudentForm(data=request.POST, prefix='student')
         if user.is_valid():
             user.is_active = False
-            a=user.save()
-            email=a.Email
-            username=a.SId
-            password=a.Password
-            activation_key = encrypt(secret_key, email)
-            message = "Your Email address is " + email + ". activation key is " + activation_key.decode("utf-8")
-            send_verification_mail(email, activation_key, message)
-            user_exists_or_not, message = validate_username_email(username, email)
-
+            email=request.POST.get('student-Email')
+            username=request.POST.get('student-SId')
+            password=request.POST.get('student-Password')
+            new_password=request.POST.get('new_password')
+            print(request.POST)
             # creating user
-            user_exists_or_not, message = validate_username_email(username, email)
-            if not user_exists_or_not:
-                user = User.objects.create_user(username, email, password)
-                user = StudentDetail.objects.create(user=user)
-                # custom save for creating non active user
-                custom_save(user)
-                activation_key = encrypt(secret_key, email)
-                #sending account verification mail
-                message = "Your Email address is" + email + "activation key is " + activation_key.decode("utf-8")
-                send_verification_mail(email, activation_key, message)
-                return HttpResponse('message sent')
+            user_exists, message = validate_username_email(username, email)
+            print(user_exists)
+            print(password,new_password)
+            if(password==new_password):
+                if  user_exists:
+                    user.save()
+                    # custom save for creating non active user
+                    custom_save(user)
+                    activation_key = encrypt(secret_key, email)
+                    #sending account verification mail
+                    message = "Your Email address is " + email + " activation key is " + activation_key.decode("utf-8")
+                    send_verification_mail(email, activation_key, message)
+                    return redirect("activation_page")
+                else:
+                    #already registered with the username or email address
+                    return redirect("student_register")
             else:
-                return redirect('activation_page')
+                return  HttpResponse("Password you entered didn't match")
 
     else:
         user = StudentForm(prefix='student')
@@ -888,44 +889,115 @@ def activation_page(request):
         except binascii.Error:
             decoded = None
         if email == decoded:
-            user = StudentDetail.objects.filter(Email=email)
-            if user[0] is None:
+            user=StudentDetail.objects.get(Email=email)
+            print(user.is_active)
+            if user is None:
                 messages.error(request, "This email id is not valid")
                 return render(request, 'Student/activation_form.html')
             # activating the user
             else:
-                user[0].is_active = True
-                user[0].save()
-                #messages.success(request, "account activated successfully please Login Now")
-                return redirect('Student_login')
+                user.is_active = True
+                print(user.is_active)
+                user.save()
+                messages.success(request, "account activated successfully please Login Now")
+                return redirect('/')
         else:
             messages.error(request, "wrong activation key")
-            return HttpResponse('not done')
+            return render(request, 'student/activation_form.html')
     else:
         return render(request, "student/activation_form.html")
 
-
-
 def Student_login(request):
-    username = "not logged in"
-
+    #username = "not logged in"
     if request.method == "POST" :
-        studentLoginForm = StudentLoginForm(request.POST)
+        user = StudentLoginForm(request.POST)
+        print(request.POST)
+        student=StudentDetail.objects.get(SId=request.POST.get('username'))
+        print(student.is_active)
+        if user.is_valid():
+            if student.is_active:
+                username = user.cleaned_data['username']
+                request.session['username'] = username
+                print(StudentDetail.objects.filter(SId=username))
+                s = StudentDetail.objects.filter(SId=username)
+                if s.count()==0:
+                    return HttpResponse("Enter valid username & password")
+                if (s[0].Password != user.cleaned_data['password']):
+                    return HttpResponse("Enter valid username & password")
 
-        if studentLoginForm.is_valid() :
-            username = studentLoginForm.cleaned_data['username']
-            request.session['username'] = username
-            s = StudentDetail.objects.filter(SId=username)
-            if s.count()==0:
-                return HttpResponse("Enter valid username & password")
-            if (s[0].Password != studentLoginForm.cleaned_data['password']):
-                return HttpResponse("Enter valid username & password")
-
-        return redirect('student_home')
+                return redirect('student_home')
+            else:
+                return HttpResponse("please activate your account")
 
     else:
-        studentLoginForm = StudentLoginForm()
-        return render(request, 'student/student_login.html')
+        user = StudentLoginForm()
+        return render(request, 'student/student_login.html',{'user':user})
+
+# def password_reset(request):
+# 	"""
+# 	handle for user account password reset functionality
+# 	:param request:
+# 	:return: httpresponseredirect or rendered html
+# 	:To do: generate unique key everytime a user request for password reset
+# 	"""
+# 	if request.method == 'POST':
+# 		email = request.POST.get("email")
+# 		re_expression = re.match(r'(.*)@(.*?)', email)
+# 		email_user_name = re_expression.group(1)
+# 		current_time = str(timezone.now())
+# 		key_text = email_user_name + current_time
+# 		new_password = encrypt(secret_key, key_text).decode("utf-8")
+# 		message = str(new_password)
+# 		try:
+# 			user = User.objects.get(email=email)
+# 		except User.DoesNotExist:
+# 			user = None
+# 		if user is not None:
+# 			user.set_password(new_password)
+# 			user.save()
+# 			send_verification_mail(email, new_password, message)
+# 			messages.success(request, "new password has been sent to your email please login with given password")
+# 			return HttpResponseRedirect(reverse("musicapp:login"))
+# 		else:
+# 			messages.error(request, "Sorry this email address is incorrect")
+# 			return render(request, "MusicApp/password_reset.html")
+# 	else:
+# 		return render(request, "MusicApp/password_reset.html")
+#
+#
+# def change_password(request):
+# 	"""
+# 	handle for user account password change functionality
+# 	:param request:
+# 	:return: httpresponseredirect or rendered html
+# 	"""
+# 	user = request.user
+# 	if request.method == "POST":
+# 		print(request.POST)
+# 		username = user.username
+# 		old_password = request.POST.get("old_password")
+# 		new_password = request.POST.get("new_password")
+# 		new_password_again = request.POST.get("new_password_again")
+# 		user = authenticate(username=username, password=old_password)
+# 		print(new_password)
+# 		print(new_password_again)
+# 		if user is not None:
+# 			if str(new_password) == str(new_password_again):
+# 				user.set_password(new_password)
+# 				user.save()
+# 				logout(request)
+# 				messages.success(request, "password has been changed successfully now login")
+# 				return HttpResponseRedirect(reverse("musicapp:login"))
+# 			else:
+# 				messages.error(request, "new password you entered did not match")
+# 				return render(request, "MusicApp/change_password.html", {'user': user})
+# 		else:
+# 			messages.error(request, "sorry the password you entered is not correct")
+# 			return render(request, "MusicApp/change_password.html", {'user': user})
+# 	else:
+# 		print("get request")
+# 		messages.success(request, "changing password will logout and you have to login again")
+# 		return render(request, "MusicApp/change_password.html", {'user': user})
 
 
 def student_home(request):
