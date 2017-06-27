@@ -48,7 +48,7 @@
             <li class="user active"><a href="assistant_login">Teaching Assistant</a></li>
         </ul>
     </div>
-    <form name="form" action="{% url "ACCOUNTS.views.Assistant_login" %}"
+    <form name="form" action="{% static "ACCOUNTS.views.Assistant_login" %}"
           method="POST">
         <fieldset>
             {% csrf_token %}
