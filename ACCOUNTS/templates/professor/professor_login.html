@@ -54,8 +54,7 @@
         </ul>
     </div>
 
-    <form name="form" action="{% url "ACCOUNTS.views.professor_login" %}"
-          method="POST">
+    <form name="form"  method="POST">
         <fieldset>
             {% csrf_token %}
             <div class="form-group">

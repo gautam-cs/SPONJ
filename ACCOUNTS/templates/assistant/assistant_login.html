@@ -9,8 +9,8 @@
     <title>Professor Login</title>
 </head>
 <body>
-<script src="{% static '/js/jquery.min.js' %}"></script>
-<script src="{% static '/js/script.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 <div class="header">
     <div class="b">
@@ -48,8 +48,7 @@
             <li class="user active"><a href="assistant_login">Teaching Assistant</a></li>
         </ul>
     </div>
-    <form name="form" action="{% static "ACCOUNTS.views.Assistant_login" %}"
-          method="POST">
+    <form name="form"   method="POST">
         <fieldset>
             {% csrf_token %}
             <div class="form-group">

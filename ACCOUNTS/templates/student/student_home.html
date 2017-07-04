@@ -1,18 +1,7 @@
-
+{% extends 'base.html' %}
 {% load staticfiles %}
-<html>
-<html lang="en">
-<meta charset="UTF-8">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
-<link rel="stylesheet" href="{% static 'css/monthly.css' %}">
-<title>Student Home</title>
-</head>
+{% block content %}
 <body>
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/script.js"></script>
-<script src="static/js/monthly.js"></script>
 <script type="text/javascript">
     $(window).load(function () {
         $('#mycalendar').monthly({
@@ -23,15 +12,9 @@
 
     });
 </script>
-<div class="header">
-
-    <div class="b">
-        <a href="/"><h1 class="title">SPONJ : Submissions Portal and ONline Judge</h1></a></div>
     <a href="/logout">
         <button class="logoutbtn">Logout</button>
     </a>
-</div>
-
 <div class="row">
 
     <div class="col-md-2">
@@ -80,14 +63,16 @@
             <div class="row">
                 <!--<div class="col-sm-2 col-md-4 col-lg-4" style="background-color:yellow;">-->
                 {% for course in courses %}
-                    <a href="studentcourse/{{ course.id }}">
-                        <div class="course box-card col-lg-2">
+                    <div class="abc">
+                    <a href="studentcourse/{{ course.id }}" >
+                        <div class="course box-card col-lg-2" width="100%">
                             <h4>{{ course.CourseId }}</h4>
                             <div class="course-name"> {{ course.CourseName }}</div>
                             <div class="prof-name">{{ course.PId }}</div>
                             <div class="course-year-sem">{{ course.Semester }} - {{ course.Year }}</div>
                         </div>
                     </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>
@@ -100,4 +85,4 @@
 </div>
 </div>
 </body>
-</html>
+{% endblock content %}

@@ -40,13 +40,9 @@
     border: none;
     cursor: pointer;
     margin-top: -25px ;
+    text-decoration: none;
 }
 
-
-body {
-    /*padding-left: 15px;*/
-    /*padding-right: 15px;*/
-}
 
 .login {
     float: right;
@@ -120,7 +116,7 @@ body {
 
 .box-card {
     position: relative;
-    width: 30%;
+    width: 100%;
     background-color: #5d1769;
     color: #f9f9f9;
     margin-right: 10px;
@@ -137,6 +133,9 @@ body {
     padding: 10px;
 }
 
+.abc{
+    width:100%;
+}
 .tab-card {
     position: relative;
     width: 100%;
